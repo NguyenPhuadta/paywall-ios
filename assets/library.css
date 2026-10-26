@@ -40,3 +40,14 @@
 .inspiration a{text-decoration:underline;text-underline-offset:3px}
 @media(max-width:720px){#collection-list .card-visual .preview-frame,.batch-intro+section .card-visual .preview-frame{--scale:.76}#collection-list .card-info,.batch-intro+section .card-info{padding:24px}}
 @media(max-width:370px){#collection-list .card-visual .preview-frame,.batch-intro+section .card-visual .preview-frame{--scale:.68}}
+
+/* Reference clarification: portrait cards side by side. */
+#collection-list,.batch-intro+section{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px;align-items:start}
+#collection-list .collection-card,.batch-intro+section .collection-card{min-width:0;overflow:hidden}
+#collection-list .card-visual,.batch-intro+section .card-visual{padding:24px 12px}
+#collection-list .card-visual .preview-frame,.batch-intro+section .card-visual .preview-frame{--scale:.85}
+#collection-list .card-info,.batch-intro+section .card-info{padding:24px}
+#collection-list .card-info h3,.batch-intro+section .card-info h3{font-size:32px}
+@media(max-width:1000px) and (min-width:721px){#collection-list .card-visual .preview-frame,.batch-intro+section .card-visual .preview-frame{--scale:.76}}
+@media(max-width:720px){#collection-list,.batch-intro+section{grid-template-columns:1fr;gap:24px}#collection-list .card-visual .preview-frame,.batch-intro+section .card-visual .preview-frame{--scale:.76}}
+@media(max-width:370px){#collection-list .card-visual .preview-frame,.batch-intro+section .card-visual .preview-frame{--scale:.68}}
