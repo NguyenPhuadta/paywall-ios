@@ -51,3 +51,17 @@
 @media(max-width:1000px) and (min-width:721px){#collection-list .card-visual .preview-frame,.batch-intro+section .card-visual .preview-frame{--scale:.76}}
 @media(max-width:720px){#collection-list,.batch-intro+section{grid-template-columns:1fr;gap:24px}#collection-list .card-visual .preview-frame,.batch-intro+section .card-visual .preview-frame{--scale:.76}}
 @media(max-width:370px){#collection-list .card-visual .preview-frame,.batch-intro+section .card-visual .preview-frame{--scale:.68}}
+/* Stock grows to four portrait cards per desktop row. */
+#collection-list,.batch-intro+section{grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
+#collection-list .card-visual,.batch-intro+section .card-visual{padding:16px 8px}
+#collection-list .card-visual .preview-frame,.batch-intro+section .card-visual .preview-frame{--scale:.64}
+#collection-list .card-info,.batch-intro+section .card-info{padding:20px 16px}
+#collection-list .card-info h3,.batch-intro+section .card-info h3{font-size:24px}
+#collection-list .card-info>p,.batch-intro+section .card-info>p{font-size:13px}
+#collection-list .item-meta,.batch-intro+section .item-meta{font-size:10px;gap:8px}
+#collection-list .card-actions,.batch-intro+section .card-actions{gap:8px;flex-wrap:wrap}
+#collection-list .button,.batch-intro+section .button{font-size:13px;padding:12px;gap:12px}
+@media(min-width:1101px) and (max-width:1299px){#collection-list .card-visual .preview-frame,.batch-intro+section .card-visual .preview-frame{--scale:.56}}
+@media(max-width:1100px){#collection-list,.batch-intro+section{grid-template-columns:repeat(2,minmax(0,1fr))}#collection-list .card-visual .preview-frame,.batch-intro+section .card-visual .preview-frame{--scale:.76}}
+@media(max-width:720px){#collection-list,.batch-intro+section{grid-template-columns:1fr}}
+@media(max-width:370px){#collection-list .card-visual .preview-frame,.batch-intro+section .card-visual .preview-frame{--scale:.68}}
