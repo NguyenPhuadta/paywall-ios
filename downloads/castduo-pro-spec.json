@@ -1,0 +1,17 @@
+{
+  "id":"castduo-pro",
+  "app":"CastDuo",
+  "batch":"2026-10-26",
+  "platform":"iOS",
+  "frame":{"width":390,"height":844,"statusBarHeight":62},
+  "compactFrame":{"width":375,"height":667},
+  "title":{"font":"system","weight":600,"size":44,"lineHeight":1.2,"letterSpacingEm":-0.01,"color":"#FFFFFF"},
+  "offer":{"inset":20,"padding":20,"radius":48,"cornerShape":"squircle","fill":"rgba(255,255,255,0.2)","labelSize":24,"priceSize":24},
+  "close":{"asset":"close-user.svg","size":24,"hitTarget":44,"left":16,"belowStatusBar":16,"gapToTitle":16},
+  "visual":{"width":390,"height":276,"asset":"pro-metal-badge-v4.png"},
+  "motion":{"runtime":"CSS","tiltSeconds":6,"shimmerSeconds":4,"rotateX":8,"rotateY":12,"rotateZ":0.65,"perspective":800,"reducedMotion":"static"},
+  "product":{"type":"auto-renewable-subscription","period":"week","samplePrice":"$x.xx","trialDays":3,"requiresEligibility":true,"productId":null,"subscriptionGroup":null},
+  "policy":{"termsURL":null,"privacyURL":null},
+  "locale":"en",
+  "productionReady":false
+}
