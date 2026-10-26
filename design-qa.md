@@ -41,3 +41,7 @@ User explicitly clarified: KienTD defines the **structure**, Ghost defines **sty
 Only English and the one approved design are provided. Shared server comments and real StoreKit transactions are outside this static library; local notes are labelled honestly. Ghost is a style reference, not a pixel-for-pixel layout target.
 
 final result: passed
+
+
+## CastDuo Plus / PW 002 — 2026-10-26
+User approved publishing option 01. Added unchanged visual source with three room photos, 2s scene / 6s loop, plain football kit/ball, blue-purple Plus tag, Weekly 18px, fill 10%, padding 16px/hug, title gap 24px. Added inline Home card, dated batch entry, per-item review controls and Dev ZIP/spec. Browser checked Home has both PRO and Plus, Plus detail and Dev resources render. Existing PRO preserved.

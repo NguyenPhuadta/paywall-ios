@@ -1,0 +1,39 @@
+{
+  "id": "castduo-plus",
+  "frame": [
+    390,
+    844
+  ],
+  "headline": "Your phone. / A whole new view.",
+  "wordmark": "CastDuo · system SF Pro Semibold Expanded",
+  "badge": "Plus · glossy blue-purple CSS",
+  "offer": {
+    "padding": 16,
+    "height": "hug content",
+    "radius": 48,
+    "fill": "#FFFFFF / 10%",
+    "labelAndPriceSize": 18,
+    "lineHeight": 24,
+    "outerInset": 20
+  },
+  "titleToOffer": 24,
+  "motion": {
+    "scenes": [
+      "after-hours-hero.png",
+      "room-football-unbranded.png",
+      "room-action.png"
+    ],
+    "sceneSeconds": 2,
+    "loopSeconds": 6,
+    "transition": "opacity crossfade",
+    "reducedMotion": "static sunset"
+  },
+  "purchase": "simulation",
+  "price": "$x.xx / week placeholder",
+  "trial": "3 days, eligible only",
+  "missing": [
+    "StoreKit product ID and group",
+    "storefront price",
+    "real policy URLs"
+  ]
+}

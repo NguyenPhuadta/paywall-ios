@@ -49,3 +49,6 @@ GitHub Pages publishes the repository root from `main`. The optional Sites deplo
 The PRO badge was generated for this project. Close and status bar SVG assets came from the owner's workspace. Archivo and Archivo Narrow are bundled locally with their OFL licenses. Grain textures are the small surface SVG filters observed in Ghost's public stylesheet; Ghost's product imagery and logo are not used.
 
 The paywall remains a design simulation: real StoreKit products, subscription-group eligibility, storefront prices and policy URLs are needed before native integration. CSS tilt is not a Lottie animation. Reduced Motion keeps the badge static.
+
+
+PW 002: CastDuo Plus — `/paywalls/castduo-plus/`, review `/library/castduo-plus/`. Approved cinematic option 01; three room scenes loop every 6 seconds. Dev download: `downloads/castduo-plus-dev.zip`.
