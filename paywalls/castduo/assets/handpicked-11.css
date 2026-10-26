@@ -1,0 +1,134 @@
+@import url("extra-layouts.css?v=5");
+[data-style=go-plus] .phone{background:radial-gradient(ellipse at 90% 100%,#4277e7 0%,transparent 48%),linear-gradient(180deg,#100e14 0%,#100e17 28%,#171049 48%,#3820d6 71%,#3b42e2 100%);color:#fff}.go-top{padding:0 20px;height:44px}.go-top .close{background:#ffffff0a;color:#cccbd0;font-size:27px;font-weight:300}.go-heading{padding:0 24px}.go-heading h2{font-size:43px;line-height:41px;font-weight:850;letter-spacing:-2px}.go-heading h2 em{font-style:normal;color:#b2a2ff}.go-heading>p{font-size:12px;line-height:19px;color:#c4c0d0;margin-top:16px}.go-visual{height:244px;width:calc(100% - 48px);margin:16px 24px 0;border-radius:28px;color:#9c92cc;background:#ffffff02}.go-buy{padding:0 24px}.go-plan{display:flex;align-items:center;gap:12px;border-radius:24px;background:#a5c4ff77;backdrop-filter:blur(16px);padding:20px;min-height:92px}.go-plan>div{flex:1}.go-plan strong{font-size:15px;font-weight:550;line-height:20px}.go-plan small{font-size:11px;line-height:16px;margin-top:4px;color:#d8dffa}.go-plan b{font-size:22px;line-height:26px;letter-spacing:-.5px;white-space:nowrap}.go-plan b small{font-size:10px;font-weight:400;color:#e4e8ff;letter-spacing:0}.go-check{width:20px;height:20px;flex-shrink:0;display:grid;place-items:center;background:#edf9ff;color:#7d9ee9;border-radius:50%;font-size:13px;font-weight:800}.go-note{font-size:11px;line-height:16px;text-align:center;color:#c5c7fa;padding:20px 0}.go-buy .primary{min-height:56px;border-radius:28px;background:linear-gradient(100deg,#f2efff,#d8fcff);color:#3632c4;font-size:16px;font-weight:700}.go-buy .disclosure{color:#c6caf7;font-size:11px;line-height:16px;margin:12px 0 0}.go-buy .utility{margin-top:8px}.go-buy .utility button{font-size:11px;color:#d0d0f7}.go-buy .status{background:#7970e155;border:0}
+.compact .go-heading h2{font-size:37px;line-height:36px;letter-spacing:-1.5px}.compact .go-heading>p{font-size:11px;line-height:17px;margin-top:12px}.compact .go-visual{height:132px!important;margin-top:12px}.compact .go-plan{padding:16px;min-height:76px;border-radius:20px}.compact .go-plan strong{font-size:14px}.compact .go-plan b{font-size:20px}.compact .go-note{padding:16px 0}.compact .go-buy .primary{min-height:52px;padding:12px}.compact .go-buy .disclosure{margin-top:12px}.compact .go-buy .utility{margin-top:4px}
+.large-type .go-heading h2{font-size:1.65em;line-height:1.05;letter-spacing:-1px}.large-type .go-heading>p{font-size:.75em;line-height:1.4}.large-type .go-plan{flex-wrap:wrap;padding:20px 16px}.large-type .go-plan strong{font-size:.9em;line-height:1.3}.large-type .go-plan small{font-size:.7em;line-height:1.4}.large-type .go-plan b{font-size:1.1em;line-height:1.3;white-space:normal}.large-type .go-plan b small{font-size:.6em}.large-type .go-note{font-size:.7em;line-height:1.4}
+
+/* Go Plus refinement: direct purpose line and a tighter offer-to-action group. */
+.go-top{padding:0 24px}.go-top .close{background:#ffffff08}
+.go-heading h2{font-size:44px;line-height:42px;letter-spacing:-1.8px;font-weight:800}
+.go-heading>p{font-size:13px;line-height:20px;color:#ccc7dc;margin-top:12px}
+.go-visual{background:none;color:#b2a9d7}
+.go-plan{background:linear-gradient(120deg,#b3d0ff70,#94c6ff48);margin-bottom:24px}
+.go-plan strong{font-weight:600}.go-plan b{font-size:24px;line-height:28px}.go-plan b small{font-size:11px;line-height:16px}
+.go-check{background:#eefaff;color:#657ee1}.go-buy .primary{background:linear-gradient(100deg,#f7f3ff,#dffcff);font-weight:650}
+.go-buy .disclosure{color:#e0e0ff;line-height:17px;margin-top:16px}.go-buy .utility button{color:#dedfff}
+.compact .go-heading h2{font-size:38px;line-height:37px;letter-spacing:-1.5px}
+.compact .go-heading>p{font-size:12px;line-height:18px;margin-top:12px}
+.compact .go-visual{height:120px!important}.compact .go-plan{margin-bottom:20px}.compact .go-plan b{font-size:22px;line-height:26px}
+.compact .go-buy .disclosure{margin-top:12px}
+.large-type .go-heading h2{font-size:1.65em;line-height:1.05;letter-spacing:-1px}
+.large-type .go-heading>p{font-size:.75em;line-height:1.4}.large-type .go-plan b{font-size:1.1em;line-height:1.3}.large-type .go-plan b small{font-size:.6em;line-height:1.4}
+
+/* User annotation: purchase group side inset 20px. */
+.go-buy{padding-left:20px;padding-right:20px}
+/* Match the plan label to the displayed price. */
+.go-plan strong{font-size:24px;line-height:28px;letter-spacing:-.5px}
+.compact .go-plan strong{font-size:22px;line-height:26px}
+.large-type .go-plan strong{font-size:1.1em;line-height:1.3}
+
+
+/* User pass: white title and translucent continuous-corner offer. */
+.go-heading h2,.go-heading h2 em{color:#fff}
+.go-plan{background:rgb(255 255 255 / 15%);backdrop-filter:none;border-radius:24px;corner-shape:squircle}
+/* User annotation: 120% headline leading and 28px offer corners. */
+.go-heading h2,.compact .go-heading h2,.large-type .go-heading h2{line-height:1.2}
+.go-plan,.compact .go-plan{border-radius:48px}
+/* Headline tracking: -1% of the current font size. */
+.go-heading h2,.compact .go-heading h2,.large-type .go-heading h2{letter-spacing:-.01em}
+/* Headline trial: SF/system Semibold Expanded. */
+.go-heading h2,.compact .go-heading h2,.large-type .go-heading h2{font-family:system-ui,-apple-system,BlinkMacSystemFont,sans-serif;font-weight:600;font-stretch:expanded}
+/* User refinement: headline size 36px; preserve expanded weight and spacing. */
+.go-heading h2,.compact .go-heading h2{font-size:36px}
+
+.box-opening-visual{position:relative;cursor:pointer;overflow:visible}
+.box-opening-visual canvas{display:block;width:100%;height:100%;position:absolute;inset:0}
+.box-opening-visual>img{position:absolute;width:135px;height:155px;left:104px;top:72px;object-fit:contain}
+.box-opening-visual[data-ready=true]>img{visibility:hidden}
+.compact .box-opening-visual canvas{object-fit:contain}
+.compact .box-opening-visual>img{height:76px;width:66px;top:36px;left:calc(50% - 33px)}
+
+.pro-badge-visual{display:flex;align-items:center;justify-content:center}
+.pro-badge-visual img{display:block;width:100%;height:100%;object-fit:contain}
+/* User refinement: 40px headline with horizontal white alpha gradient. */
+.go-heading h2,.compact .go-heading h2{font-size:40px}
+.go-heading h2{background:linear-gradient(90deg,#fff 0%,rgb(255 255 255 / 50%) 100%);background-clip:text;-webkit-background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+
+.go-heading>p,.compact .go-heading>p{font-size:15px}
+
+/* Larger hero with softer lavender metal. */
+.pro-badge-visual{width:100%;height:280px;margin-left:0;margin-right:0}
+/* Auto tilt: four gentle perspective angles, continuous 12s orbit. */
+.pro-badge-visual{perspective:800px;overflow:visible}
+.pro-badge-visual img{transform-origin:50% 50%;backface-visibility:hidden;will-change:transform;animation:pro-badge-tilt 12s ease-in-out infinite}
+@keyframes pro-badge-tilt{
+ 0%,100%{transform:rotateX(8deg) rotateY(-12deg) rotateZ(-1deg);filter:brightness(1)}
+ 25%{transform:rotateX(8deg) rotateY(12deg) rotateZ(1deg);filter:brightness(1.06)}
+ 50%{transform:rotateX(-8deg) rotateY(12deg) rotateZ(1deg);filter:brightness(1.03)}
+ 75%{transform:rotateX(-8deg) rotateY(-12deg) rotateZ(-1deg);filter:brightness(.98)}
+}
+@media(prefers-reduced-motion:reduce){.pro-badge-visual img{animation:none;transform:none;filter:none;will-change:auto}}
+/* Clip the transparent image bounds so perspective cannot create page scrollbars. */
+.pro-badge-visual{overflow:clip}
+
+/* Continuous orbit and reflection mapped to the badge alpha silhouette. */
+.pro-badge-visual .badge-tilt-surface{position:relative;width:100%;height:100%;transform-origin:center;will-change:transform;backface-visibility:hidden;animation:badge-orbit 6s linear infinite}
+.pro-badge-visual .badge-tilt-surface img{animation:none;transform:none;filter:none;will-change:auto}
+.badge-tilt-surface:before,.badge-tilt-surface:after{content:'';position:absolute;inset:0;pointer-events:none;mask-image:url('pro-metal-badge-v4.png');mask-size:contain;mask-position:center;mask-repeat:no-repeat}
+.badge-tilt-surface:before{background:linear-gradient(110deg,#080324d9 0%,#08032466 24%,transparent 48%,#e0dbff70 72%,#fff 100%);background-size:200% 100%;mix-blend-mode:overlay;animation:badge-shading 6s linear infinite}
+.badge-tilt-surface:after{background:linear-gradient(110deg,transparent 35%,#e8e3ff0a 42%,#fff9 48%,#ffffffc2 50%,#e6ebff38 54%,transparent 63%);background-size:260% 100%;mix-blend-mode:screen;animation:badge-shimmer 4s linear infinite;opacity:0}
+@keyframes badge-shading{0%,100%{background-position:0% 50%;opacity:.65}25%{background-position:50% 50%;opacity:.8}50%{background-position:100% 50%;opacity:.65}75%{background-position:50% 50%;opacity:.75}}
+@keyframes badge-shimmer{0%{background-position:130% 50%;opacity:0}12%{opacity:.38}38%{opacity:.5}60%{background-position:-30% 50%;opacity:0}100%{background-position:-30% 50%;opacity:0}}
+@keyframes badge-orbit{
+0%{transform:rotateX(0.0000deg) rotateY(12.0000deg) rotateZ(0.0000deg);filter:brightness(1.0136)}
+2.5%{transform:rotateX(1.2515deg) rotateY(11.8523deg) rotateZ(0.1017deg);filter:brightness(1.0185)}
+5%{transform:rotateX(2.4721deg) rotateY(11.4127deg) rotateZ(0.2009deg);filter:brightness(1.0229)}
+7.5%{transform:rotateX(3.6319deg) rotateY(10.6921deg) rotateZ(0.2951deg);filter:brightness(1.0268)}
+10%{transform:rotateX(4.7023deg) rotateY(9.7082deg) rotateZ(0.3821deg);filter:brightness(1.0300)}
+12.5%{transform:rotateX(5.6569deg) rotateY(8.4853deg) rotateZ(0.4596deg);filter:brightness(1.0324)}
+15%{transform:rotateX(6.4721deg) rotateY(7.0534deg) rotateZ(0.5259deg);filter:brightness(1.0341)}
+17.5%{transform:rotateX(7.1281deg) rotateY(5.4479deg) rotateZ(0.5792deg);filter:brightness(1.0349)}
+20%{transform:rotateX(7.6085deg) rotateY(3.7082deg) rotateZ(0.6182deg);filter:brightness(1.0349)}
+22.5%{transform:rotateX(7.9015deg) rotateY(1.8772deg) rotateZ(0.6420deg);filter:brightness(1.0340)}
+25%{transform:rotateX(8.0000deg) rotateY(0.0000deg) rotateZ(0.6500deg);filter:brightness(1.0322)}
+27.5%{transform:rotateX(7.9015deg) rotateY(-1.8772deg) rotateZ(0.6420deg);filter:brightness(1.0297)}
+30%{transform:rotateX(7.6085deg) rotateY(-3.7082deg) rotateZ(0.6182deg);filter:brightness(1.0264)}
+32.5%{transform:rotateX(7.1281deg) rotateY(-5.4479deg) rotateZ(0.5792deg);filter:brightness(1.0225)}
+35%{transform:rotateX(6.4721deg) rotateY(-7.0534deg) rotateZ(0.5259deg);filter:brightness(1.0181)}
+37.5%{transform:rotateX(5.6569deg) rotateY(-8.4853deg) rotateZ(0.4596deg);filter:brightness(1.0132)}
+40%{transform:rotateX(4.7023deg) rotateY(-9.7082deg) rotateZ(0.3821deg);filter:brightness(1.0079)}
+42.5%{transform:rotateX(3.6319deg) rotateY(-10.6921deg) rotateZ(0.2951deg);filter:brightness(1.0025)}
+45%{transform:rotateX(2.4721deg) rotateY(-11.4127deg) rotateZ(0.2009deg);filter:brightness(0.9970)}
+47.5%{transform:rotateX(1.2515deg) rotateY(-11.8523deg) rotateZ(0.1017deg);filter:brightness(0.9916)}
+50%{transform:rotateX(0.0000deg) rotateY(-12.0000deg) rotateZ(0.0000deg);filter:brightness(0.9864)}
+52.5%{transform:rotateX(-1.2515deg) rotateY(-11.8523deg) rotateZ(-0.1017deg);filter:brightness(0.9815)}
+55%{transform:rotateX(-2.4721deg) rotateY(-11.4127deg) rotateZ(-0.2009deg);filter:brightness(0.9771)}
+57.5%{transform:rotateX(-3.6319deg) rotateY(-10.6921deg) rotateZ(-0.2951deg);filter:brightness(0.9732)}
+60%{transform:rotateX(-4.7023deg) rotateY(-9.7082deg) rotateZ(-0.3821deg);filter:brightness(0.9700)}
+62.5%{transform:rotateX(-5.6569deg) rotateY(-8.4853deg) rotateZ(-0.4596deg);filter:brightness(0.9676)}
+65%{transform:rotateX(-6.4721deg) rotateY(-7.0534deg) rotateZ(-0.5259deg);filter:brightness(0.9659)}
+67.5%{transform:rotateX(-7.1281deg) rotateY(-5.4479deg) rotateZ(-0.5792deg);filter:brightness(0.9651)}
+70%{transform:rotateX(-7.6085deg) rotateY(-3.7082deg) rotateZ(-0.6182deg);filter:brightness(0.9651)}
+72.5%{transform:rotateX(-7.9015deg) rotateY(-1.8772deg) rotateZ(-0.6420deg);filter:brightness(0.9660)}
+75%{transform:rotateX(-8.0000deg) rotateY(-0.0000deg) rotateZ(-0.6500deg);filter:brightness(0.9678)}
+77.5%{transform:rotateX(-7.9015deg) rotateY(1.8772deg) rotateZ(-0.6420deg);filter:brightness(0.9703)}
+80%{transform:rotateX(-7.6085deg) rotateY(3.7082deg) rotateZ(-0.6182deg);filter:brightness(0.9736)}
+82.5%{transform:rotateX(-7.1281deg) rotateY(5.4479deg) rotateZ(-0.5792deg);filter:brightness(0.9775)}
+85%{transform:rotateX(-6.4721deg) rotateY(7.0534deg) rotateZ(-0.5259deg);filter:brightness(0.9819)}
+87.5%{transform:rotateX(-5.6569deg) rotateY(8.4853deg) rotateZ(-0.4596deg);filter:brightness(0.9868)}
+90%{transform:rotateX(-4.7023deg) rotateY(9.7082deg) rotateZ(-0.3821deg);filter:brightness(0.9921)}
+92.5%{transform:rotateX(-3.6319deg) rotateY(10.6921deg) rotateZ(-0.2951deg);filter:brightness(0.9975)}
+95%{transform:rotateX(-2.4721deg) rotateY(11.4127deg) rotateZ(-0.2009deg);filter:brightness(1.0030)}
+97.5%{transform:rotateX(-1.2515deg) rotateY(11.8523deg) rotateZ(-0.1017deg);filter:brightness(1.0084)}
+100%{transform:rotateX(-0.0000deg) rotateY(12.0000deg) rotateZ(-0.0000deg);filter:brightness(1.0136)}
+}
+@media(prefers-reduced-motion:reduce){.pro-badge-visual .badge-tilt-surface{animation:none;transform:none;filter:none;will-change:auto}.badge-tilt-surface:before,.badge-tilt-surface:after{animation:none;opacity:0}}
+/* Semibold title requested by user. */
+.go-heading h2{font-weight:600}
+
+/* User close asset: visible 24px icon sits 16px below bar and 16px from left. */
+.go-top{position:relative;height:56px;min-height:56px;padding:0;flex-shrink:0}
+.go-close{position:absolute;left:6px;top:6px;width:44px;height:44px;display:grid;place-items:center;padding:10px;border:0;background:transparent;cursor:pointer}
+.go-close img{display:block;width:24px;height:24px}
+
+/* 16px from visible close icon to heading; preserve the 844px frame fit. */
+.pro-badge-visual{height:276px}
