@@ -25,3 +25,18 @@
 .catalog-batch .card-actions{margin-top:24px}
 @media(max-width:1000px){.catalog-shell{padding-top:36px}.catalog-batch .card-info{padding:28px}.catalog-shell .toolbar{align-items:flex-start}}
 @media(max-width:720px){.catalog-shell{padding-top:24px;padding-bottom:48px}.catalog-intro h1{font-size:36px;letter-spacing:-1.5px}.catalog-intro p{font-size:14px}.catalog-batch{grid-template-columns:1fr}.catalog-batch .card-info{order:-1;padding:24px}.catalog-batch .card-visual{min-height:510px;padding:24px 16px}.catalog-batch h2{font-size:26px}.batch-meta{margin-bottom:20px}.catalog-shell .search-wrap input{width:100%}}
+
+/* Paywalls presented vertically: preview above its information. */
+#collection-list{display:grid;grid-template-columns:1fr;gap:32px}
+#collection-list .collection-card,.batch-intro+section .collection-card{grid-template-columns:1fr}
+#collection-list .card-visual,.batch-intro+section .card-visual{padding:32px 16px;min-height:0}
+#collection-list .card-visual .preview-frame,.batch-intro+section .card-visual .preview-frame{--scale:.85}
+#collection-list .card-info,.batch-intro+section .card-info{padding:28px 32px 32px}
+#collection-list .item-meta{margin-bottom:16px}
+#collection-list .card-info h3{margin-bottom:12px}
+#collection-list .card-info>p{max-width:640px}
+.batch-intro+section{display:grid;gap:32px}
+.catalog-intro .inspiration{font-size:13px;margin-top:12px;color:#74777d}
+.inspiration a{text-decoration:underline;text-underline-offset:3px}
+@media(max-width:720px){#collection-list .card-visual .preview-frame,.batch-intro+section .card-visual .preview-frame{--scale:.76}#collection-list .card-info,.batch-intro+section .card-info{padding:24px}}
+@media(max-width:370px){#collection-list .card-visual .preview-frame,.batch-intro+section .card-visual .preview-frame{--scale:.68}}
