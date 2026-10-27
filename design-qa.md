@@ -44,3 +44,7 @@ No translations or Lottie are present in the approved paywalls; matching referen
 
 ## Notion visual update — 27 October 2026
 Installed DESIGN.md via npx getdesign@latest add notion. Applied the documented warm paper #f6f5f4, Inter typography, Notion blue #0075de, white surfaces and gentle rounded corners to the stock website. The information architecture and approved paywall previews remain intact. Browser-checked Home, CastDuo batch and Dev tab. Fixed mobile Dev grid horizontal overflow (390 CSS viewport: scrollWidth 406 before, 370 after). Inter is bundled with its OFL licence. Static packaging and JavaScript syntax checks passed.
+
+
+## Dark rounded style — 27 October 2026
+Adapted website to dark Notion-inspired colors and SF Pro Rounded via installed local font faces, ui-rounded and licensed Nunito fallback. Increased card, control and panel radii and added corner-shape:squircle with border-radius fallback. Approved embedded paywalls stay unchanged. Browser checked Home, batch navigation, detail Dev table, installed rounded font availability and corner-shape support. Mobile Dev: 390px CSS viewport, document scrollWidth 370px. Static packaging and JS syntax checks passed.

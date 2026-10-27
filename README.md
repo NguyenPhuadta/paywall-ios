@@ -1,6 +1,6 @@
 # Paywall iOS
 
-A static paywall stock hosted on GitHub Pages. Its information architecture and interaction layout follow https://kientd-paywall.vercel.app/; website typography, surfaces and accents follow the Notion-inspired system in DESIGN.md (installed with getdesign). No KienTD paywall content or assets are distributed.
+A static paywall stock hosted on GitHub Pages. Its information architecture and interaction layout follow https://kientd-paywall.vercel.app/; website styling uses the Notion-inspired system in DESIGN.md, adapted to dark mode with SF Pro Rounded and a licensed Nunito fallback. No KienTD paywall content or assets are distributed.
 
 ## Structure
 

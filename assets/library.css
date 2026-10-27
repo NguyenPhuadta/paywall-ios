@@ -27,3 +27,38 @@ h1{font-weight:700;letter-spacing:-1px}h2{font-weight:700;letter-spacing:-.625px
 @media(max-width:700px){.seg button{min-height:40px}.apps button{min-height:40px}.pvtabs button{min-height:40px}.pvbar a{min-height:36px;display:inline-flex;align-items:center}}
 .pvx a.pvc{color:var(--fg)}
 @media(max-width:900px){.pvdg,.pvdl{min-width:0}.pvdl{grid-template-columns:minmax(0,1fr);width:100%;max-width:100%}.dev-stage{width:100%;min-width:0}}
+
+/* Notion dark with rounded typography; the embedded paywalls keep their own designs. */
+@font-face{font-family:StockRounded;src:local('SF Pro Rounded Regular'),local('SF Pro Rounded'),local('SFProRounded-Regular');font-weight:400;font-style:normal}
+@font-face{font-family:StockRounded;src:local('SF Pro Rounded Medium'),local('SFProRounded-Medium');font-weight:500;font-style:normal}
+@font-face{font-family:StockRounded;src:local('SF Pro Rounded Semibold'),local('SFProRounded-Semibold');font-weight:600;font-style:normal}
+@font-face{font-family:StockRounded;src:local('SF Pro Rounded Bold'),local('SFProRounded-Bold');font-weight:700 900;font-style:normal}
+@font-face{font-family:StockRoundedFallback;src:url('fonts/Nunito-Variable.ttf') format('truetype');font-style:normal;font-weight:200 1000;font-display:swap}
+:root{color-scheme:dark;--bg:#191919;--panel:#252525;--fg:#f3f2ef;--mut:#aaa7a2;--line:#373737;--accent:#79b9f3;--on:#111820;--chip:#303030;--ui:StockRounded,ui-rounded,'SF Pro Rounded',StockRoundedFallback,system-ui,sans-serif;--label:var(--ui);--mono:var(--ui)}
+body{background:var(--bg);color:var(--fg);font-family:var(--ui)}
+.lead,.ob-note,.batch-body p,.pvt span,.dev-panel p,.pvdh p{color:var(--mut)}
+.n,.sum,.inspiration,.pvt em,.box h3,.pvdc h3{color:#aaa7a2}
+.inspiration a,.go,.pvx a{color:var(--accent)}
+.apps{background:var(--chip);border-radius:18px;corner-shape:squircle;padding:5px;gap:4px}
+.apps button{color:#c9c7c3;border-radius:14px;corner-shape:squircle;padding:9px 16px}
+.apps button[aria-pressed=true]{background:#464646;color:#fff;box-shadow:none}
+.apps button:hover{background:#3a3a3a}
+.batch-card,.pvc{border-color:var(--line);border-radius:24px;corner-shape:squircle;background:var(--panel)}
+.batch-card:hover,.pvc:hover{border-color:#666;box-shadow:0 6px 24px #00000025;transform:none}
+.appn{background:#363636;color:#e4e2df}.date,.pvn{background:#294357;color:#9bd0ff}
+.appn,.date,.pvn{border-radius:9px;corner-shape:squircle;padding:4px 9px}
+.pvx a.pvc{color:var(--fg)}.thumbs,.thumbs img{background:#17171c}
+.pvbar{background:#202020;color:var(--fg);border-color:var(--line)}
+.pvbar>span{color:#aaa7a2}.pvbar a{color:#dddcd8;border-radius:12px;corner-shape:squircle}
+.pvbar a:hover{background:#343434}.pvbar a[aria-current]{background:#2a4050;color:#a3d5ff}
+.pvtabs{background:#303030;border-radius:16px;corner-shape:squircle;padding:4px}.pvtabs button{color:#bcbab6;border-radius:12px;corner-shape:squircle}.pvtabs button[aria-selected=true]{background:#484848;color:#fff;box-shadow:none}
+.box,.pvdc{background:var(--panel);border-color:var(--line);border-radius:20px;corner-shape:squircle}
+.seg button{background:#303030;color:#e5e4e1;border-color:#414141;border-radius:14px;corner-shape:squircle}
+.seg button:hover{background:#3d3d3d}.seg button[aria-pressed=true]{background:#2a4050;color:#a3d5ff;border-color:#3d5a70}
+.ob-btn,.download,.button{background:#4c9de7;color:#0e1822;border-color:#4c9de7;border-radius:9999px}
+.ob-btn:hover,.download:hover,.button:hover{background:#79b9f3}
+.pvdn{border-color:var(--line)}.pvdn button{color:#aaa7a2;border-radius:12px;corner-shape:squircle}.pvdn button:hover{background:#303030}.pvdn button[aria-selected=true]{background:#2a4050;color:#a3d5ff}
+.data-table{background:var(--panel);border-color:var(--line);border-radius:18px;corner-shape:squircle;overflow:hidden}.data-table th{background:#303030;color:#b8b6b2}.data-table td,.layer-row{border-color:var(--line)}
+.asset-card{border-radius:20px;corner-shape:squircle}.dev-warning{background:#303030;color:var(--fg);border-radius:16px;corner-shape:squircle}
+.dev-highlight{border-color:#79b9f3;background:#79b9f322}.layer-row small,.measure-output dt,.changelog time{color:var(--mut)}
+button:focus-visible,a:focus-visible,input:focus-visible{outline-color:#79b9f3}
