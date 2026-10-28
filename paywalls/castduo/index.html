@@ -128,3 +128,22 @@ document.addEventListener('keydown',e=>{
 </script>
 <script>const STYLE={"id": "go-plus", "name": "11 · Go Plus", "ref": "GO Club · Pinterest", "url": "https://www.pinterest.com/pin/352054895894303493/", "imagePath": "research/pending-06-10/pinterest-go-club.jpg", "color": "#7960ff", "description": "Ref Pinterest mày chọn · chữ lớn · đen → xanh tím · offer kính", "slot": "342×244", "media": "Visual chưa chọn · 342×244", "selected": true, "batch": "selected"}</script><script src="assets/extra-studies.js?v=6"></script><script src="assets/handpicked-11.js?v=13"></script><script>if(new URLSearchParams(location.search).get("view")!=="board")document.documentElement.classList.add("single")</script><script src="assets/extra-init.js?v=6"></script><script src="assets/style-nav.js?v=6"></script><script src="assets/review-bridge.js?v=1"></script></html>
 <link rel="stylesheet" href="assets/cta-structure.css?v=3"><script src="assets/cta-structure.js?v=1"></script>
+
+<style>
+.single:not(.embed) #preview figure{width:calc(var(--device-w, 390px) * var(--device-fit, 1));height:calc(var(--device-h, 844px) * var(--device-fit, 1))}
+.single:not(.embed) #preview .phone{transform:scale(var(--device-fit, 1))}
+.device-picker{position:fixed;top:20px;right:20px;z-index:20;display:flex;align-items:center;gap:8px;color:#d2d2d7;font:12px system-ui}
+.device-picker select{max-width:min(360px,75vw);padding:9px 30px 9px 12px;border:1px solid #45454b;border-radius:10px;background:#26262b;color:#fff;font:13px system-ui}
+@media(max-width:740px){.device-picker{top:10px;right:10px}.device-picker label{display:none}}
+[data-style=go-plus] .screen > .pro-badge-visual{margin-block:auto}
+[data-style=go-plus] .screen > .go-buy{margin-top:0}
+</style>
+<script>
+if(document.documentElement.classList.contains('single') && !new URLSearchParams(location.search).has('embed')){
+ const devices=[['440×956 · 16 Pro Max, 17 Pro Max',440,956],['420×912 · iPhone Air',420,912],['430×932 · 14 Pro Max, 15 Plus, 15 Pro Max, 16 Plus',430,932],['402×874 · 16 Pro, 17, 17 Pro',402,874],['393×852 · 14 Pro, 15, 15 Pro, 16',393,852],['390×844 · 12, 13, 14, 16e, 17e',390,844],['414×896 · iPhone 11',414,896],['375×812 · 12 mini, 13 mini',375,812],['375×667 · SE 2, SE 3 (nút Home)',375,667]];
+ const picker=document.createElement('div');picker.className='device-picker';picker.innerHTML='<label for="device-size">Responsive</label><select id="device-size" aria-label="Chọn kích thước iPhone">'+devices.map((d,i)=>`<option value="${i}" ${i===5?'selected':''}>${d[0]}</option>`).join('')+'</select>';document.body.append(picker);
+ const select=picker.querySelector('select');
+ function resizePreview(){const [,w,h]=devices[+select.value];const fig=document.querySelector('#preview figure');if(!fig)return;const phone=fig.querySelector('.phone');const o=FRAME_OPTS[+fig.dataset.i];o.width=w;o.height=h;phone.style.setProperty('--w',w+'px');phone.style.setProperty('--h',h+'px');phone.classList.toggle('compact',h<=667);fig.style.setProperty('--device-w',w+'px');fig.style.setProperty('--device-h',h+'px');const fit=Math.min(1,(window.innerWidth-32)/w,(window.innerHeight-110)/h);fig.style.setProperty('--device-fit',Math.max(.1,fit));}
+ select.addEventListener('change',resizePreview);window.addEventListener('resize',resizePreview);resizePreview();
+}
+</script>
