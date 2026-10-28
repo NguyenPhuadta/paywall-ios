@@ -1,0 +1,66 @@
+@import url("extra-layouts.css?v=4");
+[data-style=trial-story] .phone{background:linear-gradient(155deg,#073a52 0%,#163b89 35%,#36217c 68%,#4f1b6e 100%);color:#fff;font-family:ui-rounded,'SF Pro Rounded',-apple-system,system-ui,sans-serif}.hy-top{padding:0 24px}.hy-top>span{font-size:14px;font-weight:850;letter-spacing:-.4px;font-style:italic}.hy-top b{font-style:normal;font-size:10px;padding:4px 8px;border-radius:8px;letter-spacing:.5px;background:#b0e4ff;color:#14346c;margin-left:4px}.hy-top .close{font-weight:400;font-size:30px}.hy-intro{display:flex;justify-content:center;align-items:center;gap:16px;padding:20px 24px 16px}.hy-number{font-size:128px;line-height:120px;font-weight:850;letter-spacing:-8px;color:#b2edff}.hy-intro h2{font-size:32px;line-height:36px;font-weight:800;letter-spacing:-.8px}.hy-intro h2 em{font-style:normal;color:#b9a6ff}.hy-intro .hy-alt{font-size:36px;line-height:40px;text-align:center}.hy-visual{height:164px!important;margin:12px 32px;width:calc(100% - 64px);border-radius:28px;background:#07245238;border:1px solid #99baff24;color:#8ab4ef}.hy-caption{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px;margin:12px 24px 24px}.hy-caption>span{font-size:11px;color:#bccff3;line-height:16px;border-bottom:1px solid #91a7d333;padding-bottom:4px}.hy-caption>strong{display:block;width:100%;text-align:center;font-size:18px;line-height:24px;font-weight:700;letter-spacing:-.3px}.hy-buy{padding:0 24px}.hy-offer{position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:32px 16px 20px;border:2px solid #a596ff;border-radius:20px;background:linear-gradient(120deg,#3369a359,#6d40a757);box-shadow:0 4px 0 #1a1e6540}.hy-tab{position:absolute;top:0;left:0;background:#b3a4ff;color:#2c1e65;font-size:10px;line-height:16px;font-weight:850;letter-spacing:.7px;padding:4px 12px;border-radius:16px 0 12px 0}.hy-offer strong{font-size:18px;line-height:24px;font-weight:750;display:block}.hy-offer small{font-size:11px;line-height:16px;color:#c9c5f1;margin-top:4px}.hy-offer b{font-size:23px;line-height:26px;letter-spacing:-.5px}.hy-offer b small{font-size:10px;font-weight:500}.hy-selected{position:absolute;right:12px;top:-12px;width:24px;height:24px;background:#b4edff;border:2px solid #2862a1;border-radius:50%;color:#235685;display:grid;place-items:center;font-size:14px;font-weight:850}.hy-manage{text-align:center;font-size:11px;line-height:16px;color:#b8b9eb;padding:20px 0}.hy-buy .primary{background:#f8f6ff;color:#292254;border-radius:16px;min-height:56px;font-size:14px;font-weight:850;text-transform:uppercase;letter-spacing:.8px;box-shadow:0 4px 0 #aaa0d4}.hy-buy .disclosure{font-size:11px;line-height:16px;color:#b8b6df;margin:20px 0 0}.hy-buy .utility{margin-top:8px}.hy-buy .utility button{color:#c6c5e9;font-size:11px}.hy-buy .status{border-color:#8f8bce;background:#2c316c}
+[data-style=trial-story] .compact .hy-intro{padding:8px 24px}.compact .hy-number{font-size:88px;line-height:88px}.compact .hy-intro h2{font-size:27px;line-height:30px}.compact .hy-visual{height:80px!important;margin-top:8px;margin-bottom:8px}.compact .hy-caption{margin:8px 24px 16px}.compact .hy-caption>strong{font-size:16px;line-height:20px}.compact .hy-offer{padding:28px 16px 16px}.compact .hy-manage{padding:16px 0}.compact .hy-buy .disclosure{margin-top:16px}.compact .hy-buy .utility{margin-top:4px}
+.large-type .hy-number{font-size:4em;line-height:1}.large-type .hy-intro h2{font-size:1.4em;line-height:1.2}.large-type .hy-caption>span{font-size:.65em;line-height:1.4}.large-type .hy-caption>strong{font-size:.9em;line-height:1.4}.large-type .hy-offer{flex-wrap:wrap;padding-top:48px}.large-type .hy-tab{font-size:.6em;line-height:1.4}.large-type .hy-offer strong{font-size:.9em;line-height:1.4}.large-type .hy-offer small{font-size:.7em;line-height:1.4}.large-type .hy-offer b{font-size:1.2em;line-height:1.3;white-space:normal}.large-type .hy-offer b small{font-size:.6em}.large-type .hy-manage{font-size:.7em;line-height:1.4}
+.hy-intro{padding-top:16px}.hy-number{font-size:120px;line-height:112px}.hy-visual{height:144px!important}.hy-caption{margin-bottom:16px}.hy-manage{padding:16px 0}
+.compact .hy-intro{padding:4px 24px}.compact .hy-visual{height:64px!important}.compact .hy-caption{margin-bottom:12px}.compact .hy-manage{padding:12px 0}
+.compact .hy-buy .disclosure{margin-top:12px}
+
+/* Fewer decorative lines, per user feedback. */
+.hy-visual,.hy-caption>span,.hy-selected{border:0}.hy-offer{border-color:transparent}
+
+/* Approved FocusFlight reference: static CTA aura only. */
+.cta-aura{position:relative;isolation:isolate}.cta-aura:before{content:'';position:absolute;inset:-4px;z-index:-1;border-radius:32px;background:conic-gradient(from 100deg,#9b5cff,#f673ba,#a2edff,#5cc9ff,#9b5cff);filter:blur(16px);opacity:.7;pointer-events:none}.hy-buy .cta-aura .primary{box-shadow:none;border-radius:28px;background:#fff;color:#1a2240;font-size:15px;text-transform:none;letter-spacing:0;font-weight:650}.cta-aura:has(.primary:disabled):before{opacity:.15}
+
+.cta-aura:before{inset:16px -4px -8px;background:linear-gradient(100deg,#d6ee65,#fb9c6f 24%,#e574cb 50%,#a77bff 72%,#60caff);filter:blur(14px);opacity:.75}
+
+/* Hyper refinement: one purpose line, quieter offer, controlled static aura. */
+.hy-visual{height:160px!important;background:#102d6426;border-radius:24px}
+.hy-caption{margin:12px 24px 16px}.hy-caption>p{font-size:14px;line-height:20px;font-weight:500;color:#d8dff8;text-align:center}
+.hy-offer{background:linear-gradient(120deg,#3c5ba057,#6b44a74d);box-shadow:none;padding:32px 16px 20px}
+.hy-offer strong{font-size:17px;line-height:23px}.hy-offer b{font-size:24px;line-height:28px}.hy-offer b small{font-size:11px;line-height:16px}
+.hy-manage{color:#c0c8ea}.hy-buy .cta-aura .primary{font-size:16px;font-weight:650}
+.cta-aura:before{inset:20px -4px -8px;filter:blur(16px);opacity:.6}
+.hy-buy .disclosure{color:#c8c9e9}.hy-buy .utility button{color:#d0d2ec}
+.compact .hy-visual{height:80px!important}.compact .hy-caption{margin:8px 24px 12px}.compact .hy-caption>p{font-size:13px;line-height:20px}
+.compact .hy-offer{padding:28px 16px 16px}.compact .hy-offer strong{font-size:16px;line-height:22px}.compact .hy-offer b{font-size:22px;line-height:26px}
+.large-type .hy-caption>p{font-size:.8em;line-height:1.4}.large-type .hy-offer{padding-top:48px}
+.large-type .hy-offer strong{font-size:.9em;line-height:1.4}.large-type .hy-offer b{font-size:1.2em;line-height:1.3}.large-type .hy-offer b small{font-size:.6em;line-height:1.4}
+
+/* Handpicked 10: weekly card follows the approved Cinematic specification. */
+.hy-top { position:relative; height:56px; }
+.hy-top .hy-close { position:absolute; left:6px; top:6px; width:44px; height:44px; padding:10px; display:grid; place-items:center; background:none; border:0; }
+.hy-close img { width:24px; height:24px; display:block; }
+.hy-offer, .compact .hy-offer, .large-type .hy-offer { width:calc(100% + 8px); margin-inline:-4px; padding:16px; min-height:0; border:0; border-radius:48px; corner-shape:squircle; background:rgba(255,255,255,.1); box-shadow:none; display:flex; justify-content:space-between; align-items:center; gap:12px; }
+.hy-offer strong, .hy-offer b, .compact .hy-offer strong, .compact .hy-offer b { display:block; font-size:18px; line-height:24px; font-weight:700; letter-spacing:-.02em; }
+.hy-offer b { text-align:right; }
+.hy-offer small, .hy-offer b small { display:block; font-size:11px; line-height:16px; font-weight:500; color:#d8def4; margin-top:4px; letter-spacing:0; }
+.hy-buy .cta-aura { margin-top:24px; }
+.large-type .hy-offer strong, .large-type .hy-offer b { font-size:1.1em; line-height:1.3; white-space:normal; }
+.large-type .hy-offer small, .large-type .hy-offer b small { font-size:.7em; line-height:1.4; }
+.hy-top>span { margin-left:auto; }
+
+/* Centre the glow on the button on both axes. */
+.cta-aura:before { inset:-4px; }
+
+.features-orbit{width:342px;max-width:calc(100% - 48px);aspect-ratio:342/268;flex-shrink:0;margin:8px auto 16px;position:relative}.features-orbit canvas{width:100%;height:100%;display:block}.compact .features-orbit{width:240px;margin-block:0 8px}.large-type .features-orbit{width:280px}
+
+/* Enlarge the artwork within its existing layout slot. */
+.features-orbit canvas{transform:scale(1.3);transform-origin:center}
+.features-orbit{overflow:clip}
+
+.gem-smiles{width:calc(100% - 24px);margin:24px auto 16px;flex-shrink:0}.gem-smiles img{width:100%;display:block}.compact .gem-smiles{width:calc(100% - 48px);margin-block:8px 12px}
+
+.gem-anticipation{width:calc(100% - 24px);aspect-ratio:360/220;margin:16px auto;position:relative;flex-shrink:0}.gem-anticipation canvas,.gem-anticipation>img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}.gem-anticipation[data-ready=true]>img{visibility:hidden}.compact .gem-anticipation{width:calc(100% - 48px);margin-block:8px}
+
+/* Larger gem composition; source remains sharp vector. */
+.gem-anticipation canvas,.gem-anticipation>img{transform:scale(1.16);transform-origin:center}
+
+.gem-anticipation{overflow:clip;overflow-clip-margin:24px}
+
+.phone .screen{overflow-x:hidden}
+
+/* Keep the animation centred in the space between heading and purchase area. */
+[data-style=trial-story] .screen > .gem-anticipation,
+[data-style=trial-story] .compact .screen > .gem-anticipation { margin-block: auto; }
+[data-style=trial-story] .screen > .hy-buy { margin-top: 0; }

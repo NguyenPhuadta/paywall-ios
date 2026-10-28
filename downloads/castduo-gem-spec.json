@@ -1,0 +1,15 @@
+{
+  "name": "CastDuo Gem",
+  "sourceOption": 10,
+  "frame": "390x844",
+  "headline": "Enjoy Bigger Screen / With Premium plan",
+  "weeklyAndPriceFont": "18px",
+  "ctaHeight": "56px",
+  "animation": {
+    "type": "Lottie",
+    "size": "360x220",
+    "fps": 30,
+    "durationSeconds": 8
+  },
+  "note": "Prototype; StoreKit prices and policy URLs are placeholders."
+}
