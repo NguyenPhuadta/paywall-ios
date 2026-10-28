@@ -8,8 +8,8 @@
   "animation": {
     "type": "Lottie",
     "size": "360x220",
-    "fps": 33,
-    "durationSeconds": 7.273
+    "fps": 43.636,
+    "durationSeconds": 5.5
   },
   "note": "Prototype; StoreKit prices and policy URLs are placeholders."
 }

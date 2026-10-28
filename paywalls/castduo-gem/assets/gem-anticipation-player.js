@@ -1,7 +1,7 @@
 (()=>{
  let runtime,resources;
  const load=()=>runtime??=new Promise((resolve,reject)=>{const script=document.createElement('script');script.src='assets/skottie/canvaskit.js';script.onload=()=>CanvasKitInit({locateFile:()=>new URL('assets/skottie/canvaskit.wasm',location.href).href}).then(resolve,reject);script.onerror=reject;document.head.append(script)});
- const assets=()=>resources??=(async()=>{const json=await fetch('assets/gem-anticipation/lottie.json?v=v10').then(r=>r.text());const files={};await Promise.all(JSON.parse(json).assets.filter(a=>a.p).map(async a=>{files[a.p]=new Uint8Array(await fetch('assets/gem-anticipation/'+a.p+'?v=v10').then(r=>r.arrayBuffer()))}));return [json,files]})();
+ const assets=()=>resources??=(async()=>{const json=await fetch('assets/gem-anticipation/lottie.json?v=v11').then(r=>r.text());const files={};await Promise.all(JSON.parse(json).assets.filter(a=>a.p).map(async a=>{files[a.p]=new Uint8Array(await fetch('assets/gem-anticipation/'+a.p+'?v=v11').then(r=>r.arrayBuffer()))}));return [json,files]})();
  const seen=new WeakSet();
  const observer=new IntersectionObserver(entries=>entries.forEach(async({target:host,isIntersecting})=>{
  if(!isIntersecting||seen.has(host))return;seen.add(host);
