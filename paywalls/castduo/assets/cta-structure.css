@@ -1,15 +1,15 @@
 /* Structure only: SmartHue / 539:32897. CTA colours remain app-specific. */
 .phone .screen .purchase-area.cta-updated{padding-left:16px;padding-right:16px}
 .phone .cta-updated>.cinema-plan,.phone .cta-updated>.go-plan,.phone .cta-updated>.hy-offer{width:calc(100% - 8px);margin:0 4px}
-.phone .cta-updated .cta-structure{display:flex;flex-direction:column;align-items:center;gap:16px;margin-top:16px;width:100%}
+.phone .cta-updated .cta-structure{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:24px;width:100%}
 .phone .cta-updated .cta-main{display:flex;flex-direction:column;gap:8px;align-items:center;width:100%}
 .phone .cta-updated .cta-main>.disclosure{font-size:12px;font-weight:510;line-height:16px;color:#fff;margin:0;text-align:center;letter-spacing:0}
-.phone .cta-updated .cta-main .primary{min-height:64px;border-radius:60px;font-size:20px;line-height:28px;letter-spacing:-.26px;font-weight:700;text-transform:uppercase;padding:16px;width:100%;margin:0}
+.phone .cta-updated .cta-main .primary{min-height:56px;border-radius:60px;font-size:20px;line-height:28px;letter-spacing:-.26px;font-weight:700;text-transform:uppercase;padding:12px;width:100%;margin:0}
 .phone .cta-updated .cta-aura{width:100%;margin:0}
 .phone .cta-payment{display:flex;align-items:center;gap:4px;padding:4px 8px;border-radius:57px;background:rgb(255 255 255 / .1);font-size:11px;line-height:13px;font-weight:590;letter-spacing:.06px;color:#fff}
 .cta-payment-icon{width:20px;height:20px;display:grid;place-items:center;flex-shrink:0}
 .cta-payment-icon img{display:block;width:15.0009px;height:16.6991px}
-.phone .cta-updated .cta-footer{display:flex;justify-content:center;align-items:center;flex-wrap:nowrap;gap:16px;margin:16px 0 0;min-height:44px;width:100%}
+.phone .cta-updated .cta-footer{display:flex;justify-content:center;align-items:center;flex-wrap:nowrap;gap:16px;margin:20px 0 0;min-height:44px;width:100%}
 .phone .cta-footer>*{position:relative;flex:0 1 auto;flex-basis:auto!important;padding:0;min-width:44px;min-height:44px;font-size:12px;line-height:16px;font-weight:400;color:#a4a4a8;text-decoration:none;background:none;border:0;white-space:nowrap}
 .phone .cta-footer>*+*:before{content:'';position:absolute;left:-8px;top:16px;width:1px;height:12px;background:rgb(255 255 255 / .3)}
 [data-style=go-plus] .pro-badge-visual{height:228px}

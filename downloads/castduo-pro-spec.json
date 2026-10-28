@@ -73,11 +73,11 @@
     "disclosureFont": 12,
     "disclosureLineHeight": 16,
     "disclosureToButton": 8,
-    "buttonHeight": 64,
+    "buttonHeight": 56,
     "buttonFont": 20,
     "buttonLineHeight": 28,
     "buttonRadius": 60,
-    "buttonToPaymentBadge": 16,
+    "buttonToPaymentBadge": 12,
     "paymentBadge": "No payment due now \u2014 eligible trial only",
     "footerOrder": [
       "Privacy Policy",
@@ -85,6 +85,8 @@
       "Restore"
     ],
     "footerGap": 16,
-    "skin": "Original CastDuo CTA colours preserved"
+    "skin": "Original CastDuo CTA colours preserved",
+    "offerToDisclosure": 24,
+    "paymentBadgeToFooter": 20
   }
 }

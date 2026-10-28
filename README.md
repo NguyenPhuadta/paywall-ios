@@ -20,4 +20,4 @@ The batch date is the approval date, 26 October 2026. Both paywalls belong to Ca
 
 ## CTA update · 28 October 2026
 
-Both published paywalls use the SmartHue CTA hierarchy from Figma node 539:32897: 16px horizontal inset, trial disclosure above the 64px button with an 8px gap, eligible-trial payment badge 16px below, and Privacy / Terms / Restore footer. Original CTA colours are preserved. Source ZIPs and specs include the same structure.
+Both published paywalls use the SmartHue CTA hierarchy from Figma node 539:32897: 16px horizontal inset, trial disclosure above the 56px button with an 8px gap, eligible-trial payment badge 12px below, and Privacy / Terms / Restore footer. Original CTA colours are preserved. Source ZIPs and specs include the same structure.
