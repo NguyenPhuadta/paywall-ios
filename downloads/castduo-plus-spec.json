@@ -5,8 +5,8 @@
     844
   ],
   "headline": "Your phone. / A whole new view.",
-  "wordmark": "CastDuo · system SF Pro Semibold Expanded",
-  "badge": "Plus · glossy blue-purple CSS",
+  "wordmark": "CastDuo \u00b7 system SF Pro Semibold Expanded",
+  "badge": "Plus \u00b7 glossy blue-purple CSS",
   "offer": {
     "padding": 16,
     "height": "hug content",
@@ -35,5 +35,25 @@
     "StoreKit product ID and group",
     "storefront price",
     "real policy URLs"
-  ]
+  ],
+  "ctaStructure": {
+    "reference": "SmartHue 539:32897",
+    "horizontalInset": 16,
+    "disclosureFont": 12,
+    "disclosureLineHeight": 16,
+    "disclosureToButton": 8,
+    "buttonHeight": 64,
+    "buttonFont": 20,
+    "buttonLineHeight": 28,
+    "buttonRadius": 60,
+    "buttonToPaymentBadge": 16,
+    "paymentBadge": "No payment due now \u2014 eligible trial only",
+    "footerOrder": [
+      "Privacy Policy",
+      "Terms of Service",
+      "Restore"
+    ],
+    "footerGap": 16,
+    "skin": "Original CastDuo CTA colours preserved"
+  }
 }
