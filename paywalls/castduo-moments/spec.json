@@ -1,0 +1,60 @@
+{
+  "id": "castduo-moments",
+  "draft": "03",
+  "frame": [
+    390,
+    844
+  ],
+  "ctaHeight": 56,
+  "planFontSize": 18,
+  "planPadding": 16,
+  "planRadius": 24,
+  "planFill": "rgba(255,255,255,0.1)",
+  "images": 7,
+  "motion": "Canvas photo bow; shared vertical flick, bend only above 170px/s, flat below threshold",
+  "sample": true,
+  "eligibility": [
+    "eligible",
+    "ineligible",
+    "unknown"
+  ],
+  "testedSizes": [
+    [
+      440,
+      956
+    ],
+    [
+      420,
+      912
+    ],
+    [
+      430,
+      932
+    ],
+    [
+      402,
+      874
+    ],
+    [
+      393,
+      852
+    ],
+    [
+      390,
+      844
+    ],
+    [
+      414,
+      896
+    ],
+    [
+      375,
+      812
+    ],
+    [
+      375,
+      667
+    ]
+  ],
+  "nativeIntegration": "StoreKit, product IDs, real storefront prices and policy URLs are not configured"
+}

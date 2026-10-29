@@ -1,0 +1,78 @@
+[data-style=club] .atlas-top{padding:0 16px;justify-content:flex-start}
+[data-style=club] .atlas-top .close{padding:0;width:24px;height:24px;min-width:24px;min-height:24px;background:transparent}
+[data-style=club] .atlas-top .close img{display:block;width:24px;height:24px}
+[data-style=club] .atlas-message{border:0;background:rgba(255,255,255,.04)}
+[data-style=club] .atlas-plan{min-height:0;padding:16px;border:0;border-radius:24px;background:rgba(255,255,255,.1);gap:12px}
+[data-style=club] .atlas-plan strong,[data-style=club] .atlas-plan b{font-size:18px;line-height:24px;font-weight:700}
+[data-style=club] .atlas-plan small{font-size:12px;line-height:16px;color:#d8d6dc}
+[data-style=club] .atlas-plan b{text-align:right;white-space:nowrap}
+[data-style=club] .atlas-plan b small{display:block;font-weight:400}
+[data-style=club] .atlas-hero{height:208px}
+[data-style=club] .atlas-center{padding-top:40px}
+[data-style=club] .atlas-message{margin-bottom:24px;padding:16px 20px}
+[data-style=club] .atlas-message h2{margin:0 0 8px}
+[data-style=club] .atlas-route{margin-top:12px}
+[data-style=club] .cta-updated .primary{color:#171516;background:#fff}
+[data-style=club] .cta-updated .cta-structure{margin-top:16px}
+[data-style=club] .cta-updated .cta-footer{margin-top:8px}
+[data-style=club] .compact .atlas-hero{height:132px}
+[data-style=club] .compact .atlas-center{padding-top:4px}
+[data-style=club] .compact .atlas-message{margin-bottom:12px;padding:12px 16px}
+[data-style=club] .compact .atlas-message h2{font-size:22px;line-height:26px}
+[data-style=club] .compact .cta-updated .cta-structure{margin-top:8px}
+[data-style=club] .compact .cta-updated .cta-footer{margin-top:0}
+/* Bend only the collage; purchase UI remains stable. */
+[data-style=club] .atlas-tiles canvas{display:block;width:100%;height:100%}
+[data-style=club] .atlas-tiles{pointer-events:none}
+
+/* Handpicked: expanded SF wordmark and published #002 glossy tag. */
+[data-style=club] .atlas-hero,[data-style=club] .compact .atlas-hero{height:auto;flex:1;min-height:180px}
+[data-style=club] .atlas-center,[data-style=club] .compact .atlas-center{position:absolute;inset:50% 0 auto;padding:0;transform:translateY(-50%)}
+[data-style=club] .atlas-wordmark,[data-style=club] .compact .atlas-wordmark{font-family:system-ui,-apple-system,BlinkMacSystemFont,"SF Pro",sans-serif;font-weight:600;font-stretch:expanded;font-size:40px;line-height:48px;letter-spacing:-.01em}
+[data-style=club] .atlas-center > span{position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;min-width:48px;height:28px;padding:0 8px;border-radius:8px;font-family:system-ui,-apple-system,BlinkMacSystemFont,sans-serif;font-size:16px;line-height:20px;font-weight:600;letter-spacing:-.02em;color:#ffffff;text-shadow:0 1px 2px #3932a880;background:radial-gradient(ellipse at 84% 18%,#f2edffdf 0%,#c4b6ff33 25%,transparent 48%),radial-gradient(ellipse at 15% 80%,#565dff 0%,transparent 65%),linear-gradient(125deg,#d3daff 0%,#7772ed 25%,#6541d4 52%,#ac8cff 78%,#e3d8ff 100%);box-shadow:inset 0 1px 2px #f2efffd9,inset 0 -1px 2px #a49af5,0 0 8px #8070ff1f}
+
+/* Compact, horizontal brand lockup. */
+[data-style=club] .atlas-center,[data-style=club] .compact .atlas-center{flex-direction:row;justify-content:center;align-items:center;gap:12px}
+[data-style=club] .atlas-wordmark,[data-style=club] .compact .atlas-wordmark{font-size:40px;line-height:48px}
+[data-style=club] .atlas-center > span,[data-style=club] .compact .atlas-center > span{margin:0;min-width:64px;height:36px;padding:0 12px;font-size:20px;line-height:24px;border-radius:12px}
+
+/* User-supplied three-step timeline, using the established offer copy. */
+[data-style=club] .atlas-hero,[data-style=club] .compact .atlas-hero{min-height:144px}
+.gallery-timeline{flex-shrink:0;padding:8px 24px 20px}
+.gallery-timeline h2{font-size:24px;line-height:28px;font-weight:600;letter-spacing:-.01em;margin:0 0 16px}
+.gallery-timeline h2 em{color:#b3a1ff;font-style:normal}
+.gallery-timeline ol{list-style:none;margin:0;padding:0;display:grid;gap:16px}
+.gallery-timeline li{display:flex;gap:12px;align-items:flex-start;position:relative}
+.gallery-timeline li:not(:last-child):before{content:'';position:absolute;left:15px;top:36px;bottom:-12px;width:2px;background:linear-gradient(#8065dc,#8065dc55)}
+.timeline-icon{width:32px;height:32px;flex-shrink:0;display:grid;place-items:center;border-radius:50%;color:#b6a8e3;background:#292433;box-shadow:inset 0 0 0 1px #8576b566}
+.timeline-icon svg{width:20px;height:20px}
+.gallery-timeline li:first-child .timeline-icon{background:#6746ec;color:white;box-shadow:0 4px 16px #6846ec44}
+.gallery-timeline h3{font-size:14px;line-height:20px;font-weight:600;margin:0 0 0}
+.gallery-timeline p{font-size:12px;line-height:16px;color:#a8a2ae;margin:0}
+[data-style=club] .compact .gallery-timeline{padding:4px 20px 12px}
+[data-style=club] .compact .gallery-timeline h2{font-size:20px;line-height:24px;margin-bottom:12px}
+[data-style=club] .compact .gallery-timeline ol{gap:12px}
+
+/* Single optical size and stroke for all Lucide timeline glyphs. */
+.gallery-timeline .timeline-icon{color:#c4b8ec;background:#292433;box-shadow:inset 0 0 0 1px #a390d94d}
+.gallery-timeline .timeline-icon svg{width:18px;height:18px;display:block}
+.gallery-timeline li:first-child .timeline-icon{background:#6746ec;color:#fff;box-shadow:0 4px 12px #6746ec33}
+/* Longer fade into the content so moving cards dissolve without a hard edge. */
+[data-style=club] .atlas-tiles:after{background:linear-gradient(180deg,rgba(23,21,22,0) 0%,rgba(23,21,22,0) 24%,rgba(23,21,22,.05) 36%,rgba(23,21,22,.18) 48%,rgba(23,21,22,.42) 62%,rgba(23,21,22,.72) 78%,rgba(23,21,22,.94) 94%,#171516 100%)}
+/* QA: comfortable hit areas, compact devices, and readable large text. */
+[data-style=club] .atlas-top .close{width:44px;height:44px;min-width:44px;min-height:44px;display:grid;place-items:center;margin-left:-10px}
+[data-style=club] .top .close img{width:24px;height:24px}
+[data-style=club] .compact .atlas-hero{min-height:64px}
+[data-style=club] .compact .atlas-wordmark{font-size:32px;line-height:40px}
+[data-style=club] .compact .atlas-center > span{height:32px;min-width:56px;font-size:18px;padding:0 8px}
+[data-style=club] .compact:after{display:none}
+[data-style=club] .timeline-status{padding-bottom:16px}
+[data-style=club] .timeline-status h2{margin-bottom:0}
+[data-style=club] .large-type .gallery-timeline h2{font-size:1.5em;line-height:1.2}
+[data-style=club] .large-type .gallery-timeline h3{font-size:.875em;line-height:1.4}
+[data-style=club] .large-type .gallery-timeline p{font-size:.75em;line-height:1.5}
+[data-style=club] .large-type .gallery-timeline li{gap:12px}
+[data-style=club] .large-type .atlas-hero{flex:0 0 144px}
+[data-style=club] .phone .viewport{scrollbar-width:none}
+[data-style=club] .phone .viewport::-webkit-scrollbar{display:none}
+[data-style=club] .atlas-hero{min-height:136px}
