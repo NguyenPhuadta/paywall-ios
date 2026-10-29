@@ -50,5 +50,5 @@
   }
   id=requestAnimationFrame(paint);
  });
- new MutationObserver(mount).observe(document.querySelector('#board'),{childList:true,subtree:true});mount();
+ new MutationObserver(mount).observe(document.querySelector('#board')||document.querySelector('#preview')||document.body,{childList:true,subtree:true});mount();
 })();
