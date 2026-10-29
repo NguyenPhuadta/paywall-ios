@@ -1,0 +1,6 @@
+/* Five separate art directions. No hero artwork or motion is authored. */
+.media-placeholder{position:relative;flex-shrink:0;display:grid;place-items:center;overflow:hidden;min-width:0}
+.media-placeholder>span{font:500 9px/16px -apple-system,system-ui,sans-serif;letter-spacing:2px;opacity:.45}
+.media-placeholder .slot-guide{border:1px dashed currentColor;background:#0008;letter-spacing:1px;font-size:10px}
+.primary{position:relative}.primary>span{position:absolute;right:20px;top:50%;transform:translateY(-50%);font-size:24px;font-weight:400}
+.large-type .media-placeholder{height:120px!important;min-height:120px}.large-type .purchase-area{margin-top:0}.large-type .disclosure,.large-type .utility button,.large-type .utility a{font-size:.75em;line-height:1.4}.large-type .primary{font-size:.85em;line-height:1.4}.large-type .status{font-size:.8em}

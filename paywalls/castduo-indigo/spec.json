@@ -1,0 +1,30 @@
+{
+  "id": "castduo-indigo",
+  "draft": "09",
+  "frame": [
+    390,
+    844
+  ],
+  "animation": {
+    "format": "Lottie",
+    "renderer": "Skottie",
+    "duration": 6.6,
+    "fps": 30,
+    "canvas": [
+      360,
+      240
+    ],
+    "scale": 1.15,
+    "flightDuration": 0.9,
+    "startOpacity": 0,
+    "tvPosition": "fixed center"
+  },
+  "plan": {
+    "font": 18,
+    "padding": 16,
+    "radius": 36,
+    "fill": "white 10%"
+  },
+  "ctaHeight": 56,
+  "sample": true
+}

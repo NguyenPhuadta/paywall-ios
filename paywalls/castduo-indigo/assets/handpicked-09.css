@@ -1,0 +1,66 @@
+/* Approved shared purchase tokens; Indigo keeps its original composition. */
+[data-style=orbit] .phone{border:0;box-shadow:none;background:linear-gradient(180deg,#6d73ee 0%,#4e56b0 27%,#233367 58%,#10162f 82%,#0e1025 100%)}
+[data-style=orbit] .viewport{scrollbar-width:none}.viewport::-webkit-scrollbar{display:none}
+[data-style=orbit] .screen{padding-bottom:28px}
+[data-style=orbit] .in-top{padding:16px 16px 0;min-height:60px;gap:16px;align-items:center}
+.in-close,.in-top .close{border:0;background:none;padding:10px;margin-left:-10px;min-width:44px;min-height:44px;display:grid;place-items:center;flex-shrink:0}
+.in-close img,.in-top .close img{width:24px;height:24px;display:block}
+[data-style=orbit] .in-top>span{font-family:system-ui,-apple-system,sans-serif;font-weight:600;font-stretch:expanded;font-size:20px;letter-spacing:-.01em;display:flex;gap:8px;align-items:center}
+[data-style=orbit] .in-top b{font-size:12px;line-height:16px;font-weight:600;letter-spacing:0;margin:0;padding:4px 8px;border-radius:8px;background:#f6f4ff;color:#4b51a5}
+[data-style=orbit] .in-intro{padding:0 24px}
+[data-style=orbit] .in-visual{height:96px!important;width:148px;margin:0 0 16px auto;border:0;background:none}
+[data-style=orbit] .in-intro h2{font-size:38px;line-height:1.2;font-weight:600;letter-spacing:-.01em;margin:0}
+[data-style=orbit] .in-intro>p{font-size:14px;line-height:20px;margin:12px 0 0;color:#d9dfff}
+[data-style=orbit] .in-benefits{padding:24px 24px 20px;gap:16px}
+[data-style=orbit] .in-benefits>div{gap:12px;align-items:center}
+[data-style=orbit] .in-benefits>div>span{width:24px;height:24px;background:#ffffff14;border-radius:50%}
+.in-benefits svg{width:16px;height:16px}
+[data-style=orbit] .in-benefits p{font-size:15px;line-height:20px;margin:0;color:#f0f2ff}
+[data-style=orbit] .in-buy{margin-top:auto;padding:0 16px;flex-shrink:0}
+[data-style=orbit] .in-offer{display:flex;align-items:center;justify-content:space-between;gap:16px;text-align:left;padding:16px;margin:0 4px;border:0;border-radius:24px;corner-shape:squircle;background:rgb(255 255 255 / .1)}
+[data-style=orbit] .in-offer>div{font-size:inherit;line-height:inherit;letter-spacing:0;min-width:0}
+[data-style=orbit] .in-offer strong,[data-style=orbit] .in-offer>b{font-size:18px;line-height:24px;font-weight:600;letter-spacing:-.01em;margin:0;color:#fff;display:block}
+[data-style=orbit] .in-offer>b{text-align:right;white-space:nowrap}
+[data-style=orbit] .in-offer small{font-size:11px;line-height:16px;font-weight:400;letter-spacing:0;display:block;margin-top:4px;color:#e0e5fb}
+[data-style=orbit] .in-buy .primary{background:#fff;color:#12162c;box-shadow:none;text-transform:none}
+[data-style=orbit] .cta-updated .cta-structure{margin-top:24px}
+[data-style=orbit] .cta-updated .cta-footer{margin-top:16px}
+[data-style=orbit] .cta-footer>*{color:#d7def5;font-size:11px}
+[data-style=orbit] .status{background:#ffffff0d;color:#edf0ff;border:0;font-size:13px;line-height:20px;margin:12px 4px 0;padding:12px;border-radius:16px}
+[data-style=orbit] .result{background:#ffffff10;color:#fff;border:0;border-radius:24px}
+[data-style=orbit] .result p{color:#dee4ff}
+[data-style=orbit] .compact .in-visual{height:40px!important;margin-bottom:12px}
+[data-style=orbit] .compact .in-intro h2{font-size:32px;line-height:1.2}
+[data-style=orbit] .compact .in-intro>p{font-size:13px;line-height:20px;margin-top:8px}
+[data-style=orbit] .compact .in-benefits{padding:16px 24px;gap:12px}
+[data-style=orbit] .compact .in-benefits p{font-size:14px;line-height:20px}
+[data-style=orbit] .compact .cta-structure{margin-top:16px;gap:8px}
+[data-style=orbit] .compact .cta-footer{margin-top:8px}
+[data-style=orbit] .compact .screen{padding-bottom:8px}
+[data-style=orbit] .compact .in-top{padding-top:8px;min-height:52px}
+[data-style=orbit] .large-type .in-intro h2{font-size:2.375em;line-height:1.2}
+[data-style=orbit] .large-type .in-intro>p{font-size:.875em;line-height:1.5}
+[data-style=orbit] .large-type .in-benefits p{font-size:.9375em;line-height:1.5}
+[data-style=orbit] .large-type .in-offer{flex-wrap:wrap}
+[data-style=orbit] .large-type .in-offer strong,[data-style=orbit] .large-type .in-offer>b{font-size:1.125em;line-height:1.4}
+[data-style=orbit] .large-type .in-offer small{font-size:.6875em;line-height:1.5}
+[data-style=orbit] .large-type .in-buy{margin-top:16px}
+
+[data-style=orbit] .in-state .in-visual{height:60px!important}
+[data-style=orbit] .compact:after{display:none}
+
+[data-style=orbit] .in-intro{display:flex;flex-direction:column;flex:1;min-height:0;padding:0 24px 24px}
+[data-style=orbit] .in-visual{flex:1;width:100%;height:auto!important;min-height:64px;margin:0}
+[data-style=orbit] .in-intro h2{flex-shrink:0}
+[data-style=orbit] .in-offer{border-radius:36px}
+[data-style=orbit] .compact .in-visual{height:auto!important;min-height:40px;margin:0}
+[data-style=orbit] .compact .in-intro{padding-bottom:16px}
+[data-style=orbit] .in-state .in-visual{height:auto!important}
+[data-style=orbit] .large-type .in-intro{flex:none}
+
+[data-style=orbit] .indigo-motion{display:grid;place-items:center;overflow:hidden}
+[data-style=orbit] .indigo-motion canvas{display:block;width:100%;height:100%;object-fit:contain;max-width:360px;max-height:240px}
+
+[data-style=orbit] .indigo-motion{overflow:visible}
+[data-style=orbit] .indigo-motion canvas{transform:scale(1.15);transform-origin:center}
+[data-style=orbit] .compact .indigo-motion canvas{width:240px;height:160px;max-width:100%;max-height:160px}
