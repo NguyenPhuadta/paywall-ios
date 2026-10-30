@@ -42,4 +42,6 @@ Each published library detail has a yellow comment tool below Reopen. Drag a reg
 
 ## Hiệu ứng khi mở paywall
 
-Paywall fade-in nhẹ từng cụm giao diện một lần khi vừa mở (360 ms, lệch nhịp 42 ms). Xem và Dev dùng chung runtime; gói Dev tải về cũng có hiệu ứng này. Chỉ opacity thay đổi nên không ảnh hưởng vị trí hay animation hero có sẵn. Máy bật Reduce Motion sẽ hiện ngay, không chạy fade. Đổi state mua hàng, khôi phục, ngôn ngữ hay review không phát lại entrance.
+Head stylesheet giữ UI ở opacity 0 trước paint đầu tiên. Sau khi font và ảnh sẵn sàng (tối đa 1,2 giây), UI fade trong 520 ms với easing .4/0/.2/1 và stagger 32 ms, tối đa 128 ms. Xem, Dev, local và ZIP dùng chung runtime. Reduce Motion hiện nội dung ngay. Prototype cập nhật sản phẩm trong màn đang mở, không tải lại iframe hay reset hero. Tương tác trong màn không phát lại entrance.
+
+Nguồn kỹ thuật: https://web.dev/articles/animations-guide (opacity và compositing), https://m2.material.io/design/motion/the-motion-system.html (fade cho thành phần xuất hiện trong màn).
