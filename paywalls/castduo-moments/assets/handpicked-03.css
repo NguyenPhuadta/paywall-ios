@@ -47,8 +47,8 @@
 .timeline-icon{width:32px;height:32px;flex-shrink:0;display:grid;place-items:center;border-radius:50%;color:#b6a8e3;background:#292433;box-shadow:inset 0 0 0 1px #8576b566}
 .timeline-icon svg{width:20px;height:20px}
 .gallery-timeline li:first-child .timeline-icon{background:#6746ec;color:white;box-shadow:0 4px 16px #6846ec44}
-.gallery-timeline h3{font-size:14px;line-height:20px;font-weight:600;margin:0 0 0}
-.gallery-timeline p{font-size:12px;line-height:16px;color:#a8a2ae;margin:0}
+.gallery-timeline h3{font-size:16px;line-height:20px;font-weight:600;margin:0 0 0}
+.gallery-timeline p{font-size:14px;line-height:18px;color:#a8a2ae;margin:0}
 [data-style=club] .compact .gallery-timeline{padding:4px 20px 12px}
 [data-style=club] .compact .gallery-timeline h2{font-size:20px;line-height:24px;margin-bottom:12px}
 [data-style=club] .compact .gallery-timeline ol{gap:12px}
