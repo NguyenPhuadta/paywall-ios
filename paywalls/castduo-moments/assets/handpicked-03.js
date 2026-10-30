@@ -26,7 +26,7 @@
    ];
    // Lucide icons, ISC license in assets/timeline-icons/LICENSE.
    const paths=["<rect width=\"18\" height=\"11\" x=\"3\" y=\"11\" rx=\"2\" ry=\"2\" />\n  <path d=\"M7 11V7a5 5 0 0 1 9.9-1\" />", "<circle cx=\"12\" cy=\"12\" r=\"10\" />\n  <path d=\"M12 6v6h4\" />", "\n  <path d=\"m15 9-6 6\" />\n  <path d=\"m9 9 6 6\" />"];
-   section.innerHTML=`<h2>Enjoy on <em>bigger screen</em></h2><ol>${rows.map(([title,body],i)=>`<li><span class="timeline-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${paths[i]}</svg></span><div><h3>${title}</h3><p>${body}</p></div></li>`).join('')}</ol>`;
+   section.innerHTML=`<h2>Moments on <em>bigger screen</em></h2><ol>${rows.map(([title,body],i)=>`<li><span class="timeline-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${paths[i]}</svg></span><div><h3>${title}</h3><p>${body}</p></div></li>`).join('')}</ol>`;
    area.before(section);
   }
   return tpl.innerHTML;
