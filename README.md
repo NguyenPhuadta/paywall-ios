@@ -38,7 +38,7 @@ All five paywalls share two inline busy presentations: loading uses plan-label/p
 
 
 ### Prototype comments
-Each published library detail has a yellow comment tool below Reopen. Drag a region or click to pin; the composer opens beside the pointer. Comments can be edited/deleted and are saved per paywall in localStorage on this browser, with locale, iPhone size, eligibility and billing state. Download JSON to hand feedback off; this static site does not sync comments between browsers. Keyboard: activate comment mode, then Enter on the preview to pin at its center; Escape exits.
+Each library detail has a yellow comment tool below Reopen. Drag a region or click to pin. New comments sync in real time per paywall via the separate paywall-ios-comments Firebase project (Firestore database comments, Singapore). Anyone with the site link can read and add comments without a visible login; anonymous Firebase identity restricts editing and deletion to the original browser. Clearing browser data or switching browsers loses edit ownership. Previous localStorage comments remain on the original browser and are marked local; they are not uploaded automatically. JSON export includes visible comments. The UI records locale, iPhone size, eligibility and billing state. Keyboard: activate comment mode, Enter pins at center, Escape exits. The public anonymous write endpoint is not a team access control or anti-spam system; review abuse controls and usage before wider distribution.
 
 ## Hiệu ứng khi mở paywall
 
