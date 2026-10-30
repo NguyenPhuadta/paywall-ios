@@ -132,3 +132,12 @@
 
 /* 16px from visible close icon to heading; preserve the 844px frame fit. */
 .pro-badge-visual{height:276px}
+
+/* PW01 comments: prioritize the trial, with renewal price directly below. */
+.go-plan .go-trial-offer{font-size:24px;line-height:28px;font-weight:700;text-align:right}
+.go-plan .go-trial-offer small{display:block;font-size:11px;line-height:16px;font-weight:400;margin-top:4px}
+.compact .go-plan .go-trial-offer{font-size:22px;line-height:26px}
+.large-type .go-plan .go-trial-offer{font-size:1.1em;line-height:1.3;white-space:normal}
+.large-type .go-plan .go-trial-offer small{font-size:.6em;line-height:1.4}
+html:not([lang=en]) .phone .go-plan{flex-wrap:wrap}
+html:not([lang=en]) .phone .go-plan .go-trial-offer{white-space:normal;flex:1 1 auto}

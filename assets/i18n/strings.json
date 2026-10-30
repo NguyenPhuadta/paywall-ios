@@ -623,6 +623,20 @@
       "fil": "I-enjoy ang mga video at larawan sa TV mo.",
       "es": "Disfruta de vídeos y fotos en tu TV.",
       "vi": "Thưởng thức video và ảnh trên TV của bạn."
+    },
+    "Weekly": {
+      "en": "Weekly",
+      "zh-Hans": "每周",
+      "fil": "Lingguhan",
+      "es": "Semanal",
+      "vi": "Hằng tuần"
+    },
+    "then {price}/week": {
+      "en": "then {price}/week",
+      "zh-Hans": "之后每周{price}",
+      "fil": "pagkatapos ay {price}/linggo",
+      "es": "después, {price}/semana",
+      "vi": "sau đó {price}/tuần"
     }
   }
 }
