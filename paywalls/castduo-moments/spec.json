@@ -18,6 +18,14 @@
     "ineligible",
     "unknown"
   ],
+  "stateCoverage": [
+    "eligible trial / no trial / unknown eligibility",
+    "loading / products error / empty products",
+    "purchasing / cancelled / pending / purchase error / unverified",
+    "verified success / already entitled",
+    "restore in progress / restored / empty / error",
+    "Terms / Privacy"
+  ],
   "testedSizes": [
     [
       440,

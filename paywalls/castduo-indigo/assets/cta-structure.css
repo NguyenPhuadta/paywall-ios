@@ -17,3 +17,19 @@
 .phone.large-type .cta-main .primary{font-size:1.25em;line-height:1.4}
 .phone.large-type .cta-payment{font-size:.7em;line-height:1.4}
 .phone.large-type .cta-footer{flex-wrap:wrap}
+
+/* Billing states: no overlay; preserve each offer's geometry. */
+.phone .cta-updated.billing-busy .primary{display:flex;align-items:center;justify-content:center;gap:8px;background:rgb(160 160 175 / 24%);color:rgb(255 255 255 / 50%);opacity:1;box-shadow:none;cursor:default;font-size:16px}
+.billing-spinner{display:inline-block;width:20px;height:20px;flex:none;border:2px solid rgb(255 255 255 / 20%);border-top-color:rgb(255 255 255 / 75%);border-right-color:rgb(255 255 255 / 75%);border-radius:50%;animation:billing-spin .8s linear infinite}
+@keyframes billing-spin{to{transform:rotate(360deg)}}
+.phone .billing-skeleton-card{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.phone .billing-skeleton-label{display:flex;flex-direction:column;gap:8px;flex:1}
+.billing-skeleton-label span,.billing-skeleton-price,.billing-skeleton-legal span{display:block;background:rgb(255 255 255 / 14%);border-radius:4px}
+.billing-skeleton-label span:first-child{width:72px;height:12px}.billing-skeleton-label span:last-child{width:112px;max-width:100%;height:12px}
+.billing-skeleton-price{width:96px;height:24px;flex:0 1 96px}
+.phone .cta-main>.billing-skeleton-legal{width:100%;min-height:32px;display:flex;align-items:center;justify-content:center}
+.billing-skeleton-legal span{width:80%;height:8px}
+@media(prefers-reduced-motion:reduce){.billing-spinner{animation:none}}
+
+.phone .cta-updated.billing-busy .primary>span{position:static;inset:auto;transform:none;order:0;font:inherit;letter-spacing:inherit}
+.phone .cta-updated.billing-busy .primary>.billing-spinner{width:20px;height:20px;flex:0 0 20px}

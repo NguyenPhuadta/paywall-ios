@@ -2,7 +2,7 @@
 (()=>{
  const previous=render;
  render=function(o){
-  const html=previous(o),{trial,p}=context(o);
+  const html=previous(o.state==='loading'?{...o,state:'ready',eligibility:'unknown'}:o),{trial,p}=context(o);
   const template=document.createElement('template');template.innerHTML=html;
   const area=template.content.querySelector('.purchase-area');
   if(!area)return html;
@@ -29,6 +29,19 @@
    if(link){if(!o.locale)link.textContent=action==='privacy'?'Privacy Policy':action==='terms'?'Terms of Service':o.state==='restoring'?'Restoring…':'Restore';footer.append(link);}
   }
   links.remove();area.append(footer);
+  if(['loading','purchasing'].includes(o.state)){
+   area.classList.add('billing-busy');area.querySelectorAll('.status').forEach(el=>el.remove());
+   area.querySelector('.cta-payment')?.remove();
+   button.disabled=true;button.setAttribute('aria-busy','true');
+   const loading=o.state==='loading';
+   button.setAttribute('aria-label',loading?'Loading plans…':'Opening App Store…');
+   button.innerHTML='<span class="billing-spinner" aria-hidden="true"></span>'+(loading?'':'<span>Opening App Store…</span>');
+   if(loading){
+    const card=area.querySelector('.go-plan,.cinema-plan,.hy-offer,.atlas-plan,.in-offer');
+    if(card){card.classList.add('billing-skeleton-card');card.setAttribute('role','status');card.setAttribute('aria-label','Loading plans…');card.innerHTML='<div class="billing-skeleton-label" aria-hidden="true"><span></span><span></span></div><span class="billing-skeleton-price" aria-hidden="true"></span>';}
+    if(legal){legal.classList.add('billing-skeleton-legal');legal.setAttribute('aria-hidden','true');legal.innerHTML='<span></span>';}
+   }
+  }
   return template.innerHTML;
  };
  board();

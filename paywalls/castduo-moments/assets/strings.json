@@ -532,6 +532,13 @@
       "fil": "Prototype: pumili ng simulated na resulta sa ibaba. Dapat ipakita ng app ang tunay na purchase sheet ng App Store.",
       "es": "Prototipo: elige un resultado simulado debajo del móvil. La app debe mostrar la hoja de compra real de App Store.",
       "vi": "Bản mô phỏng: chọn kết quả bên dưới. App phải hiển thị bảng mua hàng App Store thật."
+    },
+    "Opening App Store…": {
+      "en": "Opening App Store…",
+      "zh-Hans": "正在打开App Store…",
+      "fil": "Binubuksan ang App Store…",
+      "es": "Abriendo App Store…",
+      "vi": "Đang mở App Store…"
     }
   }
 }

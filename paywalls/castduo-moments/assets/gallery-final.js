@@ -3,7 +3,7 @@
  const previous=render;
  render=function(o){
   const tpl=document.createElement('template');tpl.innerHTML=previous(o);
-  const headings={unknown:'Checking your offer…',purchasing:'Confirm in the App Store.',pending:'Your purchase is pending.',unverified:'Checking your access…',restoring:'Restoring your purchases…'};
+  const headings={unknown:'Checking your offer…',pending:'Your purchase is pending.',unverified:'Checking your access…',restoring:'Restoring your purchases…'};
   const timeline=tpl.content.querySelector('.gallery-timeline');
   if(timeline&&o.state!=='ready'){
    timeline.classList.add('timeline-status');timeline.querySelector('ol')?.remove();
