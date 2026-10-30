@@ -10,7 +10,7 @@ A static paywall stock hosted on GitHub Pages. Its information architecture and 
 - Xem: interactive purchase simulation, trial/device/billing controls, brief/history, responsive demos, plan states, language and hero resources.
 - Dev: downloadable source ZIP, preview state controls, Animation, Lottie (none in these two approved designs), live Layer inspection, point measurements, Font, Chuỗi and Changelog.
 
-Only the approved English copy exists. Prices are placeholders. Native StoreKit configuration and actual Terms/Privacy URLs remain outstanding.
+Five preview locales are available: English, Simplified Chinese (zh-Hans), Filipino (fil), Spanish (es), Vietnamese (vi). Prices are placeholders. Native StoreKit configuration and actual Terms/Privacy URLs remain outstanding.
 
 ## Local preview
 
@@ -21,3 +21,9 @@ The batch date is the approval date, 26 October 2026. Both paywalls belong to Ca
 ## CTA update · 28 October 2026
 
 Both published paywalls use the SmartHue CTA hierarchy from Figma node 539:32897: 16px horizontal inset, trial disclosure above the 56px button with an 8px gap, eligible-trial payment badge 12px below, and Privacy / Terms / Restore footer. Original CTA colours are preserved. Source ZIPs and specs include the same structure.
+
+## Localization · 30 October 2026
+
+All five published paywalls support `?lang=en|zh-Hans|fil|es|vi`, including purchase/restore/error/policy states. Review and Dev controls offer all five locales; the language demo and Strings tab use the same catalog. Standalone previews have a language selector. Export: assets/i18n/strings.json and strings.csv; each Dev ZIP includes its offline catalog and runtime. Prices remain placeholders; changing language does not change storefront/currency or trial eligibility. Translation review is still required before native release.
+
+On smaller screens and at large text sizes the whole paywall can scroll vertically. English layouts are retained; translated text wraps rather than being clipped.
