@@ -539,6 +539,69 @@
       "fil": "Binubuksan ang App Store…",
       "es": "Abriendo App Store…",
       "vi": "Đang mở App Store…"
+    },
+    "Enjoy on": {
+      "en": "Enjoy on",
+      "zh-Hans": "尽享",
+      "fil": "Mag-enjoy sa",
+      "es": "Disfruta en",
+      "vi": "Tận hưởng trên"
+    },
+    "bigger screen": {
+      "en": "bigger screen",
+      "zh-Hans": "大屏",
+      "fil": "mas malaking screen",
+      "es": "una pantalla más grande",
+      "vi": "màn hình lớn hơn"
+    },
+    "Cast without limits": {
+      "en": "Cast without limits",
+      "zh-Hans": "畅享无限投屏",
+      "fil": "Mag-cast nang walang limitasyon",
+      "es": "Transmite sin límites",
+      "vi": "Truyền không giới hạn"
+    },
+    "Your content, one tap away.": {
+      "en": "Your content, one tap away.",
+      "zh-Hans": "一键将内容投到电视上。",
+      "fil": "Isang tap lang para maipakita ang content mo sa TV.",
+      "es": "Tu contenido en la tele con un toque.",
+      "vi": "Nội dung của bạn lên TV chỉ với một chạm."
+    },
+    "Share the moment": {
+      "en": "Share the moment",
+      "zh-Hans": "共享美好时刻",
+      "fil": "Ibahagi ang sandali",
+      "es": "Comparte el momento",
+      "vi": "Chia sẻ khoảnh khắc"
+    },
+    "Videos and photos on TV.": {
+      "en": "Videos and photos on TV.",
+      "zh-Hans": "在电视上观看视频和照片。",
+      "fil": "Mga video at larawan sa TV.",
+      "es": "Vídeos y fotos en la TV.",
+      "vi": "Video và ảnh trên TV."
+    },
+    "Your subscription": {
+      "en": "Your subscription",
+      "zh-Hans": "你的订阅",
+      "fil": "Ang subscription mo",
+      "es": "Tu suscripción",
+      "vi": "Gói đăng ký của bạn"
+    },
+    "{price}/week. Renews unless canceled.": {
+      "en": "{price}/week. Renews unless canceled.",
+      "zh-Hans": "每周{price}。未取消将自动续订。",
+      "fil": "{price}/linggo. Auto-renew maliban kung kanselahin.",
+      "es": "{price}/semana. Se renueva automáticamente salvo cancelación.",
+      "vi": "{price}/tuần. Tự động gia hạn nếu không huỷ."
+    },
+    "Try For Free": {
+      "en": "Try For Free",
+      "zh-Hans": "免费试用",
+      "fil": "Subukan nang libre",
+      "es": "Prueba gratis",
+      "vi": "Dùng thử miễn phí"
     }
   }
 }
