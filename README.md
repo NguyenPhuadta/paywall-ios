@@ -35,3 +35,7 @@ All five detail pages show the same approved nine iPhone sizes in Demo responsiv
 ## Billing states · 30 October 2026
 
 All five paywalls share two inline busy presentations: loading uses plan-label/price/disclosure skeletons and a disabled gray spinner CTA; purchasing preserves the loaded offer and shows a disabled gray CTA with spinner and localized “Opening App Store…”. Neither state adds an overlay or a duplicate status panel. A loading card never shows an unconfirmed product price. Standard error/retry and restore behavior remain available. Dev ZIPs contain the same adapters.
+
+
+### Prototype comments
+Each published library detail has a yellow comment tool below Reopen. Drag a region or click to pin; the composer opens beside the pointer. Comments can be edited/deleted and are saved per paywall in localStorage on this browser, with locale, iPhone size, eligibility and billing state. Download JSON to hand feedback off; this static site does not sync comments between browsers. Keyboard: activate comment mode, then Enter on the preview to pin at its center; Escape exits.
