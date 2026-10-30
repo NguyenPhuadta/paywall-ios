@@ -90,3 +90,11 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline-color:#79b9f3}
 .comment-dialog .comment-delete{margin-right:auto;color:#ffb8ad;background:none}
 .comment-context{font-size:11px;color:#aaa;margin:8px 0}
 .comment-error{font-size:12px;color:#ffb8ad;margin:4px 0}
+
+/* Compact prototype controls. */
+.pt-side>.box{padding:14px 16px}
+.control-select{position:relative;min-width:0}
+.control-select select{appearance:none;-webkit-appearance:none;box-sizing:border-box;display:block;width:100%;min-width:0;min-height:42px;padding:10px 36px 10px 12px;border:1px solid #454545;border-radius:12px;background:#303030;color:#f3f2ef;font:500 13px/1.4 var(--ui);cursor:pointer;text-overflow:ellipsis}
+.control-select select:hover{background:#363636;border-color:#626262}
+.control-select select:focus-visible{outline:2px solid #79b9f3;outline-offset:2px}
+.control-select svg{position:absolute;right:12px;top:50%;transform:translateY(-50%);pointer-events:none;color:#bcbab6}
