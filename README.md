@@ -39,3 +39,7 @@ All five paywalls share two inline busy presentations: loading uses plan-label/p
 
 ### Prototype comments
 Each published library detail has a yellow comment tool below Reopen. Drag a region or click to pin; the composer opens beside the pointer. Comments can be edited/deleted and are saved per paywall in localStorage on this browser, with locale, iPhone size, eligibility and billing state. Download JSON to hand feedback off; this static site does not sync comments between browsers. Keyboard: activate comment mode, then Enter on the preview to pin at its center; Escape exits.
+
+## Hiệu ứng khi mở paywall
+
+Paywall fade-in nhẹ từng cụm giao diện một lần khi vừa mở (360 ms, lệch nhịp 42 ms). Xem và Dev dùng chung runtime; gói Dev tải về cũng có hiệu ứng này. Chỉ opacity thay đổi nên không ảnh hưởng vị trí hay animation hero có sẵn. Máy bật Reduce Motion sẽ hiện ngay, không chạy fade. Đổi state mua hàng, khôi phục, ngôn ngữ hay review không phát lại entrance.
