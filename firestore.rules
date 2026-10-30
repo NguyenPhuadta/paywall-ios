@@ -5,7 +5,8 @@ service cloud.firestore {
     function signedIn() { return request.auth != null; }
     function valid(d) {
       return d.keys().hasAll(['text','rect','context','createdAt','updatedAt','owner'])
-        && d.keys().hasOnly(['text','rect','context','createdAt','updatedAt','owner'])
+        && d.keys().hasOnly(['text','rect','context','createdAt','updatedAt','owner','resolved'])
+        && (!('resolved' in d) || d.resolved is bool)
         && d.text is string && d.text.size() > 0 && d.text.size() <= 4000
         && d.owner is string && d.owner.size() <= 128
         && d.createdAt is string && d.createdAt.size() <= 30
@@ -24,8 +25,20 @@ service cloud.firestore {
     match /comments/{paywall}/entries/{id} {
       allow read: if signedIn();
       allow create: if signedIn() && valid(request.resource.data) && request.resource.data.owner == request.auth.uid;
-      allow update: if signedIn() && resource.data.owner == request.auth.uid && valid(request.resource.data) && request.resource.data.owner == resource.data.owner && request.resource.data.createdAt == resource.data.createdAt;
+      allow update: if signedIn() && valid(request.resource.data) && request.resource.data.owner == resource.data.owner && request.resource.data.createdAt == resource.data.createdAt && ((resource.data.owner == request.auth.uid && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['text','updatedAt'])) || (request.resource.data.diff(resource.data).affectedKeys().hasOnly(['resolved']) && request.resource.data.resolved is bool));
       allow delete: if signedIn() && resource.data.owner == request.auth.uid;
+      match /replies/{reply} {
+        function validReply(d) {
+          return d.keys().hasAll(['text','createdAt','owner']) && d.keys().hasOnly(['text','createdAt','owner'])
+            && d.text is string && d.text.size() > 0 && d.text.size() <= 4000
+            && d.owner is string && d.owner.size() <= 128
+            && d.createdAt is string && d.createdAt.size() <= 30;
+        }
+        allow read: if signedIn();
+        allow create: if signedIn() && exists(/databases/$(database)/documents/comments/$(paywall)/entries/$(id)) && validReply(request.resource.data) && request.resource.data.owner == request.auth.uid;
+        allow update: if signedIn() && resource.data.owner == request.auth.uid && validReply(request.resource.data) && request.resource.data.owner == resource.data.owner && request.resource.data.createdAt == resource.data.createdAt && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['text']);
+        allow delete: if signedIn() && resource.data.owner == request.auth.uid;
+      }
     }
   }
 }

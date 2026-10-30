@@ -98,3 +98,14 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline-color:#79b9f3}
 .control-select select:hover{background:#363636;border-color:#626262}
 .control-select select:focus-visible{outline:2px solid #79b9f3;outline-offset:2px}
 .control-select svg{position:absolute;right:12px;top:50%;transform:translateY(-50%);pointer-events:none;color:#bcbab6}
+
+.comment-pin.is-resolved{background:#4c865f;border-color:#b8e6c6;color:#fff}
+.comment-thread{margin-top:14px;padding-top:12px;border-top:1px solid #454545}
+.comment-thread[hidden]{display:none}
+.comment-dialog .comment-resolve{background:#3a5141;color:#d7f5df;margin-bottom:10px}
+.comment-dialog .comment-resolve[aria-pressed=true]{background:#454545;color:#eee}
+.comment-replies{display:grid;gap:6px;max-height:140px;overflow:auto}
+.comment-reply{margin:0 0 6px;padding:9px 10px;background:#343434;border-radius:10px;white-space:pre-wrap;overflow-wrap:anywhere}
+.comment-dialog #reply-text{min-height:58px;margin-bottom:6px}
+.comment-dialog .reply-send{display:block;margin-left:auto}
+.comment-dialog .reply-delete{display:block;margin:5px 0 0 auto;padding:2px 0;background:none;color:#c9a4a1;font-size:11px}
