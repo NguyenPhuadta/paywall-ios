@@ -27,3 +27,7 @@ Both published paywalls use the SmartHue CTA hierarchy from Figma node 539:32897
 All five published paywalls support `?lang=en|zh-Hans|fil|es|vi`, including purchase/restore/error/policy states. Review and Dev controls offer all five locales; the language demo and Strings tab use the same catalog. Standalone previews have a language selector. Export: assets/i18n/strings.json and strings.csv; each Dev ZIP includes its offline catalog and runtime. Prices remain placeholders; changing language does not change storefront/currency or trial eligibility. Translation review is still required before native release.
 
 On smaller screens and at large text sizes the whole paywall can scroll vertically. English layouts are retained; translated text wraps rather than being clipped.
+
+## Responsive iPhone matrix · 30 October 2026
+
+All five detail pages show the same approved nine iPhone sizes in Demo responsive: 440×956, 420×912, 430×932, 402×874, 393×852, 390×844, 414×896, 375×812, 375×667. The matrix, prototype picker and Dev picker share `iphoneSizes`. Frame dimensions include status/system areas at 1× CSS px; preview scaling does not change the layout size. Text 200%, Terms and Privacy are separate accessibility/state demonstrations. No Android device presets, dp conversion or Android safe-area rules apply. Animation canvas dimensions such as 360×240 are asset dimensions, not phone presets.
