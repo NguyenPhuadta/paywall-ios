@@ -36,12 +36,13 @@
     const screen = fig.querySelector('.screen');
     const option = FRAME_OPTS[+fig.dataset.i];
     if (!screen || !option || option.state !== 'loading') return;
-    const keep = [...screen.children].map((node, index) => ({node,index})).filter(({node}) => !node.classList.contains('purchase-area'));
+    const keep = [...screen.children].filter(node => !node.matches('.purchase-area, .gallery-timeline')); 
     option.state = 'ready';
     update(fig);
-    keep.forEach(({node,index}) => {
-      const replacement = screen.children[index];
-      if (replacement && replacement.tagName === node.tagName) replacement.replaceWith(node);
+    keep.forEach(node => {
+      const key = [...node.classList].find(name => name !== 'paywall-entry-item');
+      const replacement = [...screen.children].find(candidate => candidate.tagName === node.tagName && key && candidate.classList.contains(key));
+      if (replacement) replacement.replaceWith(node);
     });
   });
 })();
