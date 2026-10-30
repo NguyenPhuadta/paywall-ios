@@ -45,3 +45,5 @@ Each published library detail has a yellow comment tool below Reopen. Drag a reg
 Head stylesheet giữ UI ở opacity 0 trước paint đầu tiên. Sau khi font và ảnh sẵn sàng (tối đa 1,2 giây), UI fade trong 520 ms với easing .4/0/.2/1 và stagger 32 ms, tối đa 128 ms. Xem, Dev, local và ZIP dùng chung runtime. Reduce Motion hiện nội dung ngay. Prototype cập nhật sản phẩm trong màn đang mở, không tải lại iframe hay reset hero. Tương tác trong màn không phát lại entrance.
 
 Nguồn kỹ thuật: https://web.dev/articles/animations-guide (opacity và compositing), https://m2.material.io/design/motion/the-motion-system.html (fade cho thành phần xuất hiện trong màn).
+
+Billing loading → ready: skeleton fade-out 140 ms, giá/CTA fade-in 320 ms; các vùng thay đổi chiều cao nội suy 420 ms rồi trả lại layout responsive. Reduce Motion cập nhật ngay.

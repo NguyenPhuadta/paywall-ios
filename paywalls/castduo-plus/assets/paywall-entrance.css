@@ -7,3 +7,9 @@
   }
 }
 @keyframes paywall-fade-in { from { opacity: 0; } to { opacity: 1; } }
+
+@media (prefers-reduced-motion: no-preference) {
+  .phone .billing-content-exit { animation: billing-content-out 140ms ease-in both; pointer-events: none; }
+  .phone .billing-content-enter { animation: paywall-fade-in 320ms cubic-bezier(.4, 0, .2, 1) both; }
+}
+@keyframes billing-content-out { from { opacity: 1; } to { opacity: 0; } }
