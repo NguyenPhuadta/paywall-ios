@@ -19,7 +19,7 @@
    const section=document.createElement('section');section.className='gallery-timeline';
    const rows=[
     ['Cast without limits','Your content, one tap away.'],
-    ['Share the moment','Videos and photos on TV.'],
+    ['Share the moment','Enjoy videos and photos on your TV.'],
     trial
      ?['After '+esc(p.trialDuration),`${esc(p.price)}/${esc(p.period)}. Renews unless canceled.`]
      :['Your subscription',`${esc(p.price)}/${esc(p.period)}. Renews unless canceled.`]

@@ -112,3 +112,8 @@ html.single body{padding:0;height:100dvh;display:grid;place-items:center;overflo
 .cinema-brand{font-family:system-ui,-apple-system,BlinkMacSystemFont,"SF Pro",sans-serif;font-weight:600;font-stretch:expanded;letter-spacing:-.01em}
 [data-style=cinematic] .cinema-wordmark .cinema-plus{position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;min-width:48px;height:28px;padding:0 8px;border-radius:8px;font-family:system-ui,-apple-system,BlinkMacSystemFont,sans-serif;font-size:16px;line-height:20px;font-weight:600;letter-spacing:-.02em;color:#ffffff;text-shadow:0 1px 2px #3932a880;background:radial-gradient(ellipse at 84% 18%,#f2edffdf 0%,#c4b6ff33 25%,transparent 48%),radial-gradient(ellipse at 15% 80%,#565dff 0%,transparent 65%),linear-gradient(125deg,#d3daff 0%,#7772ed 25%,#6541d4 52%,#ac8cff 78%,#e3d8ff 100%);box-shadow:inset 0 1px 2px #f2efffd9,inset 0 -1px 2px #a49af5,0 0 8px #8070ff1f}
 .cinema-plus::after{content:"";position:absolute;z-index:-1;inset:-60%;transform:rotate(-35deg);background:linear-gradient(90deg,transparent 38%,#efecff99 48%,#f0edff22 57%,transparent 65%);filter:blur(2px);pointer-events:none}
+
+/* Existing user-provided close control, positioned over the room image. */
+[data-style=cinematic] .cinema-top{position:absolute;top:62px;left:0;right:0;z-index:3;padding:0 16px}
+[data-style=cinematic] .cinema-top .close{display:grid;place-items:center;padding:10px;background:none}
+[data-style=cinematic] .cinema-top .close img{display:block;width:24px;height:24px}
