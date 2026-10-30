@@ -78,7 +78,7 @@
 [data-style=club] .atlas-hero{min-height:136px}
 
 /* Stack the PRO badge above the wordmark and lift the full lockup slightly. */
-[data-style=club] .atlas-center,[data-style=club] .compact .atlas-center{flex-direction:column;gap:8px;transform:translateY(calc(-50% - 18px))}
+[data-style=club] .atlas-center,[data-style=club] .compact .atlas-center{flex-direction:column;gap:8px;transform:translateY(calc(-50% - 28px)) scale(1.15);transform-origin:center center}
 [data-style=club] .atlas-center > span,[data-style=club] .compact .atlas-center > span{order:0}
 [data-style=club] .atlas-wordmark,[data-style=club] .compact .atlas-wordmark{order:1}
 [data-style=club] .atlas-center > span,[data-style=club] .compact .atlas-center > span{min-width:67px;height:38px;padding:0 13px;font-size:21px;line-height:25px}
