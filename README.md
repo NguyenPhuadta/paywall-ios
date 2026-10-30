@@ -51,3 +51,7 @@ Billing loading → ready: skeleton fade-out 140 ms, giá/CTA fade-in 320 ms. B�
 ## Performance · 30 October 2026
 
 Preview đơn chỉ dựng một figure; demo ngoài vùng xem được unload và nạp lại khi cuộn tới. Canvas Moments dừng khi khuất và giảm số lượt vẽ ảnh. Xem [kết quả đo và phạm vi kiểm tra](docs/performance-2026-10-30.md). Xem và Dev dùng cùng runtime; ZIP đã đồng bộ.
+
+## Team review stability
+
+Tab Xem ưu tiên prototype chính. Mỗi lượt đổi bộ lọc hoặc Mở lại huỷ listener/timer của lượt cũ; chỉ lượt mới nhất được hoàn tất billing. Phát lại chạy đầy đủ chu kỳ billing. Mở thẳng tab Dev không nạp prototype Xem ở nền. Demo ngoài viewport chờ 800 ms trước khi unload để tránh tải lại liên tục khi cuộn sát ranh giới. Resize được gom theo animation frame.

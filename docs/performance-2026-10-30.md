@@ -21,3 +21,11 @@ Moments draws only visible photo cards, uses one image draw for flat photos and 
 Billing reserves the final layout: benefits remain visible, the unknown billing row remains masked, card geometry matches the final offer, and eligible-trial badge space is reserved. Loading-to-ready animates opacity only. There are no height transitions or per-frame geometry reads. Real pricing remains hidden until products are ready. Reduce Motion switches immediately.
 
 Checks: all five prototypes load a usable CTA; Moments keeps its three rows; all five Dev previews load; nearby responsive previews mount on scroll; Moments renders at 375×667, 390×844 and 440×956; Reduce Motion leaves content visible. No page JavaScript errors were reported during the sweep. The same runtime and assets are included in Dev ZIPs.
+
+## Team review stability
+
+The interactive Xem prototype has a generation counter and an abortable load listener. Starting a new request cancels the previous billing and transaction timers. Only the current document/request can finish billing or a simulated transaction. Replay starts a complete prototype load instead of leaving a reloaded loading state unresolved.
+
+A direct Dev entry does not load the hidden Xem prototype. Xem loads on demand when selected. Demo unload waits 800 ms to avoid boundary churn while scrolling. Window resize work is batched with requestAnimationFrame. Hash navigation keeps the selected tab in sync.
+
+The same interaction sweep passed in desktop Chrome and Playwright WebKit: replay completes billing on all five paywalls; an old fast timer cannot complete a newer slow request; five rapid reopens followed by device/eligibility changes retain the latest state; direct Dev entry keeps Xem idle and switching to Xem loads a usable prototype. Moments keeps all three timeline rows. No page JavaScript errors were reported in either sweep. These are browser-engine checks, not native iPhone device tests.
