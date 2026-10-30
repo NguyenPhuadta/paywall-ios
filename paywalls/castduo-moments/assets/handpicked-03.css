@@ -4,7 +4,7 @@
 [data-style=club] .atlas-message{border:0;background:rgba(255,255,255,.04)}
 [data-style=club] .atlas-plan{min-height:0;padding:16px;border:0;border-radius:24px;background:rgba(255,255,255,.1);gap:12px}
 [data-style=club] .atlas-plan strong,[data-style=club] .atlas-plan b{font-size:18px;line-height:24px;font-weight:700}
-[data-style=club] .atlas-plan small{font-size:12px;line-height:16px;color:#d8d6dc}
+[data-style=club] .atlas-plan small{font-size:12px;line-height:16px;color:#d8d6dc;margin-top:4px}
 [data-style=club] .atlas-plan b{text-align:right;white-space:nowrap}
 [data-style=club] .atlas-plan b small{display:block;font-weight:400}
 [data-style=club] .atlas-hero{height:208px}
