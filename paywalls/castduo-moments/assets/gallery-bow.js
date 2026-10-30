@@ -5,16 +5,16 @@
  const mount=()=>document.querySelectorAll('.atlas-tiles:not([data-bow])').forEach(host=>{
   host.dataset.bow='1';const canvas=document.createElement('canvas');canvas.setAttribute('aria-hidden','true');host.replaceChildren(canvas);
   const photos=['reading','breakfast','play','walk','baking','embrace','together'].map(name=>{const im=new Image();im.onload=()=>{if(reduce.matches&&host.isConnected)paint(performance.now())};im.src='assets/family-moments/'+name+'.jpg';return im});
-  const ctx=canvas.getContext('2d');let id,last=performance.now(),offset=0,age=0;
+  const ctx=canvas.getContext('2d');let id=0,last=performance.now(),offset=0,age=0,w=0,h=0,dpr=1,visible=false;
+  const resize=()=>{w=host.clientWidth;h=host.clientHeight;dpr=Math.min(devicePixelRatio||1,2);canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr)};new ResizeObserver(resize).observe(host);resize();
+  const visibility=new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;if(visible&&!document.hidden&&!id){last=performance.now();id=requestAnimationFrame(paint)}else if(!visible){cancelAnimationFrame(id);id=0}});visibility.observe(host);
+  document.addEventListener("visibilitychange",()=>{if(document.hidden){cancelAnimationFrame(id);id=0}else if(visible&&!id){last=performance.now();id=requestAnimationFrame(paint)}});
   // Position, size and starting row, in hero coordinates. Each returns outside the crop.
   const cards=[[-.09,.30,.49,.06],[.74,.28,.36,.03],[.40,.17,.22,.47],[.83,.30,.39,.64],[.01,.22,.29,.79],[.30,.23,.28,1.19],[.65,.18,.24,1.49]];
   function paint(now){
-   if(!host.isConnected)return;
+   id=0;if(!host.isConnected){visibility.disconnect();return}if(!visible||document.hidden)return;
    const dt=Math.min((now-last)/1000,.04);last=now;
-   if(document.hidden){id=requestAnimationFrame(paint);return}
-   const w=host.clientWidth,h=host.clientHeight,dpr=Math.min(devicePixelRatio||1,2);
-   if(!w||!h){id=requestAnimationFrame(paint);return}
-   if(canvas.width!==Math.round(w*dpr)||canvas.height!==Math.round(h*dpr)){canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr)}
+   if(!w||!h)return;
    ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,w,h);
    age+=dt;
    // Repeated scroll flick: strong speed peaks and a continuous soft coast.
@@ -25,6 +25,7 @@
    cards.forEach(([x,ww,hh,y],i)=>{
     const cw=w*ww*.9,ch=h*hh*.9;
     const py=((h*y-offset)%period+period)%period-ch-24;
+    if(py+ch<0||py>h)return;
     const fast=Math.max(0,Math.min(1,(speed-170)/160));
     const bend=reduce.matches?0:cw*.12*fast*fast*(3-2*fast);
     ctx.save();ctx.translate(w*x+w*ww*.05,py);
@@ -37,7 +38,7 @@
      ctx.clip();
      const ratio=cw/ch;let sw=im.naturalWidth,sh=im.naturalHeight,sx=0,sy=0;
      if(sw/sh>ratio){sw=sh*ratio;sx=(im.naturalWidth-sw)/2}else{sh=sw/ratio;sy=(im.naturalHeight-sh)*.35}
-     const strips=80;
+     const strips=bend<.1?1:32;
      for(let j=0;j<strips;j++){
       const u=j/strips,m=(j+.5)/strips;
       const displacement=-4*bend*m*(1-m);
@@ -48,7 +49,6 @@
    });
    if(!reduce.matches)id=requestAnimationFrame(paint);
   }
-  id=requestAnimationFrame(paint);
  });
  new MutationObserver(mount).observe(document.querySelector('#board')||document.querySelector('#preview')||document.body,{childList:true,subtree:true});mount();
 })();

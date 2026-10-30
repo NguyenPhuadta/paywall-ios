@@ -33,3 +33,16 @@
 
 .phone .cta-updated.billing-busy .primary>span{position:static;inset:auto;transform:none;order:0;font:inherit;letter-spacing:inherit}
 .phone .cta-updated.billing-busy .primary>.billing-spinner{width:20px;height:20px;flex:0 0 20px}
+
+.phone .billing-payment-space{height:28px;flex:none;visibility:hidden}
+.phone .billing-skeleton-label{gap:0}
+.phone .billing-skeleton-label span:first-child{height:22px}
+.phone .billing-skeleton-label span:last-child{height:16px}
+.billing-timeline-placeholder h3,.billing-timeline-placeholder p{visibility:hidden}
+
+.phone .billing-skeleton-label span:first-child{height:24px}
+.phone .cinema-plan .billing-skeleton-label,.phone .hy-offer .billing-skeleton-label{gap:4px}
+
+.phone .in-offer .billing-skeleton-label{gap:4px}
+
+.phone .billing-skeleton-label span{margin:0}

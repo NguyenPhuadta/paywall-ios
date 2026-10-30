@@ -38,7 +38,6 @@
     const option = FRAME_OPTS[+fig.dataset.i];
     if (!screen || !option || option.state !== 'loading' || billingTransition) return;
     billingTransition = true;
-    const oldHeights = new Map([...screen.children].map(node => [node.classList[0], node.getBoundingClientRect().height / (fig.querySelector('.phone').getBoundingClientRect().width / fig.querySelector('.phone').offsetWidth)]));
     const oldOffer = screen.querySelector('.purchase-area');
     if (!reduced.matches && oldOffer) {
       oldOffer.classList.add('billing-content-exit');
@@ -53,29 +52,10 @@
       if (replacement) replacement.replaceWith(node);
     });
     if (!reduced.matches) {
-      const phone = fig.querySelector('.phone');
-      const scale = phone.getBoundingClientRect().width / phone.offsetWidth;
-      const resized = [];
-      [...screen.children].forEach(node => {
-        const before = oldHeights.get(node.classList[0]);
-        const after = node.getBoundingClientRect().height / scale;
-        if (before == null || Math.abs(before - after) < 1) return;
-        const previous = {height:node.style.height, flex:node.style.flex, overflow:node.style.overflow, transition:node.style.transition};
-        node.style.height = before + 'px';
-        node.style.flex = '0 0 auto';
-        node.style.overflow = 'hidden';
-        resized.push({node, after, previous});
-      });
       const offer = screen.querySelector('.purchase-area');
       offer?.classList.add('billing-content-enter');
       screen.querySelector('.gallery-timeline ol')?.classList.add('billing-content-enter');
-      requestAnimationFrame(() => requestAnimationFrame(() => {
-        resized.forEach(({node, after, previous}) => {
-          node.style.transition = 'height 420ms cubic-bezier(.4, 0, .2, 1)';
-          node.style.height = after + 'px';
-          setTimeout(() => Object.assign(node.style, previous), 450);
-        });
-      }));
+
     }
   });
 })();

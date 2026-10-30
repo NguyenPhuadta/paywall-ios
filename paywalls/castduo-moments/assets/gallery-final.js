@@ -5,7 +5,7 @@
   const tpl=document.createElement('template');tpl.innerHTML=previous(o);
   const headings={unknown:'Checking your offer…',pending:'Your purchase is pending.',unverified:'Checking your access…',restoring:'Restoring your purchases…'};
   const timeline=tpl.content.querySelector('.gallery-timeline');
-  if(timeline&&o.state!=='ready'){
+  if(timeline&&!['ready','loading'].includes(o.state)){
    timeline.classList.add('timeline-status');timeline.querySelector('ol')?.remove();
    if(headings[o.state])timeline.querySelector('h2').textContent=headings[o.state];
   }

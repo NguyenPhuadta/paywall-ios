@@ -46,4 +46,8 @@ Head stylesheet giữ UI ở opacity 0 trước paint đầu tiên. Sau khi font
 
 Nguồn kỹ thuật: https://web.dev/articles/animations-guide (opacity và compositing), https://m2.material.io/design/motion/the-motion-system.html (fade cho thành phần xuất hiện trong màn).
 
-Billing loading → ready: skeleton fade-out 140 ms, giá/CTA fade-in 320 ms; các vùng thay đổi chiều cao nội suy 420 ms rồi trả lại layout responsive. Reduce Motion cập nhật ngay.
+Billing loading → ready: skeleton fade-out 140 ms, giá/CTA fade-in 320 ms. Bố cục loading giữ sẵn chỗ cho nội dung thật; không animate height. Reduce Motion cập nhật ngay.
+
+## Performance · 30 October 2026
+
+Preview đơn chỉ dựng một figure; demo ngoài vùng xem được unload và nạp lại khi cuộn tới. Canvas Moments dừng khi khuất và giảm số lượt vẽ ảnh. Xem [kết quả đo và phạm vi kiểm tra](docs/performance-2026-10-30.md). Xem và Dev dùng cùng runtime; ZIP đã đồng bộ.

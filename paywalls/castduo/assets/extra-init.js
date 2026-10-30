@@ -28,7 +28,7 @@ board=function(){
  ['Offer & availability',[frame('No introductory offer',{eligibility:'ineligible'}),frame('Checking offer',{state:'unknown',eligibility:'unknown'}),frame('Loading products',{state:'loading',eligibility:'unknown'}),frame('Load error',{state:'load-error',eligibility:'unknown'})]],
  ['Purchase & restore',[frame('Opening App Store',{state:'purchasing'}),frame('Pending',{state:'pending'}),frame('Canceled',{state:'cancelled'}),frame('Purchase error',{state:'purchase-error'}),frame('Unverified',{state:'unverified'}),frame('Verified success',{state:'success'}),frame('Restoring',{state:'restoring'}),frame('Restored',{state:'restored'}),frame('No purchases',{state:'restore-empty'}),frame('Restore error',{state:'restore-error'})]],
  ['Policy',[frame('Terms URL needed',{sheet:'terms'}),frame('Privacy URL needed',{sheet:'privacy'})]]];
- document.querySelector('#board').innerHTML=rows.map(([title,frames],i)=>`<section class="row" id="${i===0?'preview':'row-'+i}"><h2>${title}</h2><div class="frames">${frames.join('')}</div></section>`).join('');
+ document.querySelector('#board').innerHTML=(new URLSearchParams(location.search).get('view')==='board'?rows:[[rows[0][0],[rows[0][1][0]]]]).map(([title,frames],i)=>`<section class="row" id="${i===0?'preview':'row-'+i}"><h2>${title}</h2><div class="frames">${frames.join('')}</div></section>`).join('');
  document.querySelector('#notice').innerHTML=`CONCEPT ONLY · $x.xx/week placeholder · purchases simulated · policy/product data unconfirmed. LAYOUT ONLY · Visual asset and media type to be chosen by the user.`;
  document.querySelectorAll('figure').forEach(update);
 };

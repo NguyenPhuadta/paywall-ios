@@ -32,6 +32,8 @@
   if(['loading','purchasing'].includes(o.state)){
    area.classList.add('billing-busy');area.querySelectorAll('.status').forEach(el=>el.remove());
    area.querySelector('.cta-payment')?.remove();
+   if(o.state==='loading'&&o.eligibility==='eligible'){const space=document.createElement('div');space.className='billing-payment-space';space.setAttribute('aria-hidden','true');group.append(space);}
+   if(o.state==='loading'){const row=template.content.querySelector('.gallery-timeline li:last-child');if(row){row.classList.add('billing-timeline-placeholder');row.setAttribute('aria-hidden','true');}}
    button.disabled=true;button.setAttribute('aria-busy','true');
    const loading=o.state==='loading';
    button.setAttribute('aria-label',loading?'Loading plans…':'Opening App Store…');
