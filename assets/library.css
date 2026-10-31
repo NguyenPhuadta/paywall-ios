@@ -109,3 +109,5 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline-color:#79b9f3}
 .comment-dialog #reply-text{min-height:58px;margin-bottom:6px}
 .comment-dialog .reply-send{display:block;margin-left:auto}
 .comment-dialog .reply-delete{display:block;margin:5px 0 0 auto;padding:2px 0;background:none;color:#c9a4a1;font-size:11px}
+
+.comment-list[hidden]{display:none}
