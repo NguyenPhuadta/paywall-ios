@@ -46,3 +46,9 @@
 .phone .in-offer .billing-skeleton-label{gap:4px}
 
 .phone .billing-skeleton-label span{margin:0}
+
+/* Highlight trial with the layout's existing price size; preserve its card skin. */
+.phone .cta-updated .offer-trial{font-weight:700;text-align:right}
+.phone .cta-updated .offer-trial small{display:block;font-weight:400}
+html:not([lang=en]) .phone .cta-updated>:is(.cinema-plan,.hy-offer,.atlas-plan,.in-offer){flex-wrap:wrap}
+html:not([lang=en]) .phone .cta-updated .offer-trial{white-space:normal;max-width:100%}

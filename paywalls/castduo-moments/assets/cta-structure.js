@@ -8,6 +8,15 @@
   if(!area)return html;
   const button=area.querySelector('.primary'),legal=area.querySelector('.disclosure'),links=area.querySelector('.utility');
   if(!button||!links)return html;
+  // Shared offer wording; each layout keeps its existing type and geometry.
+  const offerCard=area.querySelector('.cinema-plan,.hy-offer,.atlas-plan,.in-offer');
+  if(offerCard){
+   const label=offerCard.querySelector(':scope > div'),rate=offerCard.querySelector(':scope > b');
+   if(label&&rate){
+    label.innerHTML='<strong>Weekly</strong>';
+    if(trial){rate.classList.add('offer-trial');rate.innerHTML=`3-day free trial<small>then ${esc(p.price)}/week</small>`;}
+   }
+  }
   const group=document.createElement('div');group.className='cta-structure';
   const main=document.createElement('div');main.className='cta-main';
   if(legal){

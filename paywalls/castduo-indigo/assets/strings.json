@@ -539,6 +539,20 @@
       "fil": "Binubuksan ang App Store…",
       "es": "Abriendo App Store…",
       "vi": "Đang mở App Store…"
+    },
+    "Weekly": {
+      "en": "Weekly",
+      "zh-Hans": "每周",
+      "fil": "Lingguhan",
+      "es": "Semanal",
+      "vi": "Hằng tuần"
+    },
+    "then {price}/week": {
+      "en": "then {price}/week",
+      "zh-Hans": "之后每周{price}",
+      "fil": "pagkatapos ay {price}/linggo",
+      "es": "después, {price}/semana",
+      "vi": "sau đó {price}/tuần"
     }
   }
 }
