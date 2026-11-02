@@ -637,6 +637,13 @@
       "fil": "pagkatapos ay {price}/linggo",
       "es": "después, {price}/semana",
       "vi": "sau đó {price}/tuần"
+    },
+    "Moments on a": {
+      "en": "Moments on a",
+      "zh-Hans": "美好时刻，尽享",
+      "fil": "Mga sandali sa",
+      "es": "Momentos en una pantalla",
+      "vi": "Khoảnh khắc trên màn hình"
     }
   }
 }
