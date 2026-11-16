@@ -87,6 +87,20 @@ main.duo-layout {
 .phone.duo .visual::after {
   background: linear-gradient(to right, transparent, rgb(0 0 0 / 80%) 86.383%);
 }
+
+/* Figma 698:6111: 473px artwork, 32px gutter, 362px content, 84px system rail. */
+.phone.duo-folded { --folded-surface: #0c0c0c; background: var(--folded-surface); }
+.duo-folded .content { margin-left: 505px; }
+.duo-folded .hero .visual {
+  right: auto;
+  width: 473px;
+  background: var(--folded-surface);
+  mask-image: linear-gradient(to right, #000, transparent 99%);
+}
+.duo-folded .duo-photos { width: var(--screen-width); }
+.duo-folded .duo-blur { display: none; }
+.phone.duo-folded .visual::after { background: none; }
+
 .board-grid .duo-example { grid-column: 1 / -1; }
 [data-embed] main.duo-layout { display: block; }
 @media (max-width: 1240px) {

@@ -1,4 +1,6 @@
 const smartHueDevices = (() => {
+  const duoDevice = '951x669';
+  const foldedDevice = 'duo-partially-folded';
   const sizes = [
     ['440x956', 'iPhone 16 Pro Max, 17 Pro Max'],
     ['420x912', 'iPhone Air'],
@@ -9,15 +11,16 @@ const smartHueDevices = (() => {
     ['414x896', 'iPhone 11'],
     ['375x812', 'iPhone 12 mini, 13 mini'],
     ['375x667', 'iPhone SE 2, SE 3'],
-    ['951x669', 'DUO Inner Display · Landscape'],
+    [duoDevice, 'DUO Inner Display · Landscape'],
+    [foldedDevice, 'DUO Inner Display · Partially Folded'],
   ];
   const defaultDevice = '390x844';
   const picker = document.querySelector('#size');
   const phone = document.querySelector('.phone');
   const host = document.querySelector('#prototype');
   const preview = document.querySelector('main');
-  const dimensions = id => id.split('x').map(Number);
-  const duoDevice = '951x669';
+  const dimensions = id => (id === foldedDevice ? duoDevice : id).split('x').map(Number);
+  const isDuo = id => id === duoDevice || id === foldedDevice;
   sizes.forEach(([id, models]) => {
     const option = new Option(`${dimensions(id).join(' × ')} · ${models}`, id);
     picker.add(option);
@@ -25,11 +28,12 @@ const smartHueDevices = (() => {
 
   function applySize(id) {
     const [width, height] = dimensions(id);
-    const duo = id === duoDevice;
+    const duo = isDuo(id);
     picker.value = id;
-    phone.dataset.device = id === defaultDevice ? 'default' : dimensions(id).join('×');
+    phone.dataset.device = id === foldedDevice ? id : id === defaultDevice ? 'default' : dimensions(id).join('×');
     phone.classList.toggle('small', id === '375x667');
     phone.classList.toggle('duo', duo);
+    phone.classList.toggle('duo-folded', id === foldedDevice);
     host.classList.toggle('duo-frame', duo);
     preview.classList.toggle('duo-layout', duo);
     phone.style.setProperty('--screen-width', `${width}px`);
@@ -48,7 +52,7 @@ const smartHueDevices = (() => {
     else url.searchParams.set('device', picker.value);
     history.replaceState(history.state, '', url);
   });
-  return { sizes, dimensions, defaultDevice, duoDevice };
+  return { sizes, dimensions, defaultDevice, isDuo };
 })();
 
 (() => {
@@ -59,7 +63,7 @@ const smartHueDevices = (() => {
   const palette = document.querySelector('#palette');
   const sizesGallery = document.querySelector('#device-frames');
   const statesGallery = document.querySelector('#state-frames');
-  const { sizes, dimensions, defaultDevice, duoDevice } = smartHueDevices;
+  const { sizes, dimensions, defaultDevice, isDuo } = smartHueDevices;
   const activeFrames = new Map();
   const observer = new IntersectionObserver(entries => {
     for (const entry of entries) {
@@ -75,7 +79,7 @@ const smartHueDevices = (() => {
   function loadFrame(host) {
     const url = new URL('index.html', location.href);
     url.search = new URLSearchParams({
-      embed: '1', board: '1', v: 'duo1', device: host.dataset.device,
+      embed: '1', board: '1', v: 'duo-folded', device: host.dataset.device,
       state: host.dataset.state, lang: language.value,
       countdown: layout.value, palette: palette.value,
     });
@@ -89,7 +93,7 @@ const smartHueDevices = (() => {
     const host = document.createElement('div');
     const iframe = document.createElement('iframe');
     const caption = document.createElement('figcaption');
-    if (device === duoDevice) card.className = 'duo-example';
+    if (isDuo(device)) card.className = 'duo-example';
     host.className = 'board-frame';
     Object.assign(host.dataset, { device, state, width });
     host.style.aspectRatio = `${width} / ${height}`;

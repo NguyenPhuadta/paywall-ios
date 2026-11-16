@@ -27,6 +27,7 @@ function context(){
  return{lang:q.get('lang')||'en',device:q.get('device')||'default',eligibility:q.get('eligibility')||'eligible',state:q.get('state')||'ready'};
 }
 function matches(c){const now=context();return['lang','device','eligibility'].every(k=>c.context[k]===now[k])&&(!inline||c.context.state===now.state)}
+function layoutGroup(device){return ['951×669','duo-partially-folded'].includes(device)?device:'portrait'}
 function openExisting(c, point, origin){
  if(inline){
   const {lang,device,eligibility,state}=c.context;
@@ -52,8 +53,8 @@ function saveLocal(){try{localStorage.setItem(key,JSON.stringify(localComments))
 function render(){layer.querySelectorAll('.comment-pin').forEach(p=>p.remove());list.replaceChildren();list.hidden=!commentsVisible;exportButton.hidden=!commentsVisible||!comments.length;visibility.textContent=commentsVisible?'Ẩn comment':'Hiện comment';visibility.setAttribute('aria-pressed',String(commentsVisible));
 comments.forEach((c,i)=>{const item=document.createElement('button');item.type='button';item.className='comment-item';item.textContent=`${i+1}. ${c.local?'[Trên máy] ':''}${c.resolved?'✓ Đã giải quyết · ':''}${c.text}`;item.onclick=()=>openExisting(c,null,item);list.append(item);
 const exact=matches(c);
-const differentOrientation=inline&&((context().device==='951×669')!==(c.context.device==='951×669'));
-if(!commentsVisible||differentOrientation||(!inline&&!exact))return;const pin=document.createElement('button');pin.type='button';pin.className='comment-pin'+(c.resolved?' is-resolved':'');pin.classList.toggle('other-preview',!exact);pin.textContent=i+1;pin.title=exact?c.text:`Mở preview ${c.context.lang.toUpperCase()} · ${c.text}`;pin.setAttribute('aria-label',`Comment ${i+1}: ${pin.title}`);pin.style.left=Math.min(.94,c.rect.x+c.rect.w)*100+'%';pin.style.top=Math.min(.97,c.rect.y)*100+'%';pin.onclick=e=>{e.stopPropagation();openExisting(c,{x:e.clientX,y:e.clientY},pin)};layer.append(pin)})}
+const differentLayout=inline&&layoutGroup(context().device)!==layoutGroup(c.context.device);
+if(!commentsVisible||differentLayout||(!inline&&!exact))return;const pin=document.createElement('button');pin.type='button';pin.className='comment-pin'+(c.resolved?' is-resolved':'');pin.classList.toggle('other-preview',!exact);pin.textContent=i+1;pin.title=exact?c.text:`Mở preview ${c.context.lang.toUpperCase()} · ${c.text}`;pin.setAttribute('aria-label',`Comment ${i+1}: ${pin.title}`);pin.style.left=Math.min(.94,c.rect.x+c.rect.w)*100+'%';pin.style.top=Math.min(.97,c.rect.y)*100+'%';pin.onclick=e=>{e.stopPropagation();openExisting(c,{x:e.clientX,y:e.clientY},pin)};layer.append(pin)})}
 function open(c,point,origin){selected=c?.id||null;draft=c||draft;returnFocus=origin||toggle;error.textContent='';text.value=c?.text||'';const editable=!c||c.local||c.owner===uid;text.readOnly=!editable;dialog.querySelector('.comment-save').hidden=!editable;del.hidden=!c||!editable;dialog.querySelector('#comment-title').textContent=c?(editable?'Sửa comment':'Xem comment'):'Thêm comment';const ctx=draft.context;dialog.querySelector('.comment-context').textContent=`${ctx.lang} · ${ctx.device==='default'?'390×844':ctx.device} · ${ctx.state} · ${c?.local?'Chỉ trên trình duyệt này':'Comment chung'}`;if(matches(draft))box(draft.rect);setupThread(c);dialog.showModal();const b=host.getBoundingClientRect(),x=point?.x??b.right+12,y=point?.y??b.top+80;dialog.style.left=Math.max(8,Math.min(x+12,innerWidth-dialog.offsetWidth-8))+'px';dialog.style.top=Math.max(8,Math.min(y+12,innerHeight-dialog.offsetHeight-8))+'px';text.focus()}
 function close(){stopReplies?.();stopReplies=null;dialog.close();draft=null;selected=null;selection.hidden=true;(returnFocus?.isConnected?returnFocus:toggle).focus()}
 function setupThread(c){
