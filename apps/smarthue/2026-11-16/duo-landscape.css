@@ -1,0 +1,97 @@
+main.duo-layout {
+  max-width: 1440px;
+  grid-template-columns: minmax(0, 951px) minmax(240px, 1fr);
+}
+#prototype.duo-frame { aspect-ratio: 951 / 669; }
+.duo-frame .phone {
+  position: absolute;
+  inset: 0 auto auto 0;
+  max-width: none;
+  transform: scale(var(--duo-scale, 1));
+  transform-origin: top left;
+}
+.duo-levels, .duo-scene { display: none; }
+.phone.duo { isolation: isolate; }
+.duo .duo-scene { display: block; position: absolute; inset: 0; }
+.duo .status {
+  position: absolute;
+  inset: 85px 23px auto auto;
+  height: auto;
+  width: 48px;
+  padding: 0;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 16px;
+  line-height: 19px;
+}
+.duo .levels { display: none; }
+.duo .duo-levels { display: block; }
+.duo .top { left: auto; right: 23px; top: 172px; height: auto; }
+.duo .close { width: 48px; height: 48px; background: #232e43; }
+
+.duo .content {
+  width: 362px;
+  margin-left: 485px;
+  min-height: 669px;
+  padding: 24px 0;
+  justify-content: center;
+  gap: 24px;
+}
+.duo .hero { position: static; flex: none; isolation: auto; }
+.duo .hero .visual { inset: 0; z-index: 0; }
+.duo .hero .visual > .room-photo { display: none; }
+.duo .intro, .duo .purchase { position: relative; z-index: 1; padding: 0; }
+.duo .home { display: none; }
+.phone.duo[data-countdown="lcd"] .heading { margin: 0; }
+.phone.duo[data-countdown="lcd"] .timer { margin-bottom: 16px; }
+.phone.duo[data-countdown="lcd"] .timer-caption { font-size: 13px; }
+.phone.duo[data-countdown="lcd"] .unit small { margin-top: 4px; }
+.duo .links button { min-height: 36px; }
+.duo .sheet-backdrop, .duo .billing-sheet { z-index: 3; }
+
+.duo-photos, .duo-photo, .duo-blur, .duo-blur > div {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.duo-photos { isolation: isolate; overflow: hidden; }
+.duo-photo {
+  object-fit: cover;
+  object-position: center 28%;
+  transform: scaleX(-1);
+}
+.duo-photo--red, .duo-photo--ice {
+  opacity: 0;
+  mix-blend-mode: color;
+  filter: blur(6px);
+  mask-image:
+    linear-gradient(#000, transparent 24%),
+    radial-gradient(ellipse 38% 75% at 70% 51%, #000 36%, transparent 98%);
+}
+:not([data-board]) .duo-scenes-ready .duo-photo--red { animation: room-red 8s linear infinite; }
+:not([data-board]) .duo-scenes-ready .duo-photo--ice { animation: room-ice 8s linear infinite; }
+.lights-paused .duo-photo { animation-play-state: paused; }
+.duo-blur > div:nth-child(1) {
+  backdrop-filter: blur(12px);
+  mask-image: linear-gradient(to right, transparent 45.11%, #000 67%);
+}
+.duo-blur > div:nth-child(2) {
+  backdrop-filter: blur(26px);
+  mask-image: linear-gradient(to right, transparent 57%, #000 86%);
+}
+.duo-blur > div:nth-child(3) {
+  backdrop-filter: blur(42px);
+  mask-image: linear-gradient(to right, transparent 72%, #000);
+}
+.phone.duo .visual::after {
+  background: linear-gradient(to right, transparent, rgb(0 0 0 / 80%) 86.383%);
+}
+.board-grid .duo-example { grid-column: 1 / -1; }
+[data-embed] main.duo-layout { display: block; }
+@media (max-width: 1240px) {
+  main.duo-layout { grid-template-columns: minmax(0, 951px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .duo-scenes-ready .duo-photo { animation: none; }
+}

@@ -612,13 +612,21 @@ main {
 [data-embed] .notes { display: none; }
 [data-embed] .phone { box-shadow: none; }
 [data-embed] .close { pointer-events: none; }
-</style><main><header class="preview-title"><a href="../../../index.html#smarthue" style="display:inline-block;margin-bottom:8px;color:inherit">← Thư viện SmartHue</a><h1>Prototype SmartHue</h1><p>Paywall Giáng sinh · Chọn cỡ màn hình để xem bố cục.</p></header><div id="prototype"><section class="phone" lang="en" data-i18n-aria="paywall" aria-label="SmartHue Christmas paywall"><div class="status"><span>9:41</span><div class="levels"><img src="assets/status-cellular.svg" alt=""><img src="assets/status-wifi.svg" alt=""><img src="assets/status-battery.svg" alt=""></div></div><div class="content"><header class="top"><button class="close" data-i18n-aria="close" aria-label="Close paywall">×</button></header><div class="hero"><div class="visual">
+</style><link rel="stylesheet" href="duo-landscape.css?v=1"><main><header class="preview-title"><a href="../../../index.html#smarthue" style="display:inline-block;margin-bottom:8px;color:inherit">← Thư viện SmartHue</a><h1>Prototype SmartHue</h1><p>Paywall Giáng sinh · Chọn cỡ màn hình để xem bố cục.</p></header><div id="prototype"><section class="phone" lang="en" data-i18n-aria="paywall" aria-label="SmartHue Christmas paywall"><div class="status"><span>9:41</span><img class="duo-levels" src="assets/duo/levels.svg" alt=""><div class="levels"><img src="assets/status-cellular.svg" alt=""><img src="assets/status-wifi.svg" alt=""><img src="assets/status-battery.svg" alt=""></div></div><div class="content"><header class="top"><button class="close" data-i18n-aria="close" aria-label="Close paywall">×</button></header><div class="hero"><div class="visual">
   <img class="room-photo" src="assets/christmas-living-room.jpg?v=3" data-i18n-alt="roomA" alt="A Christmas tree beside a color-changing smart floor lamp" fetchpriority="high">
   <img class="room-photo room-photo--red" src="assets/christmas-living-room-red.jpg?v=3" alt="">
   <img class="room-photo room-photo--ice" src="assets/christmas-living-room-ice.jpg?v=3" alt="">
   <img class="room-photo" data-variant="b" src="assets/christmas-room-hue-signe-right.jpg" data-i18n-alt="roomB" alt="A Christmas tree and a tall color-changing floor lamp beside the gifts">
   <img class="room-photo room-photo--red" data-variant="b" src="assets/christmas-room-hue-signe-right-red.jpg" alt="">
   <img class="room-photo room-photo--ice" data-variant="b" src="assets/christmas-room-hue-signe-right-ice.jpg" alt="">
+  <div class="duo-scene" aria-hidden="true">
+    <div class="duo-photos">
+      <img class="duo-photo" src="assets/duo/warm-raised.jpg" alt="" loading="lazy">
+      <img class="duo-photo duo-photo--red" src="assets/duo/red-aligned.jpg" alt="" loading="lazy">
+      <img class="duo-photo duo-photo--ice" src="assets/duo/ice-aligned.jpg" alt="" loading="lazy">
+    </div>
+    <div class="duo-blur" data-node-id="2359:11746"><div></div><div></div><div></div></div>
+  </div>
   <div class="snowfall" aria-hidden="true"></div>
 </div>
 <div class="intro">
@@ -787,10 +795,11 @@ main {
       </figure>
   </div>
 </section>
-</main><script src="../../../assets/review-comments.js?v=7" data-paywall="smarthue-christmas" defer></script><script src="preview-locale.js?v=copy2" defer></script><script src="preview-board.js?v=frames9" defer></script><script src="billing-preview.js?v=pins1" defer></script><script>
+</main><script src="../../../assets/review-comments.js?v=8" data-paywall="smarthue-christmas" defer></script><script src="preview-locale.js?v=copy2" defer></script><script src="preview-board.js?v=duo1" defer></script><script src="billing-preview.js?v=pins1" defer></script><script>
 const phone = document.querySelector('.phone');
 const timer = document.querySelector('.timer');
 const scenePhotos = [...phone.querySelectorAll('.room-photo')];
+const duoPhotos = [...phone.querySelectorAll('.duo-photo')];
 const boardFrame = document.documentElement.hasAttribute('data-board');
 const countdownLayout = document.querySelector('#countdown-layout');
 const previewUrl = new URL(window.location.href);
@@ -807,8 +816,9 @@ countdownLayout.value = requestedLayout === 'lcd' ? 'lcd' : 'clock';
 setCountdownLayout(countdownLayout.value);
 countdownLayout.addEventListener('change', () => {
   setCountdownLayout(countdownLayout.value);
-  previewUrl.searchParams.set('countdown', countdownLayout.value);
-  history.replaceState(history.state, '', previewUrl);
+  const url = new URL(location.href);
+  url.searchParams.set('countdown', countdownLayout.value);
+  history.replaceState(history.state, '', url);
 });
 
 const snowfall = phone.querySelector('.snowfall');
@@ -839,6 +849,15 @@ if (!boardFrame) Promise.all(scenePhotos.map(photo => photo.decode())).then(() =
 }).catch(() => {
   pauseLights.hidden = true;
 });
+function prepareDuoScene() {
+  if (!phone.classList.contains('duo')) return;
+  Promise.all(duoPhotos.map(photo => {
+    photo.loading = 'eager';
+    return photo.decode();
+  })).then(() => phone.classList.add('duo-scenes-ready')).catch(() => {});
+}
+document.querySelector('#size').addEventListener('change', () => queueMicrotask(prepareDuoScene));
+document.addEventListener('DOMContentLoaded', prepareDuoScene);
 pauseLights.addEventListener('click', () => {
   const paused = phone.classList.toggle('lights-paused');
   pauseLights.setAttribute('aria-pressed', String(paused));
