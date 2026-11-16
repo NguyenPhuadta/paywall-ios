@@ -341,7 +341,7 @@ main {
 .colon { color: inherit; font-size: 15px; font-weight: 750; line-height: 1.3; }
 .small .timer { width: min(204px, 100%); }
 .heading { margin: 0 0 20px; color: var(--ink); }
-.heading .heading-accent { color: var(--accent); }
+.heading .heading-accent { display: block; color: var(--accent); }
 .purchase { padding: 0 16px; }
 .phone[data-countdown="lcd"] .intro {
   --countdown-number-size: 46px;
@@ -353,7 +353,7 @@ main {
   letter-spacing: -.025em;
   white-space: nowrap;
 }
-.phone[data-countdown="lcd"] .heading br { display: none; }
+.phone[data-countdown="lcd"] .heading-accent { display: inline; }
 .phone[data-countdown="lcd"] .visual::after {
   background: linear-gradient(180deg, #080b1270, transparent 19%, transparent 64%,
     color-mix(in srgb, var(--surface) 48%, transparent) 83%, var(--surface));
@@ -653,7 +653,7 @@ main {
     </div>
   </div>
 </div>
-<h2 class="heading"><span data-i18n="headline">Light up before</span><br> <span class="heading-accent" data-i18n="headlineAccent">time’s up.</span></h2>
+<h2 class="heading"><span data-i18n="headline">Light up before</span> <span class="heading-accent" data-i18n="headlineAccent">time’s up.</span></h2>
 </div>
 </div>
 <section class="purchase" data-i18n-aria="purchase" aria-label="Subscription options"><div class="plans">
@@ -796,7 +796,7 @@ main {
       </figure>
   </div>
 </section>
-</main><script src="../../../assets/review-comments.js?v=7" data-paywall="smarthue-christmas" defer></script><script src="preview-locale.js?v=29" defer></script><script src="preview-board.js?v=frames1" defer></script><script src="billing-preview.js?v=pins1" defer></script><script>
+</main><script src="../../../assets/review-comments.js?v=7" data-paywall="smarthue-christmas" defer></script><script src="preview-locale.js?v=29" defer></script><script src="preview-board.js?v=frames2" defer></script><script src="billing-preview.js?v=pins1" defer></script><script>
 const phone = document.querySelector('.phone');
 const timer = document.querySelector('.timer');
 const scenePhotos = [...phone.querySelectorAll('.room-photo')];
