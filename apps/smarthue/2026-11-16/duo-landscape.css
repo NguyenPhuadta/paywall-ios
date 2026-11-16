@@ -37,6 +37,7 @@ main.duo-layout {
   justify-content: center;
   gap: 24px;
 }
+.duo:not(.duo-folded, .duo-outer) .content { padding: 36px; }
 .duo .hero { position: static; flex: none; isolation: auto; }
 .duo .hero .visual { inset: 0; z-index: 0; }
 .duo .hero .visual > .room-photo { display: none; }
