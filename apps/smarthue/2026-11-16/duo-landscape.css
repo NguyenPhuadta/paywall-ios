@@ -37,13 +37,16 @@ main.duo-layout {
   justify-content: center;
   gap: 24px;
 }
-.duo:not(.duo-folded, .duo-outer) .content { padding: 36px; }
+.duo:not(.duo-folded, .duo-outer) .content { padding-inline: 40px; }
 .duo .hero { position: static; flex: none; isolation: auto; }
 .duo .hero .visual { inset: 0; z-index: 0; }
 .duo .hero .visual > .room-photo { display: none; }
 .duo .intro, .duo .purchase { position: relative; z-index: 1; padding: 0; }
 .duo .home { display: none; }
 .phone.duo[data-countdown="lcd"] .heading { margin: 0; }
+.phone.duo:not(.duo-folded, .duo-outer)[data-countdown="lcd"]:lang(de) .heading {
+  font-size: clamp(16.94px, 7.25cqi, 26.62px);
+}
 .phone.duo[data-countdown="lcd"] .timer { margin-bottom: 16px; }
 .phone.duo[data-countdown="lcd"] .timer-caption { font-size: 13px; }
 .phone.duo[data-countdown="lcd"] .unit small { margin-top: 4px; }
@@ -117,7 +120,7 @@ main.duo-layout {
   width: 100%;
   min-height: var(--screen-height);
   margin: 0;
-  padding: 176px 20px 8px;
+  padding: 176px 40px 8px;
   gap: 16px;
   justify-content: flex-end;
 }
@@ -127,8 +130,8 @@ main.duo-layout {
 .phone.duo-outer .visual::after {
   background: linear-gradient(to bottom, transparent 44%, var(--surface));
 }
-.duo-outer .intro { text-align: center; }
-.phone.duo-outer[data-countdown="lcd"] .clock-screen { justify-items: center; }
+.duo-outer .intro { text-align: left; }
+.duo-outer:not([data-countdown="lcd"]) .timer { margin-inline: 0; }
 .phone.duo-outer[data-countdown="lcd"] .heading { white-space: normal; }
 .duo-outer .links button { min-height: 44px; }
 
