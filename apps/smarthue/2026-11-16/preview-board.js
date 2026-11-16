@@ -59,7 +59,7 @@ const smartHueDevices = (() => {
   function loadFrame(host) {
     const url = new URL('index.html', location.href);
     url.search = new URLSearchParams({
-      embed: '1', board: '1', v: 'frames8', device: host.dataset.device,
+      embed: '1', board: '1', v: 'frames9', device: host.dataset.device,
       state: host.dataset.state, lang: language.value,
       countdown: layout.value, palette: palette.value,
     });
