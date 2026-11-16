@@ -67,8 +67,6 @@ const smartHueDevices = (() => {
   if (document.documentElement.hasAttribute('data-embed')) return;
 
   const language = document.querySelector('#preview-language');
-  const layout = document.querySelector('#countdown-layout');
-  const palette = document.querySelector('#palette');
   const sizesGallery = document.querySelector('#device-frames');
   const statesGallery = document.querySelector('#state-frames');
   const { sizes, dimensions, defaultDevice, isDuoLandscape } = smartHueDevices;
@@ -87,9 +85,8 @@ const smartHueDevices = (() => {
   function loadFrame(host) {
     const url = new URL('index.html', location.href);
     url.search = new URLSearchParams({
-      embed: '1', board: '1', v: 'duo-outer', device: host.dataset.device,
+      embed: '1', board: '1', v: 'final1', device: host.dataset.device,
       state: host.dataset.state, lang: language.value,
-      countdown: layout.value, palette: palette.value,
     });
     activeFrames.get(host).src = url.href;
     observer.unobserve(host);
@@ -135,11 +132,9 @@ const smartHueDevices = (() => {
     ));
     statesGallery.append(heading, grid);
   }
-  for (const control of [language, layout, palette]) {
-    control.addEventListener('change', () => {
-      for (const [host, iframe] of activeFrames) {
-        if (iframe.hasAttribute('src')) loadFrame(host);
-      }
-    });
-  }
+  language.addEventListener('change', () => {
+    for (const [host, iframe] of activeFrames) {
+      if (iframe.hasAttribute('src')) loadFrame(host);
+    }
+  });
 })();

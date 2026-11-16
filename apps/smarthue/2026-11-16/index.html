@@ -1,4 +1,4 @@
-<!doctype html><html lang="vi" data-default-countdown="lcd"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SmartHue · Christmas paywall</title><link rel="stylesheet" href="../../../assets/library.css?v=9"><link rel="stylesheet" href="library-preview.css?v=pins1"><script>
+<!doctype html><html lang="vi"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SmartHue · Christmas paywall</title><link rel="stylesheet" href="../../../assets/library.css?v=9"><link rel="stylesheet" href="library-preview.css?v=pins1"><script>
 const embedParams = new URLSearchParams(location.search);
 document.documentElement.toggleAttribute('data-embed', embedParams.get('embed') === '1');
 document.documentElement.toggleAttribute('data-board', embedParams.get('embed') === '1' && embedParams.get('board') === '1');
@@ -89,60 +89,6 @@ main {
   width: var(--screen-width, 390px);
   height: var(--screen-height, 844px);
 }
-.phone[data-palette="cranberry"] {
-  --surface: #291019;
-  --hero-dark: #241018;
-  --hero-color: #751f35;
-  --hero-edge: #4a1725;
-  --hero-light: #f598734c;
-  --ink: #fff0e9;
-  --muted: #edc5cc;
-  --separator: #d99ca8;
-  --accent: #ffd0b3;
-  --accent-glow: #ffd0b330;
-  --plan-base: #421d29;
-  --plan-selected: #651c30;
-  --plan-highlight: #8c3047;
-  --cta-light: #ffe6d5;
-  --cta-dark: #e8a58e;
-  --cta-ink: #36151e;
-}
-.phone[data-palette="evergreen"] {
-  --surface: #0d211a;
-  --hero-dark: #081611;
-  --hero-color: #235640;
-  --hero-edge: #123128;
-  --hero-light: #e5b46356;
-  --ink: #fbf4df;
-  --muted: #c9dbca;
-  --separator: #a9c2a7;
-  --accent: #f6dda1;
-  --accent-glow: #f6dda128;
-  --plan-base: #1b342a;
-  --plan-selected: #24503b;
-  --plan-highlight: #365a43;
-  --cta-light: #fff0c2;
-  --cta-dark: #d8ac61;
-  --cta-ink: #211c10;
-}
-.phone[data-palette="winter"] {
-  --surface: #11192a;
-  --hero-dark: #0c1324;
-  --hero-color: #294569;
-  --hero-edge: #1a2a48;
-  --hero-light: #9cc6ff66;
-  --ink: #f8faff;
-  --muted: #c9d8ec;
-  --separator: #9eb5d4;
-  --accent: #d7e8ff;
-  --accent-glow: #aecfff3d;
-  --plan-base: #202c45;
-  --plan-selected: #243e5f;
-  --plan-highlight: #35597f;
-  --cta-light: #f1f7ff;
-  --cta-dark: #a8c9ef;
-  --cta-ink: #10223c;
-}
 .content { padding: 0; min-height: calc(var(--screen-height, 844px) - 96px); }
 .top {
   position: absolute;
@@ -181,9 +127,6 @@ main {
   object-position: 64% top;
   filter: saturate(.84);
 }
-.room-photo[data-variant="b"],
-.phone[data-countdown="lcd"] .room-photo:not([data-variant]) { display: none; }
-.phone[data-countdown="lcd"] .room-photo[data-variant="b"] { display: block; }
 .phone[data-countdown="lcd"] {
   --scene-duration: 8s;
   --snow-time-scale: .7;
@@ -612,13 +555,10 @@ main {
 [data-embed] .notes { display: none; }
 [data-embed] .phone { box-shadow: none; }
 [data-embed] .close { pointer-events: none; }
-</style><link rel="stylesheet" href="duo-landscape.css?v=6"><main><header class="preview-title"><a href="../../../index.html#smarthue" style="display:inline-block;margin-bottom:8px;color:inherit">← Thư viện SmartHue</a><h1>Prototype SmartHue</h1><p>Paywall Giáng sinh · Chọn cỡ màn hình để xem bố cục.</p></header><div id="prototype"><section class="phone" lang="en" data-i18n-aria="paywall" aria-label="SmartHue Christmas paywall"><div class="status"><span>9:41</span><img class="duo-levels" src="assets/duo/levels.svg" alt=""><div class="levels"><img src="assets/status-cellular.svg" alt=""><img src="assets/status-wifi.svg" alt=""><img src="assets/status-battery.svg" alt=""></div></div><div class="content"><header class="top"><button class="close" data-i18n-aria="close" aria-label="Close paywall">×</button></header><div class="hero"><div class="visual">
-  <img class="room-photo" src="assets/christmas-living-room.jpg?v=3" data-i18n-alt="roomA" alt="A Christmas tree beside a color-changing smart floor lamp" fetchpriority="high">
-  <img class="room-photo room-photo--red" src="assets/christmas-living-room-red.jpg?v=3" alt="">
-  <img class="room-photo room-photo--ice" src="assets/christmas-living-room-ice.jpg?v=3" alt="">
-  <img class="room-photo" data-variant="b" src="assets/christmas-room-hue-signe-right.jpg" data-i18n-alt="roomB" alt="A Christmas tree and a tall color-changing floor lamp beside the gifts">
-  <img class="room-photo room-photo--red" data-variant="b" src="assets/christmas-room-hue-signe-right-red.jpg" alt="">
-  <img class="room-photo room-photo--ice" data-variant="b" src="assets/christmas-room-hue-signe-right-ice.jpg" alt="">
+</style><link rel="stylesheet" href="duo-landscape.css?v=6"><main><header class="preview-title"><a href="../../../index.html#smarthue" style="display:inline-block;margin-bottom:8px;color:inherit">← Thư viện SmartHue</a><h1>Prototype SmartHue</h1><p>Paywall Giáng sinh · Chọn cỡ màn hình để xem bố cục.</p></header><div id="prototype"><section class="phone" data-countdown="lcd" lang="en" data-i18n-aria="paywall" aria-label="SmartHue Christmas paywall"><div class="status"><span>9:41</span><img class="duo-levels" src="assets/duo/levels.svg" alt=""><div class="levels"><img src="assets/status-cellular.svg" alt=""><img src="assets/status-wifi.svg" alt=""><img src="assets/status-battery.svg" alt=""></div></div><div class="content"><header class="top"><button class="close" data-i18n-aria="close" aria-label="Close paywall">×</button></header><div class="hero"><div class="visual">
+  <img class="room-photo" src="assets/christmas-room-hue-signe-right.jpg" data-i18n-alt="roomB" alt="A Christmas tree and a tall color-changing floor lamp beside the gifts">
+  <img class="room-photo room-photo--red" src="assets/christmas-room-hue-signe-right-red.jpg" alt="">
+  <img class="room-photo room-photo--ice" src="assets/christmas-room-hue-signe-right-ice.jpg" alt="">
   <div class="duo-scene" aria-hidden="true">
     <div class="duo-photos">
       <img class="duo-photo" src="assets/duo/warm-raised.jpg" alt="" loading="lazy">
@@ -632,12 +572,6 @@ main {
 <div class="intro">
 <div class="timer" role="timer" aria-label="Christmas offer countdown">
   <div class="clock-prop" aria-hidden="true">
-    <div class="clock-body">
-      <img class="clock-case" src="assets/christmas-clock.png" alt="">
-      <span class="clock-light clock-light--warm"></span>
-      <span class="clock-light clock-light--red"></span>
-      <span class="clock-light clock-light--ice"></span>
-    </div>
     <div class="clock-screen">
       <p class="timer-caption">Christmas offer ends in</p>
       <div class="digits">
@@ -687,22 +621,6 @@ main {
     </select>
   </div>
   <div class="preview-control">
-    <label for="countdown-layout">PHƯƠNG ÁN ĐẾM NGƯỢC</label>
-    <select id="countdown-layout">
-      <option value="clock">A · Đồng hồ trong ảnh</option>
-      <option value="lcd">B · Số đếm trên tiêu đề</option>
-    </select>
-  </div>
-  <div class="preview-control">
-    <label for="palette">PHỐI MÀU</label>
-    <select id="palette">
-      <option value="classic">Bản hiện tại · Xanh thông &amp; burgundy</option>
-      <option value="cranberry">Đỏ cranberry &amp; vàng hồng</option>
-      <option value="evergreen">Xanh thông &amp; vàng nến</option>
-      <option value="winter">Xanh đêm &amp; bạc tuyết</option>
-    </select>
-  </div>
-  <div class="preview-control">
     <label for="size">MÀN HÌNH</label>
     <select id="size"></select>
   </div>
@@ -740,8 +658,7 @@ main {
   <button id="reopen">Mở lại paywall</button>
   <button id="pause-lights" type="button" aria-pressed="false">Tạm dừng đèn và tuyết</button>
   <p>Giá và giao dịch dùng dữ liệu demo. Countdown kết thúc vào cuối ngày 25/12/2026 theo giờ Việt Nam.</p>
-  <p><a href="https://nguyenphuadta.github.io/paywall-ios/library/castduo-plus/">Ref bố cục · fullscreen_2</a><br>
-  Ref đồng hồ · Opal</p>
+  <p><a href="https://nguyenphuadta.github.io/paywall-ios/library/castduo-plus/">Ref bố cục · fullscreen_2</a></p>
 </aside>
 <section class="preview-board" aria-labelledby="device-heading">
   <h2 id="device-heading">Demo responsive · iPhone và DUO</h2>
@@ -753,7 +670,7 @@ main {
 </section>
 <section class="preview-assets" aria-labelledby="asset-heading">
   <h2 id="asset-heading">Hình ảnh SmartHue</h2>
-  <h3>Bản B</h3>
+  <h3>Các cảnh đèn Giáng sinh</h3>
   <div class="asset-grid">
       <figure>
         <a href="assets/christmas-room-hue-signe-right.jpg"><img src="assets/christmas-room-hue-signe-right.jpg" alt="Vàng champagne" loading="lazy"></a>
@@ -768,58 +685,23 @@ main {
         <figcaption><span>Xanh băng</span><a href="assets/christmas-room-hue-signe-right-ice.jpg" download>Tải xuống</a></figcaption>
       </figure>
   </div>
-  <h3>Bản A</h3>
-  <div class="asset-grid">
-      <figure>
-        <a href="assets/christmas-living-room.jpg"><img src="assets/christmas-living-room.jpg" alt="Vàng champagne" loading="lazy"></a>
-        <figcaption><span>Vàng champagne</span><a href="assets/christmas-living-room.jpg" download>Tải xuống</a></figcaption>
-      </figure>
-      <figure>
-        <a href="assets/christmas-living-room-red.jpg"><img src="assets/christmas-living-room-red.jpg" alt="Đỏ Giáng sinh" loading="lazy"></a>
-        <figcaption><span>Đỏ Giáng sinh</span><a href="assets/christmas-living-room-red.jpg" download>Tải xuống</a></figcaption>
-      </figure>
-      <figure>
-        <a href="assets/christmas-living-room-ice.jpg"><img src="assets/christmas-living-room-ice.jpg" alt="Xanh băng" loading="lazy"></a>
-        <figcaption><span>Xanh băng</span><a href="assets/christmas-living-room-ice.jpg" download>Tải xuống</a></figcaption>
-      </figure>
-  </div>
   <h3>Chi tiết</h3>
   <div class="asset-grid">
-      <figure class="support-asset">
-        <a href="assets/christmas-clock.png"><img src="assets/christmas-clock.png" alt="Thân đồng hồ" loading="lazy"></a>
-        <figcaption><span>Thân đồng hồ</span><a href="assets/christmas-clock.png" download>Tải xuống</a></figcaption>
-      </figure>
       <figure class="support-asset snow-asset">
         <a href="assets/christmas-snowflake.svg"><img src="assets/christmas-snowflake.svg" alt="Hoa tuyết" loading="lazy"></a>
         <figcaption><span>Hoa tuyết</span><a href="assets/christmas-snowflake.svg" download>Tải xuống</a></figcaption>
       </figure>
   </div>
 </section>
-</main><script src="../../../assets/review-comments.js?v=10" data-paywall="smarthue-christmas" defer></script><script src="preview-locale.js?v=copy2" defer></script><script src="preview-board.js?v=duo3" defer></script><script src="billing-preview.js?v=pins1" defer></script><script>
+</main><script src="../../../assets/review-comments.js?v=10" data-paywall="smarthue-christmas" defer></script><script src="preview-locale.js?v=copy2" defer></script><script src="preview-board.js?v=final1" defer></script><script src="billing-preview.js?v=final1" defer></script><script>
 const phone = document.querySelector('.phone');
 const timer = document.querySelector('.timer');
 const scenePhotos = [...phone.querySelectorAll('.room-photo')];
 const duoPhotos = [...phone.querySelectorAll('.duo-photo')];
 const boardFrame = document.documentElement.hasAttribute('data-board');
-const countdownLayout = document.querySelector('#countdown-layout');
-const previewUrl = new URL(window.location.href);
 if (document.documentElement.hasAttribute('data-embed')) {
   phone.querySelector('.close').disabled = true;
 }
-
-function setCountdownLayout(layout) {
-  phone.dataset.countdown = layout;
-}
-
-const requestedLayout = previewUrl.searchParams.get('countdown') ?? document.documentElement.dataset.defaultCountdown;
-countdownLayout.value = requestedLayout === 'lcd' ? 'lcd' : 'clock';
-setCountdownLayout(countdownLayout.value);
-countdownLayout.addEventListener('change', () => {
-  setCountdownLayout(countdownLayout.value);
-  const url = new URL(location.href);
-  url.searchParams.set('countdown', countdownLayout.value);
-  history.replaceState(history.state, '', url);
-});
 
 const snowfall = phone.querySelector('.snowfall');
 if (!boardFrame && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -863,57 +745,15 @@ pauseLights.addEventListener('click', () => {
   pauseLights.setAttribute('aria-pressed', String(paused));
 });
 const dayNumber = document.querySelector('#days');
-const paletteControl = document.querySelector('#palette');
-paletteControl.addEventListener('change', () => {
-  phone.dataset.palette = paletteControl.value;
-});
-const requestedPalette = previewUrl.searchParams.get('palette');
-if (Array.from(paletteControl.options).some(option => option.value === requestedPalette)) {
-  paletteControl.value = requestedPalette;
-}
-phone.dataset.palette = paletteControl.value;
 const hourNumber = document.querySelector('#hours');
 const minuteNumber = document.querySelector('#minutes');
 const secondNumber = document.querySelector('#seconds');
 const deadline = Date.parse('2026-12-26T00:00:00+07:00');
 const timerCaption = timer.querySelector('.timer-caption');
 const digits = timer.querySelector('.digits');
-// Real seven-segment numerals rendered over the blank LCD glass.
-const segmentPaths = [
-  'M3 1H13L15 3L13 5H3L1 3Z',
-  'M13 5.7L15.5 4V11.9L13.5 13.8L11.7 12V7Z',
-  'M13.5 16.2L15.5 18.1V26L13 24.3L11.7 23V18Z',
-  'M3 25H13L15 27L13 29H3L1 27Z',
-  'M.5 18.1L2.5 16.2L4.3 18V23L3 24.3L.5 26Z',
-  'M.5 4L3 5.7L4.3 7V12L2.5 13.8L.5 11.9Z',
-  'M4 13H12L14 15L12 17H4L2 15Z',
-];
-const digitMasks = [63, 6, 91, 79, 102, 109, 125, 7, 127, 111];
-const svgNS = 'http://www.w3.org/2000/svg';
 function drawTimeUnit(element, value) {
   const text = String(value).padStart(2, '0');
-  if (element.dataset.number === text) return;
-  element.dataset.number = text;
-  while (element.childElementCount < text.length) {
-    const digit = document.createElementNS(svgNS, 'svg');
-    digit.classList.add('lcd-digit');
-    digit.setAttribute('viewBox', '0 0 16 30');
-    for (const shape of segmentPaths) {
-      const segment = document.createElementNS(svgNS, 'path');
-      segment.setAttribute('d', shape);
-      digit.append(segment);
-    }
-    element.append(digit);
-  }
-  while (element.childElementCount > text.length) element.lastElementChild.remove();
-  for (const [index, digit] of [...element.children].entries()) {
-    if (digit.dataset.value === text[index]) continue;
-    digit.dataset.value = text[index];
-    const mask = digitMasks[Number(text[index])];
-    for (const [segment, path] of [...digit.children].entries()) {
-      path.classList.toggle('active', Boolean(mask & (1 << segment)));
-    }
-  }
+  if (element.dataset.number !== text) element.dataset.number = text;
 }
 let displayedSeconds;
 let countdownTick;

@@ -13,7 +13,6 @@
   const sheetClose = sheet.querySelector('button');
   const close = screen.querySelector('.close');
   const reopen = document.querySelector('#reopen');
-  const layout = document.querySelector('#countdown-layout');
   const policies = ['terms', 'privacy'];
   const { t } = smartHueLocale;
   const states = {
@@ -42,8 +41,7 @@
   function render() {
     const current = states[state];
     const selectedPlan = planButtons.find(plan => plan.getAttribute('aria-pressed') === 'true');
-    const hasPricing = layout.value === 'lcd';
-    const price = hasPricing ? `${selectedPlan.dataset.plan}Terms` : 'pricingPending';
+    const price = `${selectedPlan.dataset.plan}Terms`;
     screen.dataset.billing = state;
     terms.textContent = t(current.message ?? price);
     terms.setAttribute('aria-hidden', String(state === 'loading'));
@@ -111,7 +109,6 @@
       actions.restore();
     }
   });
-  layout.addEventListener('change', render);
   screen.addEventListener('languagechange', () => {
     render();
     if (sheet.open) translateSheet();
