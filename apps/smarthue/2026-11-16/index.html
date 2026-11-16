@@ -427,7 +427,13 @@ main {
   padding: 8px 16px;
   border-radius: 22px;
 }
-.phone[data-countdown="lcd"] .plan--yearly { position: relative; }
+.phone[data-countdown="lcd"] .plan--yearly {
+  position: relative;
+  min-height: 66px;
+}
+.phone[data-countdown="lcd"] .plan--yearly .plan-title { font-size: 15.4px; }
+.phone[data-countdown="lcd"] .plan--yearly .plan-summary small { font-size: 12.1px; }
+.phone[data-countdown="lcd"] .plan--yearly .plan-savings { font-size: 11px; }
 .phone[data-countdown="lcd"] .plan--yearly::after {
   content: "";
   position: absolute;
@@ -611,6 +617,7 @@ main {
 .small .hero { min-height: 300px; }
 .small[data-countdown="lcd"] .hero { min-height: 268px; }
 .small[data-countdown="lcd"] .plan { min-height: 52px; padding: 8px 12px; }
+.small[data-countdown="lcd"] .plan--yearly { min-height: 57.2px; }
 .small .plan { min-height: 72px; }
 .small .links { margin-top: 4px; }
 @media (max-width: 760px) {
@@ -796,7 +803,7 @@ main {
       </figure>
   </div>
 </section>
-</main><script src="../../../assets/review-comments.js?v=7" data-paywall="smarthue-christmas" defer></script><script src="preview-locale.js?v=29" defer></script><script src="preview-board.js?v=frames2" defer></script><script src="billing-preview.js?v=pins1" defer></script><script>
+</main><script src="../../../assets/review-comments.js?v=7" data-paywall="smarthue-christmas" defer></script><script src="preview-locale.js?v=29" defer></script><script src="preview-board.js?v=frames3" defer></script><script src="billing-preview.js?v=pins1" defer></script><script>
 const phone = document.querySelector('.phone');
 const timer = document.querySelector('.timer');
 const scenePhotos = [...phone.querySelectorAll('.room-photo')];
