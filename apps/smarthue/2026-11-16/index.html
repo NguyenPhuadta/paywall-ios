@@ -428,20 +428,6 @@ main {
   border-radius: 22px;
 }
 .phone[data-countdown="lcd"] .plan--yearly { position: relative; }
-.phone[data-countdown="lcd"] .plan--yearly::after {
-  content: "";
-  position: absolute;
-  top: -8px;
-  right: 42px;
-  width: 46px;
-  height: 10px;
-  pointer-events: none;
-  background:
-    radial-gradient(ellipse 9px 5px at 48% 54%, #fffaf3 90%, transparent 100%),
-    radial-gradient(ellipse 9px 4px at 27% 67%, #faf5ee 90%, transparent 100%),
-    radial-gradient(ellipse 9px 4px at 70% 67%, #faf5ee 90%, transparent 100%),
-    radial-gradient(ellipse 23px 3px at 50% 74%, #ece2db 90%, transparent 100%);
-}
 @supports (corner-shape: squircle) {
   .phone[data-countdown="lcd"] .plan {
     border-radius: 32px;
@@ -465,9 +451,9 @@ main {
 .plan-meta .plan-savings {
   position: absolute;
   top: 0;
-  left: 50%;
+  right: 65px;
   z-index: 1;
-  transform: translate(-50%, -50%);
+  transform: translate(50%, -50%);
   padding: 4px 8px;
   border-radius: 999px;
   background: var(--accent);
@@ -539,7 +525,6 @@ main {
   border-color: #fff2;
   box-shadow: none;
 }
-[data-billing="loading"] .plan--yearly::after,
 [data-billing="loading"] .plan-meta { visibility: hidden; }
 [data-billing="loading"] .plan-summary,
 [data-billing="loading"] .terms {
@@ -801,7 +786,7 @@ main {
       </figure>
   </div>
 </section>
-</main><script src="../../../assets/review-comments.js?v=7" data-paywall="smarthue-christmas" defer></script><script src="preview-locale.js?v=copy1" defer></script><script src="preview-board.js?v=frames5" defer></script><script src="billing-preview.js?v=pins1" defer></script><script>
+</main><script src="../../../assets/review-comments.js?v=7" data-paywall="smarthue-christmas" defer></script><script src="preview-locale.js?v=copy1" defer></script><script src="preview-board.js?v=frames6" defer></script><script src="billing-preview.js?v=pins1" defer></script><script>
 const phone = document.querySelector('.phone');
 const timer = document.querySelector('.timer');
 const scenePhotos = [...phone.querySelectorAll('.room-photo')];
