@@ -343,7 +343,17 @@ main {
 .heading { margin: 0 0 20px; color: var(--ink); }
 .heading .heading-accent { color: var(--accent); }
 .purchase { padding: 0 16px; }
-.phone[data-countdown="lcd"] .heading { margin-bottom: 16px; }
+.phone[data-countdown="lcd"] .intro {
+  --countdown-number-size: 46px;
+  container-type: inline-size;
+}
+.phone[data-countdown="lcd"] .heading {
+  margin-bottom: 16px;
+  font-size: clamp(14px, 6.25cqi, 22px);
+  letter-spacing: -.025em;
+  white-space: nowrap;
+}
+.phone[data-countdown="lcd"] .heading br { display: none; }
 .phone[data-countdown="lcd"] .visual::after {
   background: linear-gradient(180deg, #080b1270, transparent 19%, transparent 64%,
     color-mix(in srgb, var(--surface) 48%, transparent) 83%, var(--surface));
@@ -366,13 +376,13 @@ main {
 .phone[data-countdown="lcd"] .timer-caption {
   color: var(--muted);
   text-align: left;
-  font-size: 11px;
+  font-size: 13px;
 }
 .phone[data-countdown="lcd"] .digits {
   width: max-content;
   max-width: 100%;
   grid-template-columns: max-content auto max-content auto max-content;
-  column-gap: 8px;
+  column-gap: 10px;
   color: #fff5e8;
 }
 .phone[data-countdown="lcd"] .lcd-digit { display: none; }
@@ -382,19 +392,19 @@ main {
 }
 .phone[data-countdown="lcd"] .lcd-pair::before {
   content: attr(data-number);
-  font: 550 28px/1 Inter, sans-serif;
+  font: 600 var(--countdown-number-size)/1 Inter, sans-serif;
   font-variant-numeric: tabular-nums;
   letter-spacing: -0.04em;
 }
 .phone[data-countdown="lcd"] .colon {
   color: var(--accent);
-  font-size: 22px;
-  line-height: 28px;
+  font-size: 30px;
+  line-height: var(--countdown-number-size);
 }
 .phone[data-countdown="lcd"] .unit small {
   margin-top: 2px;
   color: var(--muted);
-  font-size: 9px;
+  font-size: 11px;
   font-weight: 500;
 }
 .plans { gap: 8px; }
@@ -643,7 +653,7 @@ main {
     </div>
   </div>
 </div>
-<h2 class="heading"><span data-i18n="headline">Light up before</span><br><span class="heading-accent" data-i18n="headlineAccent">time’s up.</span></h2>
+<h2 class="heading"><span data-i18n="headline">Light up before</span><br> <span class="heading-accent" data-i18n="headlineAccent">time’s up.</span></h2>
 </div>
 </div>
 <section class="purchase" data-i18n-aria="purchase" aria-label="Subscription options"><div class="plans">
