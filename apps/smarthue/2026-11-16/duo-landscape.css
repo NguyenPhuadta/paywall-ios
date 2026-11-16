@@ -132,6 +132,11 @@ main.duo-layout {
 }
 .duo-outer .intro { text-align: left; }
 .duo-outer:not([data-countdown="lcd"]) .timer { margin-inline: 0; }
+.phone.duo-outer[data-countdown="lcd"] .intro { --countdown-number-size: 41.4px; }
+.phone.duo-outer[data-countdown="lcd"] .timer-caption { font-size: 11.7px; }
+.phone.duo-outer[data-countdown="lcd"] .digits { column-gap: 9px; }
+.phone.duo-outer[data-countdown="lcd"] .colon { font-size: 27px; }
+.phone.duo-outer[data-countdown="lcd"] .unit small { font-size: 9.9px; }
 .phone.duo-outer[data-countdown="lcd"] .heading { white-space: normal; }
 .duo-outer .links button { min-height: 44px; }
 
