@@ -2,7 +2,7 @@ main.duo-layout {
   max-width: 1440px;
   grid-template-columns: minmax(0, 951px) minmax(240px, 1fr);
 }
-#prototype.duo-frame { aspect-ratio: 951 / 669; }
+#prototype.duo-frame { aspect-ratio: var(--duo-ratio); }
 .duo-frame .phone {
   position: absolute;
   inset: 0 auto auto 0;
@@ -100,6 +100,36 @@ main.duo-layout {
 .duo-folded .duo-photos { width: var(--screen-width); }
 .duo-folded .duo-blur { display: none; }
 .phone.duo-folded .visual::after { background: none; }
+
+/* Folded Outer Display, Figma 1071:9261. */
+.duo-outer .status::before {
+  content: "";
+  position: absolute;
+  top: -56px;
+  left: 5.5px;
+  width: 37px;
+  height: 37px;
+  border-radius: 50%;
+  background: #0a0a0a;
+}
+.phone.duo-outer .content {
+  width: 100%;
+  min-height: var(--screen-height);
+  margin: 0;
+  padding: 176px 20px 8px;
+  gap: 16px;
+  justify-content: flex-end;
+}
+.duo-outer .hero .visual { bottom: auto; height: 466px; }
+.duo-outer .duo-photo { object-position: 65% top; transform: none; }
+.duo-outer .duo-blur { display: none; }
+.phone.duo-outer .visual::after {
+  background: linear-gradient(to bottom, transparent 44%, var(--surface));
+}
+.duo-outer .intro { text-align: center; }
+.phone.duo-outer[data-countdown="lcd"] .clock-screen { justify-items: center; }
+.phone.duo-outer[data-countdown="lcd"] .heading { white-space: normal; }
+.duo-outer .links button { min-height: 44px; }
 
 .board-grid .duo-example { grid-column: 1 / -1; }
 [data-embed] main.duo-layout { display: block; }

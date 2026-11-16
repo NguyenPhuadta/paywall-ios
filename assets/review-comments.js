@@ -27,7 +27,7 @@ function context(){
  return{lang:q.get('lang')||'en',device:q.get('device')||'default',eligibility:q.get('eligibility')||'eligible',state:q.get('state')||'ready'};
 }
 function matches(c){const now=context();return['lang','device','eligibility'].every(k=>c.context[k]===now[k])&&(!inline||c.context.state===now.state)}
-function layoutGroup(device){return ['951×669','duo-partially-folded'].includes(device)?device:'portrait'}
+function layoutGroup(device){return ['951×669','duo-partially-folded','466×678'].includes(device)?device:'portrait'}
 function openExisting(c, point, origin){
  if(inline){
   const {lang,device,eligibility,state}=c.context;
