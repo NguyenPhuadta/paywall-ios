@@ -1,5 +1,7 @@
-<!doctype html><html lang="vi" data-default-countdown="lcd"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SmartHue · Christmas paywall</title><link rel="stylesheet" href="../../../assets/library.css?v=9"><link rel="stylesheet" href="library-preview.css"><script>
-document.documentElement.toggleAttribute('data-embed', new URLSearchParams(location.search).get('embed') === '1');
+<!doctype html><html lang="vi" data-default-countdown="lcd"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SmartHue · Christmas paywall</title><link rel="stylesheet" href="../../../assets/library.css?v=9"><link rel="stylesheet" href="library-preview.css?v=frames1"><script>
+const embedParams = new URLSearchParams(location.search);
+document.documentElement.toggleAttribute('data-embed', embedParams.get('embed') === '1');
+document.documentElement.toggleAttribute('data-board', embedParams.get('embed') === '1' && embedParams.get('board') === '1');
 </script><style>
 @font-face{font-family:Inter;src:url('../../../assets/fonts/Inter-Variable.ttf')}*{box-sizing:border-box}body{margin:0;background:#141715;color:#fff;font-family:Inter, sans-serif;line-height:1.3}button,select{font:inherit}button{cursor:pointer}main{display:flex;gap:48px;justify-content:center;align-items:center;min-height:100vh;padding:32px}.phone{width:390px;height:844px;flex-shrink:0;background:radial-gradient(ellipse at 90% 28%,#193c2c66,transparent 55%),#0b100d;position:relative;overflow:auto;box-shadow:0 0 0 1px #ffffff18}.status{height:62px;display:flex;align-items:center;justify-content:space-between;padding:0 32px;font-size:17px;font-weight:600}.levels{display:flex;gap:8px;align-items:center}.levels img{width:18px;height:14px}.levels img:last-child{width:25px}.content{min-height:748px;padding:0 24px;display:flex;flex-direction:column}.top{display:flex;justify-content:space-between;align-items:center;height:44px}.close{background:#ffffff08;border:0;color:#adb5ae;border-radius:50%;width:44px;height:44px;font-size:24px}.heading{margin:0 0 20px;font-size:36px;font-weight:600;line-height:1.3;letter-spacing:-1px}.heading .heading-accent{color:#f3d493}.timer {
   align-self: center;
@@ -54,7 +56,7 @@ button:focus-visible, select:focus-visible {
 body { background: #191919; }
 main {
   display: grid;
-  grid-template-columns: minmax(0, 390px) minmax(0, 1fr);
+  grid-template-columns: minmax(0, var(--preview-width, 390px)) minmax(0, 1fr);
   max-width: 898px;
   gap: 16px 24px;
   justify-content: start;
@@ -84,7 +86,8 @@ main {
   justify-self: start;
   max-width: 100%;
   background: var(--surface);
-  height: 844px;
+  width: var(--screen-width, 390px);
+  height: var(--screen-height, 844px);
 }
 .phone[data-palette="cranberry"] {
   --surface: #291019;
@@ -140,7 +143,7 @@ main {
   --cta-dark: #a8c9ef;
   --cta-ink: #10223c;
 }
-.content { padding: 0; }
+.content { padding: 0; min-height: calc(var(--screen-height, 844px) - 96px); }
 .top {
   position: absolute;
   top: 62px;
@@ -692,7 +695,7 @@ main {
   </div>
   <div class="preview-control">
     <label for="size">MÀN HÌNH</label>
-    <select id="size"><option value="normal">390 × 844</option><option value="small">375 × 667</option></select>
+    <select id="size"></select>
   </div>
   <div class="preview-control">
     <label for="billing-state">TRẠNG THÁI PAYWALL</label>
@@ -709,6 +712,7 @@ main {
         <option value="cancelled">Đã hủy giao dịch</option>
         <option value="pending">Đang chờ xử lý</option>
         <option value="unverified">Chưa xác minh được</option>
+        <option value="verifying">Đang xác minh giao dịch</option>
         <option value="purchase-error">Mua thất bại</option>
         <option value="purchased">Mua thành công</option>
       </optgroup>
@@ -730,6 +734,14 @@ main {
   <p><a href="https://nguyenphuadta.github.io/paywall-ios/library/castduo-plus/">Ref bố cục · fullscreen_2</a><br>
   Ref đồng hồ · Opal</p>
 </aside>
+<section class="preview-board" aria-labelledby="device-heading">
+  <h2 id="device-heading">Demo responsive · iPhone</h2>
+  <div id="device-frames" class="board-grid"></div>
+</section>
+<section class="preview-board" aria-labelledby="state-heading">
+  <h2 id="state-heading">Các trạng thái paywall</h2>
+  <div id="state-frames"></div>
+</section>
 <section class="preview-assets" aria-labelledby="asset-heading">
   <h2 id="asset-heading">Hình ảnh SmartHue</h2>
   <h3>Bản B</h3>
@@ -774,11 +786,11 @@ main {
       </figure>
   </div>
 </section>
-</main><script src="../../../assets/review-comments.js?v=5" data-paywall="smarthue-christmas" defer></script><script src="preview-locale.js?v=29" defer></script><script src="billing-preview.js?v=28" defer></script><script>
+</main><script src="../../../assets/review-comments.js?v=6" data-paywall="smarthue-christmas" defer></script><script src="preview-locale.js?v=29" defer></script><script src="preview-board.js?v=frames1" defer></script><script src="billing-preview.js?v=frames1" defer></script><script>
 const phone = document.querySelector('.phone');
-document.querySelector('#size').onchange = event => phone.classList.toggle('small', event.target.value === 'small');
 const timer = document.querySelector('.timer');
 const scenePhotos = [...phone.querySelectorAll('.room-photo')];
+const boardFrame = document.documentElement.hasAttribute('data-board');
 const countdownLayout = document.querySelector('#countdown-layout');
 const previewUrl = new URL(window.location.href);
 if (document.documentElement.hasAttribute('data-embed')) {
@@ -799,7 +811,7 @@ countdownLayout.addEventListener('change', () => {
 });
 
 const snowfall = phone.querySelector('.snowfall');
-if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+if (!boardFrame && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
   const flakes = document.createDocumentFragment();
   for (let index = 0; index < 40; index += 1) {
     const depth = Math.random();
@@ -820,7 +832,7 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
 }
 const pauseLights = document.querySelector('#pause-lights');
 pauseLights.disabled = true;
-Promise.all(scenePhotos.map(photo => photo.decode())).then(() => {
+if (!boardFrame) Promise.all(scenePhotos.map(photo => photo.decode())).then(() => {
   phone.classList.add('scenes-ready');
   pauseLights.disabled = false;
 }).catch(() => {
@@ -835,6 +847,10 @@ const paletteControl = document.querySelector('#palette');
 paletteControl.addEventListener('change', () => {
   phone.dataset.palette = paletteControl.value;
 });
+const requestedPalette = previewUrl.searchParams.get('palette');
+if (Array.from(paletteControl.options).some(option => option.value === requestedPalette)) {
+  paletteControl.value = requestedPalette;
+}
 phone.dataset.palette = paletteControl.value;
 const hourNumber = document.querySelector('#hours');
 const minuteNumber = document.querySelector('#minutes');

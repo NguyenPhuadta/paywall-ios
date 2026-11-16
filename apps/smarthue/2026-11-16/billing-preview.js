@@ -25,7 +25,7 @@
     cancelled: { label: 'continue', action: 'buy' },
     pending: { label: 'pending', message: 'pendingCopy', lockPlans: true },
     unverified: { label: 'checkStatus', message: 'unverified', action: 'verify', lockPlans: true },
-    verifying: { label: 'checkingStatus', busy: true },
+    verifying: { label: 'checkingStatus', busy: true, next: 'purchased' },
     'purchase-error': { label: 'tryAgain', message: 'purchaseError', action: 'buy' },
     purchased: { label: 'continue', message: 'purchased', action: 'continue', access: true },
     restoring: { label: 'restoring', busy: true, next: 'restore-empty' },
@@ -69,11 +69,11 @@
     clearTimeout(pendingTransition);
     state = next;
     if (!sheet.open || !policies.includes(picker.value)) {
-      picker.value = next === 'verifying' ? 'unverified' : next;
+      picker.value = next;
     }
     render();
     const result = outcome ?? states[next].next;
-    if (result) pendingTransition = setTimeout(() => setState(result), delay);
+    if (result && delay !== null) pendingTransition = setTimeout(() => setState(result), delay);
   }
 
   function translateSheet() {
@@ -81,19 +81,19 @@
     sheet.querySelector('p').textContent = t(sheet.dataset.copy);
   }
 
-  function showSheet(title, copy, trigger) {
+  function showSheet(title, copy, trigger, focus = true) {
     previousFocus = trigger;
     sheet.dataset.title = title;
     sheet.dataset.copy = copy;
     translateSheet();
     sheet.show();
     content.inert = true;
-    sheetClose.focus({ preventScroll: true });
+    if (focus) sheetClose.focus({ preventScroll: true });
   }
 
-  function showPolicy(policy, trigger) {
+  function showPolicy(policy, trigger, focus = true) {
     picker.value = policy;
-    showSheet(policy, 'policyPending', trigger);
+    showSheet(policy, 'policyPending', trigger, focus);
   }
 
   const actions = {
@@ -154,4 +154,12 @@
     close.focus({ preventScroll: true });
   });
   setState('ready');
+  if (document.documentElement.hasAttribute('data-board')) {
+    const previewState = new URLSearchParams(location.search).get('state');
+    if (policies.includes(previewState)) {
+      showPolicy(previewState, null, false);
+    } else if (Object.hasOwn(states, previewState) && previewState !== 'ready') {
+      setState(previewState, undefined, null);
+    }
+  }
 })();

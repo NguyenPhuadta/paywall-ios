@@ -1,5 +1,6 @@
 (()=>{
 'use strict';
+if(document.documentElement.hasAttribute('data-embed'))return;
 const host=document.querySelector('#prototype'),reopen=document.querySelector('#reopen');
 const preview=host?.querySelector('iframe, .phone');
 if(!preview||!reopen)return;
@@ -21,7 +22,7 @@ dialog.innerHTML='<form><header><strong id="comment-title">Thêm comment</strong
 document.body.append(dialog);
 const text=dialog.querySelector('#comment-text'),del=dialog.querySelector('.comment-delete'),error=dialog.querySelector('.comment-error');
 function context(){
- if(inline)return{lang:preview.lang||'en',device:preview.classList.contains('small')?'375×667':'default',eligibility:preview.dataset.countdown||'lcd',state:preview.dataset.billing||'ready'};
+ if(inline)return{lang:preview.lang||'en',device:preview.dataset.device||'default',eligibility:preview.dataset.countdown||'lcd',state:preview.dataset.billing||'ready'};
  const q=new URL(preview.src).searchParams;
  return{lang:q.get('lang')||'en',device:q.get('device')||'default',eligibility:q.get('eligibility')||'eligible',state:q.get('state')||'ready'};
 }
@@ -67,7 +68,7 @@ new MutationObserver(()=>{
   if(closed&&active)mode(false);
  }
  render();
-}).observe(preview,{attributes:true,attributeFilter:inline?['lang','class','data-countdown','data-billing','style']:['src']});
+}).observe(preview,{attributes:true,attributeFilter:inline?['lang','data-device','data-countdown','data-billing','style']:['src']});
 render();
 (async()=>{try{
  const [app,auth,fs]=await Promise.all([import('https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js'),import('https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js'),import('https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js')]);
