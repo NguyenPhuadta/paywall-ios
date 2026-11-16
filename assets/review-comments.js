@@ -1,7 +1,9 @@
 (()=>{
 'use strict';
 const host=document.querySelector('#prototype'),reopen=document.querySelector('#reopen');
-if(!host||!reopen)return;
+const preview=host?.querySelector('iframe, .phone');
+if(!preview||!reopen)return;
+const inline=preview.matches('.phone');
 const paywall=document.currentScript.dataset.paywall,key='paywall-comments-v1:'+paywall;
 let comments=[],localComments=[],active=false,start=null,draft=null,selected=null,returnFocus=null,uid=null,backend=null,stopReplies=null,commentsVisible=true;
 try{commentsVisible=localStorage.getItem('paywall-comments-visible')!=='false'}catch{}
@@ -18,8 +20,12 @@ const dialog=document.createElement('dialog');dialog.className='comment-dialog';
 dialog.innerHTML='<form><header><strong id="comment-title">Thêm comment</strong><button type="button" class="comment-close" aria-label="Đóng comment">×</button></header><label for="comment-text">Nội dung</label><textarea id="comment-text" rows="4" maxlength="4000" required placeholder="Nhập góp ý cho vùng đã chọn…"></textarea><p class="comment-context"></p><div class="comment-thread" hidden><div class="thread-actions"><button type="button" class="comment-resolve"></button></div><div class="comment-replies" aria-live="polite"></div><label for="reply-text">Trả lời</label><textarea id="reply-text" rows="2" maxlength="4000" placeholder="Viết câu trả lời…"></textarea><button type="button" class="reply-send">Gửi trả lời</button></div><p class="comment-error" role="alert"></p><footer><button type="button" class="comment-delete" hidden>Xoá</button><button type="button" class="comment-cancel">Huỷ</button><button type="submit" class="comment-save">Lưu comment</button></footer></form>';
 document.body.append(dialog);
 const text=dialog.querySelector('#comment-text'),del=dialog.querySelector('.comment-delete'),error=dialog.querySelector('.comment-error');
-function context(){const q=new URL(host.querySelector('iframe').src).searchParams;return{lang:q.get('lang')||'en',device:q.get('device')||'default',eligibility:q.get('eligibility')||'eligible',state:q.get('state')||'ready'}}
-function matches(c){const now=context();return['lang','device','eligibility'].every(k=>c.context[k]===now[k])}
+function context(){
+ if(inline)return{lang:preview.lang||'en',device:preview.classList.contains('small')?'375×667':'default',eligibility:preview.dataset.countdown||'lcd',state:preview.dataset.billing||'ready'};
+ const q=new URL(preview.src).searchParams;
+ return{lang:q.get('lang')||'en',device:q.get('device')||'default',eligibility:q.get('eligibility')||'eligible',state:q.get('state')||'ready'};
+}
+function matches(c){const now=context();return['lang','device','eligibility'].every(k=>c.context[k]===now[k])&&(!inline||c.context.state===now.state)}
 function box(r){selection.style.cssText=`left:${r.x*100}%;top:${r.y*100}%;width:${r.w*100}%;height:${r.h*100}%`;selection.hidden=false}
 function mode(on){active=on;host.classList.toggle('commenting',on);toggle.setAttribute('aria-pressed',on);toggle.innerHTML=icon+(on?' Thoát comment':' Thêm comment');help.textContent=on?'Kéo chọn vùng hoặc bấm để ghim. Esc để thoát.':(backend?'Comment được chia sẻ với mọi người.':'Đang kết nối comment chung…');if(on){layer.tabIndex=0;layer.focus()}else{layer.tabIndex=-1;if(!dialog.open)selection.hidden=true}}
 function saveLocal(){try{localStorage.setItem(key,JSON.stringify(localComments));return true}catch{error.textContent='Chưa lưu được comment trên trình duyệt này.';return false}}
@@ -52,7 +58,16 @@ dialog.querySelector('.comment-close').onclick=close;dialog.querySelector('.comm
 dialog.querySelector('form').onsubmit=async e=>{e.preventDefault();const value=text.value.trim();if(!value){text.setCustomValidity('Nhập nội dung comment nhé.');text.reportValidity();return}if(!selected&&!backend){error.textContent='Chưa kết nối được. Kiểm tra mạng rồi tải lại trang.';return}const button=dialog.querySelector('.comment-save');button.disabled=true;try{if(draft.local){localComments=localComments.map(c=>c.id===selected?{...c,text:value,updatedAt:new Date().toISOString()}:c);if(!saveLocal())return;comments=comments.map(c=>c.id===selected?localComments.find(x=>x.id===selected):c)}else{const entry={text:value,rect:draft.rect,context:draft.context,createdAt:draft.createdAt,updatedAt:new Date().toISOString(),owner:uid};await backend.set(draft.id,entry,!!selected)}mode(false);render();close()}catch(e){error.textContent='Chưa lưu được comment. Kiểm tra mạng rồi thử lại.'}finally{button.disabled=false}};text.oninput=()=>text.setCustomValidity('');
 del.onclick=async()=>{try{if(draft.local){localComments=localComments.filter(c=>c.id!==selected);if(!saveLocal())return;comments=comments.filter(c=>c.id!==selected)}else{if(!backend)throw Error();await backend.remove(selected)}render();close()}catch(e){error.textContent='Chưa xoá được comment. Kiểm tra mạng rồi thử lại.'}};
 exportButton.onclick=()=>{const blob=new Blob([JSON.stringify({paywall,comments},null,2)],{type:'application/json'}),href=URL.createObjectURL(blob),a=document.createElement('a');a.href=href;a.download=paywall+'-comments.json';a.click();setTimeout(()=>URL.revokeObjectURL(href),1000)};
-new MutationObserver(()=>{start=null;if(!dialog.open)selection.hidden=true;render()}).observe(host.querySelector('iframe'),{attributes:true,attributeFilter:['src']});
+new MutationObserver(()=>{
+ start=null;
+ if(!dialog.open)selection.hidden=true;
+ if(inline){
+  const closed=preview.style.visibility==='hidden';
+  layer.hidden=toggle.disabled=closed;
+  if(closed&&active)mode(false);
+ }
+ render();
+}).observe(preview,{attributes:true,attributeFilter:inline?['lang','class','data-countdown','data-billing','style']:['src']});
 render();
 (async()=>{try{
  const [app,auth,fs]=await Promise.all([import('https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js'),import('https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js'),import('https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js')]);
