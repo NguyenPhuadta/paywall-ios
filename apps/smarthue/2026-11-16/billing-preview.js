@@ -133,14 +133,14 @@
     if (policies.includes(picker.value)) picker.value = state;
     previousFocus?.focus({ preventScroll: true });
   });
-  picker.addEventListener('change', () => {
+  picker.addEventListener('change', event => {
     const next = picker.value;
     if (sheet.open) sheet.close();
     screen.style.visibility = 'visible';
     if (policies.includes(next)) {
       showPolicy(next, picker);
     } else {
-      setState(next);
+      setState(next, undefined, event.detail?.hold ? null : undefined);
     }
   });
   close.addEventListener('click', () => {

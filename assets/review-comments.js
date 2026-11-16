@@ -27,14 +27,34 @@ function context(){
  return{lang:q.get('lang')||'en',device:q.get('device')||'default',eligibility:q.get('eligibility')||'eligible',state:q.get('state')||'ready'};
 }
 function matches(c){const now=context();return['lang','device','eligibility'].every(k=>c.context[k]===now[k])&&(!inline||c.context.state===now.state)}
+function openExisting(c, point, origin){
+ if(inline){
+  const {lang,device,eligibility,state}=c.context;
+  const deviceValue=device==='default'?'390x844':String(device).replace('×','x');
+  for(const [id,value] of [['preview-language',lang],['size',deviceValue],['countdown-layout',eligibility],['billing-state',state]]){
+   const control=document.getElementById(id);
+   if(!control||!Array.from(control.options).some(option=>option.value===value))continue;
+   if(id!=='billing-state'&&control.value===value)continue;
+   control.value=value;
+   control.dispatchEvent(new CustomEvent('change',{detail:{hold:true}}));
+  }
+  if(!point)host.scrollIntoView({block:'nearest',behavior:'instant'});
+  const frame=layer.getBoundingClientRect();
+  point={x:frame.left+Math.min(.94,c.rect.x+c.rect.w)*frame.width,y:frame.top+Math.min(.97,c.rect.y)*frame.height};
+ }else if(!matches(c)){
+  help.textContent=`Comment ở ${c.context.lang} · ${c.context.device} · ${c.context.eligibility}. Đổi preview để xem đúng vị trí.`;
+ }
+ open(c,point,origin);
+}
 function box(r){selection.style.cssText=`left:${r.x*100}%;top:${r.y*100}%;width:${r.w*100}%;height:${r.h*100}%`;selection.hidden=false}
 function mode(on){active=on;host.classList.toggle('commenting',on);toggle.setAttribute('aria-pressed',on);toggle.innerHTML=icon+(on?' Thoát comment':' Thêm comment');help.textContent=on?'Kéo chọn vùng hoặc bấm để ghim. Esc để thoát.':(backend?'Comment được chia sẻ với mọi người.':'Đang kết nối comment chung…');if(on){layer.tabIndex=0;layer.focus()}else{layer.tabIndex=-1;if(!dialog.open)selection.hidden=true}}
 function saveLocal(){try{localStorage.setItem(key,JSON.stringify(localComments));return true}catch{error.textContent='Chưa lưu được comment trên trình duyệt này.';return false}}
 function render(){layer.querySelectorAll('.comment-pin').forEach(p=>p.remove());list.replaceChildren();list.hidden=!commentsVisible;exportButton.hidden=!commentsVisible||!comments.length;visibility.textContent=commentsVisible?'Ẩn comment':'Hiện comment';visibility.setAttribute('aria-pressed',String(commentsVisible));
-comments.forEach((c,i)=>{const item=document.createElement('button');item.type='button';item.className='comment-item';item.textContent=`${i+1}. ${c.local?'[Trên máy] ':''}${c.resolved?'✓ Đã giải quyết · ':''}${c.text}`;item.onclick=()=>{if(!matches(c)){help.textContent=`Comment ở ${c.context.lang} · ${c.context.device} · ${c.context.eligibility}. Đổi preview để xem đúng vị trí.`}open(c,null,item)};list.append(item);
-if(!commentsVisible||!matches(c))return;const pin=document.createElement('button');pin.type='button';pin.className='comment-pin'+(c.resolved?' is-resolved':'');pin.textContent=i+1;pin.title=c.text;pin.setAttribute('aria-label',`Comment ${i+1}: ${c.text}`);pin.style.left=Math.min(.94,c.rect.x+c.rect.w)*100+'%';pin.style.top=Math.min(.97,c.rect.y)*100+'%';pin.onclick=e=>{e.stopPropagation();open(c,{x:e.clientX,y:e.clientY},pin)};layer.append(pin)})}
+comments.forEach((c,i)=>{const item=document.createElement('button');item.type='button';item.className='comment-item';item.textContent=`${i+1}. ${c.local?'[Trên máy] ':''}${c.resolved?'✓ Đã giải quyết · ':''}${c.text}`;item.onclick=()=>openExisting(c,null,item);list.append(item);
+const exact=matches(c);
+if(!commentsVisible||(!inline&&!exact))return;const pin=document.createElement('button');pin.type='button';pin.className='comment-pin'+(c.resolved?' is-resolved':'');pin.classList.toggle('other-preview',!exact);pin.textContent=i+1;pin.title=exact?c.text:`Mở preview ${c.context.lang.toUpperCase()} · ${c.text}`;pin.setAttribute('aria-label',`Comment ${i+1}: ${pin.title}`);pin.style.left=Math.min(.94,c.rect.x+c.rect.w)*100+'%';pin.style.top=Math.min(.97,c.rect.y)*100+'%';pin.onclick=e=>{e.stopPropagation();openExisting(c,{x:e.clientX,y:e.clientY},pin)};layer.append(pin)})}
 function open(c,point,origin){selected=c?.id||null;draft=c||draft;returnFocus=origin||toggle;error.textContent='';text.value=c?.text||'';const editable=!c||c.local||c.owner===uid;text.readOnly=!editable;dialog.querySelector('.comment-save').hidden=!editable;del.hidden=!c||!editable;dialog.querySelector('#comment-title').textContent=c?(editable?'Sửa comment':'Xem comment'):'Thêm comment';const ctx=draft.context;dialog.querySelector('.comment-context').textContent=`${ctx.lang} · ${ctx.device==='default'?'390×844':ctx.device} · ${ctx.state} · ${c?.local?'Chỉ trên trình duyệt này':'Comment chung'}`;if(matches(draft))box(draft.rect);setupThread(c);dialog.showModal();const b=host.getBoundingClientRect(),x=point?.x??b.right+12,y=point?.y??b.top+80;dialog.style.left=Math.max(8,Math.min(x+12,innerWidth-dialog.offsetWidth-8))+'px';dialog.style.top=Math.max(8,Math.min(y+12,innerHeight-dialog.offsetHeight-8))+'px';text.focus()}
-function close(){stopReplies?.();stopReplies=null;dialog.close();draft=null;selected=null;selection.hidden=true;returnFocus?.focus()}
+function close(){stopReplies?.();stopReplies=null;dialog.close();draft=null;selected=null;selection.hidden=true;(returnFocus?.isConnected?returnFocus:toggle).focus()}
 function setupThread(c){
  const thread=dialog.querySelector('.comment-thread'),resolve=dialog.querySelector('.comment-resolve'),reply=dialog.querySelector('#reply-text'),send=dialog.querySelector('.reply-send'),replies=dialog.querySelector('.comment-replies');
  stopReplies?.();stopReplies=null;thread.hidden=!c;reply.value='';replies.replaceChildren();if(!c)return;

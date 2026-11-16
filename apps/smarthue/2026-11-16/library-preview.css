@@ -2,6 +2,11 @@
 .notes .review-tools button { width: auto; }
 .notes .comment-list button { width: 100%; margin: 0; }
 .notes .comment-export { margin: 8px 0 0; }
+#prototype .comment-pin.other-preview {
+  background: #242424;
+  border-color: #ffdc73;
+  color: #ffdc73;
+}
 .preview-board { grid-column: 1 / -1; min-width: 0; margin-top: 16px; }
 .preview-board h2 { margin: 0 0 16px; font-size: 22px; }
 .preview-board h3 { margin: 20px 0 8px; font-size: 15px; }
