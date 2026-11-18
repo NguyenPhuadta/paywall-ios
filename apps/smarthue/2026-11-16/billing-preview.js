@@ -4,6 +4,7 @@
   const picker = document.querySelector('#billing-state');
   const plans = screen.querySelector('.plans');
   const dialogOffer = screen.querySelector('.dialog-offer');
+  const offerDetail = dialogOffer.querySelector('strong');
   const planButtons = [...plans.querySelectorAll('.plan')];
   const terms = screen.querySelector('.terms');
   const cta = screen.querySelector('.cta');
@@ -18,6 +19,7 @@
   const { t } = smartHueLocale;
   const states = {
     ready: { label: 'continue', action: 'buy' },
+    trial: { label: 'startTrial', action: 'buy' },
     loading: { label: 'loadBusy', busy: true, next: 'ready' },
     'load-error': { label: 'retry', message: 'loadError', action: 'load', lockPlans: true },
     eligibility: { label: 'checkingOffer', busy: true, next: 'ready' },
@@ -36,25 +38,32 @@
   };
 
   let state = 'ready';
+  let trialOffer = false;
   let previousFocus;
   let pendingTransition;
 
   function render() {
     const current = states[state];
     const selectedPlan = planButtons.find(plan => plan.getAttribute('aria-pressed') === 'true');
-    const price = screen.classList.contains('christmas-dialog') ? 'dialogRenewal' : `${selectedPlan.dataset.plan}Terms`;
+    const singleOffer = trialOffer || screen.classList.contains('christmas-dialog');
+    const price = trialOffer ? 'trialRenewal' : (singleOffer ? 'dialogRenewal' : `${selectedPlan.dataset.plan}Terms`);
+    const label = trialOffer && current.label === 'continue' && current.action === 'buy'
+      ? 'startTrial' : current.label;
+    screen.toggleAttribute('data-trial-offer', trialOffer);
     screen.dataset.billing = state;
     terms.textContent = t(current.message ?? price);
     terms.setAttribute('aria-hidden', String(state === 'loading'));
-    plans.hidden = Boolean(current.access || state === 'load-error');
-    dialogOffer.hidden = plans.hidden;
+    const hideOffer = Boolean(current.access || state === 'load-error');
+    plans.hidden = hideOffer || singleOffer;
+    dialogOffer.hidden = hideOffer || !singleOffer;
+    offerDetail.textContent = t(trialOffer ? 'trialDuration' : 'dialogAnnualPrice');
     planButtons.forEach(plan => {
       plan.disabled = Boolean(current.busy || current.lockPlans);
     });
     cta.disabled = !current.action;
-    ctaLabel.textContent = t(current.label);
+    ctaLabel.textContent = t(label);
     ctaLabel.hidden = state === 'loading';
-    cta.setAttribute('aria-label', t(current.label));
+    cta.setAttribute('aria-label', t(label));
     cta.toggleAttribute('data-spinner-only', state === 'loading');
     spinner.hidden = !current.busy;
     restore.disabled = Boolean((current.busy && state !== 'loading') || state === 'pending');
@@ -140,6 +149,13 @@
     if (policies.includes(next)) {
       showPolicy(next, picker);
     } else {
+      trialOffer = next === 'trial';
+      if (!document.documentElement.hasAttribute('data-embed')) {
+        const url = new URL(location.href);
+        if (trialOffer) url.searchParams.set('state', 'trial');
+        else url.searchParams.delete('state');
+        history.replaceState(history.state, '', url);
+      }
       setState(next, undefined, event.detail?.hold ? null : undefined);
     }
   });
@@ -150,12 +166,13 @@
   reopen.addEventListener('click', () => {
     if (sheet.open) sheet.close();
     screen.style.visibility = 'visible';
-    setState('ready');
+    setState(trialOffer ? 'trial' : 'ready');
     close.focus({ preventScroll: true });
   });
   setState('ready');
-  if (document.documentElement.hasAttribute('data-board')) {
-    const previewState = new URLSearchParams(location.search).get('state');
+  const previewState = new URLSearchParams(location.search).get('state');
+  if (document.documentElement.hasAttribute('data-board') || previewState === 'trial') {
+    trialOffer = previewState === 'trial';
     if (policies.includes(previewState)) {
       showPolicy(previewState, null, false);
     } else if (Object.hasOwn(states, previewState) && previewState !== 'ready') {
