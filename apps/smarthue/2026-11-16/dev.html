@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dev · SmartHue Christmas paywall</title>
+  <link rel="stylesheet" href="../../../assets/library.css?v=9">
+  <link rel="stylesheet" href="dev.css?v=1">
+  <script src="dev.js?v=1" defer></script>
+</head>
+<body>
+  <nav class="pvbar" aria-label="SmartHue">
+    <a href="../../../index.html#smarthue">← Thư viện SmartHue</a>
+    <div class="pvtabs"><a id="view-link" href="./">Xem</a><a href="dev.html" aria-current="page">Dev</a></div>
+  </nav>
+  <main class="dev-wrap">
+    <header class="pvdh">
+      <div><h1>SmartHue · Christmas paywall</h1><p>Thông số, tài nguyên và bản mô phỏng giao dịch.</p></div>
+      <a class="download" href="../../../downloads/smarthue-christmas-dev.zip" download>Tải gói dev ZIP</a>
+    </header>
+    <div class="pvdg">
+      <aside class="pvdl">
+        <div class="pvdc dev-controls">
+          <label>Màn hình<select id="dev-device"></select></label>
+          <label>Trạng thái<select id="dev-state"></select></label>
+          <label>Ngôn ngữ<select id="dev-language"></select></label>
+          <label><input id="dev-measure" type="checkbox"> Bấm vào preview để đo</label>
+        </div>
+        <div class="dev-stage">
+          <div class="phone-frame" id="dev-phone"><iframe title="SmartHue · Preview Dev"></iframe></div>
+          <div class="dev-highlight" hidden></div>
+        </div>
+      </aside>
+      <div class="pvdr">
+        <div class="pvdn" role="tablist" aria-label="Tài liệu Dev">
+          <button type="button" id="tab-pack" role="tab" data-dev="pack" aria-controls="dev-content" aria-selected="true">Gói dev</button>
+          <button type="button" id="tab-animation" role="tab" data-dev="animation" aria-controls="dev-content" aria-selected="false" tabindex="-1">Animation</button>
+          <button type="button" id="tab-lottie" role="tab" data-dev="lottie" aria-controls="dev-content" aria-selected="false" tabindex="-1">Lottie</button>
+          <button type="button" id="tab-layers" role="tab" data-dev="layers" aria-controls="dev-content" aria-selected="false" tabindex="-1">Layer</button>
+          <button type="button" id="tab-measure" role="tab" data-dev="measure" aria-controls="dev-content" aria-selected="false" tabindex="-1">Đo</button>
+          <button type="button" id="tab-font" role="tab" data-dev="font" aria-controls="dev-content" aria-selected="false" tabindex="-1">Font</button>
+          <button type="button" id="tab-strings" role="tab" data-dev="strings" aria-controls="dev-content" aria-selected="false" tabindex="-1">Chuỗi</button>
+          <button type="button" id="tab-changelog" role="tab" data-dev="changelog" aria-controls="dev-content" aria-selected="false" tabindex="-1">Changelog</button>
+        </div>
+        <section class="dev-panel" id="dev-content" role="tabpanel" aria-labelledby="tab-pack" tabindex="0"></section>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

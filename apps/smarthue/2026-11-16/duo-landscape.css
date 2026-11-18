@@ -73,8 +73,8 @@ main.duo-layout {
     linear-gradient(#000, transparent 24%),
     radial-gradient(ellipse 38% 75% at 70% 51%, #000 36%, transparent 98%);
 }
-:not([data-board]) .duo-scenes-ready .duo-photo--red { animation: room-red 8s linear infinite; }
-:not([data-board]) .duo-scenes-ready .duo-photo--ice { animation: room-ice 8s linear infinite; }
+:root:is(:not([data-board]), [data-live-motion]) .duo-scenes-ready .duo-photo--red { animation: room-red 8s linear infinite; }
+:root:is(:not([data-board]), [data-live-motion]) .duo-scenes-ready .duo-photo--ice { animation: room-ice 8s linear infinite; }
 .lights-paused .duo-photo { animation-play-state: paused; }
 .duo-blur > div:nth-child(1) {
   backdrop-filter: blur(12px);

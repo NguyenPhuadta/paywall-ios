@@ -1,7 +1,8 @@
-<!doctype html><html lang="vi"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SmartHue · Christmas paywall</title><link rel="stylesheet" href="../../../assets/library.css?v=9"><link rel="stylesheet" href="library-preview.css?v=pins1"><script>
+<!doctype html><html lang="vi"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SmartHue · Christmas paywall</title><link rel="stylesheet" href="../../../assets/library.css?v=9"><link rel="stylesheet" href="library-preview.css?v=dev1"><script>
 const embedParams = new URLSearchParams(location.search);
 document.documentElement.toggleAttribute('data-embed', embedParams.get('embed') === '1');
 document.documentElement.toggleAttribute('data-board', embedParams.get('embed') === '1' && embedParams.get('board') === '1');
+document.documentElement.toggleAttribute('data-live-motion', embedParams.get('motion') === '1');
 </script><style>
 @font-face{font-family:Inter;src:url('../../../assets/fonts/Inter-Variable.ttf')}*{box-sizing:border-box}body{margin:0;background:#141715;color:#fff;font-family:Inter, sans-serif;line-height:1.3}button,select{font:inherit}button{cursor:pointer}main{display:flex;gap:48px;justify-content:center;align-items:center;min-height:100vh;padding:32px}.phone{width:390px;height:844px;flex-shrink:0;background:radial-gradient(ellipse at 90% 28%,#193c2c66,transparent 55%),#0b100d;position:relative;overflow:auto;box-shadow:0 0 0 1px #ffffff18}.status{height:62px;display:flex;align-items:center;justify-content:space-between;padding:0 32px;font-size:17px;font-weight:600}.levels{display:flex;gap:8px;align-items:center}.levels img{width:18px;height:14px}.levels img:last-child{width:25px}.content{min-height:748px;padding:0 24px;display:flex;flex-direction:column}.top{display:flex;justify-content:space-between;align-items:center;height:44px}.close{background:#ffffff08;border:0;color:#adb5ae;border-radius:50%;width:44px;height:44px;font-size:24px}.heading{margin:0 0 20px;font-size:36px;font-weight:600;line-height:1.3;letter-spacing:-1px}.heading .heading-accent{color:#f3d493}.timer {
   align-self: center;
@@ -555,7 +556,7 @@ main {
 [data-embed] .notes { display: none; }
 [data-embed] .phone { box-shadow: none; }
 [data-embed] .close { pointer-events: none; }
-</style><link rel="stylesheet" href="duo-landscape.css?v=6"><main><header class="preview-title"><a href="../../../index.html#smarthue" style="display:inline-block;margin-bottom:8px;color:inherit">← Thư viện SmartHue</a><h1>Prototype SmartHue</h1><p>Paywall Giáng sinh · Chọn cỡ màn hình để xem bố cục.</p></header><div id="prototype"><section class="phone" data-countdown="lcd" lang="en" data-i18n-aria="paywall" aria-label="SmartHue Christmas paywall"><div class="status"><span>9:41</span><img class="duo-levels" src="assets/duo/levels.svg" alt=""><div class="levels"><img src="assets/status-cellular.svg" alt=""><img src="assets/status-wifi.svg" alt=""><img src="assets/status-battery.svg" alt=""></div></div><div class="content"><header class="top"><button class="close" data-i18n-aria="close" aria-label="Close paywall">×</button></header><div class="hero"><div class="visual">
+</style><link rel="stylesheet" href="duo-landscape.css?v=7"><nav class="pvbar smarthue-nav" aria-label="SmartHue"><a href="../../../index.html#smarthue">← Thư viện SmartHue</a><div class="pvtabs"><a href="./" aria-current="page">Xem</a><a id="dev-link" href="dev.html">Dev</a></div></nav><main><header class="preview-title"><h1>Prototype SmartHue</h1><p>Paywall Giáng sinh · Chọn cỡ màn hình để xem bố cục.</p></header><div id="prototype"><section class="phone" data-countdown="lcd" lang="en" data-i18n-aria="paywall" aria-label="SmartHue Christmas paywall"><div class="status"><span>9:41</span><img class="duo-levels" src="assets/duo/levels.svg" alt=""><div class="levels"><img src="assets/status-cellular.svg" alt=""><img src="assets/status-wifi.svg" alt=""><img src="assets/status-battery.svg" alt=""></div></div><div class="content"><header class="top"><button class="close" data-i18n-aria="close" aria-label="Close paywall">×</button></header><div class="hero"><div class="visual">
   <img class="room-photo" src="assets/christmas-room-hue-signe-right.jpg" data-i18n-alt="roomB" alt="A Christmas tree and a tall color-changing floor lamp beside the gifts">
   <img class="room-photo room-photo--red" src="assets/christmas-room-hue-signe-right-red.jpg" alt="">
   <img class="room-photo room-photo--ice" src="assets/christmas-room-hue-signe-right-ice.jpg" alt="">
@@ -693,18 +694,26 @@ main {
       </figure>
   </div>
 </section>
-</main><script src="../../../assets/review-comments.js?v=10" data-paywall="smarthue-christmas" defer></script><script src="preview-locale.js?v=copy2" defer></script><script src="preview-board.js?v=final1" defer></script><script src="billing-preview.js?v=final1" defer></script><script>
+</main><script src="../../../assets/review-comments.js?v=10" data-paywall="smarthue-christmas" defer></script><script src="preview-locale.js?v=dev1" defer></script><script src="preview-board.js?v=final1" defer></script><script src="billing-preview.js?v=final1" defer></script><script>
 const phone = document.querySelector('.phone');
 const timer = document.querySelector('.timer');
+document.querySelector('#dev-link').addEventListener('click', event => {
+  const params = new URLSearchParams({
+    device: document.querySelector('#size').value,
+    state: document.querySelector('#billing-state').value,
+    lang: document.querySelector('#preview-language').value,
+  });
+  event.currentTarget.href = 'dev.html?' + params;
+});
 const scenePhotos = [...phone.querySelectorAll('.room-photo')];
 const duoPhotos = [...phone.querySelectorAll('.duo-photo')];
-const boardFrame = document.documentElement.hasAttribute('data-board');
+const animatePreview = !document.documentElement.hasAttribute('data-board') || document.documentElement.hasAttribute('data-live-motion');
 if (document.documentElement.hasAttribute('data-embed')) {
   phone.querySelector('.close').disabled = true;
 }
 
 const snowfall = phone.querySelector('.snowfall');
-if (!boardFrame && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+if (animatePreview && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
   const flakes = document.createDocumentFragment();
   for (let index = 0; index < 40; index += 1) {
     const depth = Math.random();
@@ -725,7 +734,7 @@ if (!boardFrame && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
 }
 const pauseLights = document.querySelector('#pause-lights');
 pauseLights.disabled = true;
-if (!boardFrame) Promise.all(scenePhotos.map(photo => photo.decode())).then(() => {
+if (animatePreview) Promise.all(scenePhotos.map(photo => photo.decode())).then(() => {
   phone.classList.add('scenes-ready');
   pauseLights.disabled = false;
 }).catch(() => {

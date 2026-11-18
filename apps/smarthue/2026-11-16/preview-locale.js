@@ -131,6 +131,10 @@ const smartHueLocale = (() => {
     else url.searchParams.set('lang', language);
     history.replaceState(history.state, '', url);
   });
-  return { t, countdown, initialize: () => applyLanguage(new URL(location.href).searchParams.get('lang')) };
+  return { t, countdown, strings, initialize: () => applyLanguage(new URL(location.href).searchParams.get('lang')) };
 })();
 smartHueLocale.initialize();
+
+if (new URLSearchParams(location.search).get('inspect') === '1') {
+  window.smartHuePreviewStrings = smartHueLocale.strings;
+}

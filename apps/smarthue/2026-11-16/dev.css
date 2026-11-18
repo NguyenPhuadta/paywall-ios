@@ -1,0 +1,15 @@
+.dev-wrap { max-width: 1440px; margin-inline: auto; }
+.dev-controls { display: grid; gap: 8px; }
+.dev-controls label { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.dev-controls label:last-child { justify-content: start; }
+.dev-controls select {
+  width: min(70%, 280px);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px;
+  background: var(--bg);
+  color: var(--fg);
+}
+.dev-stage { width: 100%; overflow: hidden; }
+#dev-phone iframe { border: 0; transform-origin: top left; }
+.dev-panel .layer-row { grid-template-columns: 20px minmax(0, 1fr) auto; }
