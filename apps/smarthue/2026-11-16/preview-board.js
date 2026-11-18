@@ -20,25 +20,37 @@ const smartHueDevices = (() => {
   ];
   const defaultDevice = '390x844';
   const picker = document.querySelector('#size');
+  const backdropPicker = document.querySelector('#dialog-backdrop');
   const phone = document.querySelector('.phone');
   const host = document.querySelector('#prototype');
   const preview = document.querySelector('main');
   const dimensions = id => (id === foldedDevice ? duoDevice : id).split('x').map(Number);
   const isDuoLandscape = id => id === duoDevice || id === foldedDevice;
   const iphoneSizes = sizes.filter(([, models]) => models.startsWith('iPhone '));
+  const query = new URLSearchParams(location.search);
+  const requestedBackdrop = query.get('backdrop');
+  const embedded = document.documentElement.hasAttribute('data-embed');
   function scalePreviewFrame() {
-    host.style.setProperty('--duo-scale', Math.min(1, host.clientWidth / dimensions(picker.value)[0]));
+    const frame = host.classList.contains('dialog-on-iphone') ? backdropPicker.value : picker.value;
+    host.style.setProperty('--duo-scale', Math.min(1, host.clientWidth / dimensions(frame)[0]));
   }
   sizes.forEach(([id, models]) => {
     const option = new Option(`${dimensions(id).join(' × ')} · ${models}`, id);
     picker.add(option);
   });
+  for (const [id, models] of iphoneSizes) {
+    backdropPicker.add(new Option(`${dimensions(id).join(' × ')} · ${models}`, id));
+  }
+  const validBackdrop = iphoneSizes.some(([id]) => id === requestedBackdrop);
+  backdropPicker.value = validBackdrop ? requestedBackdrop : defaultDevice;
 
   function applySize(id) {
     const [width, height] = dimensions(id);
     const landscape = isDuoLandscape(id);
     const outer = id === outerDevice;
     const dialog = id === dialogDevice;
+    const onIphone = dialog && (!embedded || validBackdrop);
+    const [frameWidth, frameHeight] = onIphone ? dimensions(backdropPicker.value) : [width, height];
     picker.value = id;
     phone.dataset.device = id === foldedDevice ? id : id === defaultDevice ? 'default' : dimensions(id).join('×');
     phone.classList.toggle('small', id === '375x667');
@@ -47,33 +59,36 @@ const smartHueDevices = (() => {
     phone.classList.toggle('duo-folded', id === foldedDevice);
     phone.classList.toggle('christmas-dialog', dialog);
     host.classList.toggle('duo-frame', landscape || outer || dialog);
+    host.classList.toggle('dialog-on-iphone', onIphone);
+    backdropPicker.closest('.preview-control').hidden = !onIphone;
     preview.classList.toggle('duo-layout', landscape);
-    host.style.setProperty('--duo-ratio', `${width} / ${height}`);
+    host.style.setProperty('--duo-ratio', `${frameWidth} / ${frameHeight}`);
+    host.style.setProperty('--iphone-width', `${frameWidth}px`);
+    host.style.setProperty('--frame-content-width', `${width}px`);
+    host.style.setProperty('--frame-content-height', `${height}px`);
     phone.style.setProperty('--screen-width', `${width}px`);
     phone.style.setProperty('--screen-height', `${height}px`);
-    preview.style.setProperty('--preview-width', `${width}px`);
+    preview.style.setProperty('--preview-width', `${frameWidth}px`);
     scalePreviewFrame();
   }
 
-  const query = new URLSearchParams(location.search);
   const requested = query.get('device');
   applySize(sizes.some(([id]) => id === requested) ? requested : defaultDevice);
-  const backdrop = query.get('backdrop');
-  if (document.documentElement.hasAttribute('data-embed') && requested === dialogDevice
-      && iphoneSizes.some(([id]) => id === backdrop)) {
-    const [width, height] = dimensions(backdrop);
-    host.classList.add('dialog-on-iphone');
-    host.style.setProperty('--iphone-width', `${width}px`);
-    host.style.setProperty('--iphone-height', `${height}px`);
-  }
   new ResizeObserver(scalePreviewFrame).observe(host);
-  picker.addEventListener('change', () => {
+  function updatePreview() {
     applySize(picker.value);
     const url = new URL(location.href);
     if (picker.value === defaultDevice) url.searchParams.delete('device');
     else url.searchParams.set('device', picker.value);
+    if (picker.value === dialogDevice && backdropPicker.value !== defaultDevice) {
+      url.searchParams.set('backdrop', backdropPicker.value);
+    } else {
+      url.searchParams.delete('backdrop');
+    }
     history.replaceState(history.state, '', url);
-  });
+  }
+  picker.addEventListener('change', updatePreview);
+  backdropPicker.addEventListener('change', updatePreview);
   return { sizes, dimensions, defaultDevice, isDuoLandscape, iphoneSizes, dialogDevice };
 })();
 

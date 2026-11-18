@@ -1,15 +1,21 @@
 .dialog-offer { display: none; }
 
 #prototype.dialog-on-iphone {
-  width: var(--iphone-width);
-  height: var(--iphone-height);
-  aspect-ratio: auto;
+  width: min(100%, var(--iphone-width));
   background: #000;
   overflow: hidden;
 }
 .dialog-on-iphone .phone {
   inset: 50% auto auto 50%;
-  transform: translate(-50%, -50%);
+  translate: -50% -50%;
+  transform: scale(var(--duo-scale, 1));
+  transform-origin: center;
+}
+#prototype.dialog-on-iphone .comment-layer {
+  inset: 50% auto auto 50%;
+  translate: -50% -50%;
+  width: calc(var(--frame-content-width) * var(--duo-scale, 1));
+  height: calc(var(--frame-content-height) * var(--duo-scale, 1));
 }
 #dialog-frames .board-frame { background: #000; }
 
