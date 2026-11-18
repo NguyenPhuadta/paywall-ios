@@ -1,5 +1,18 @@
 .dialog-offer { display: none; }
 
+#prototype.dialog-on-iphone {
+  width: var(--iphone-width);
+  height: var(--iphone-height);
+  aspect-ratio: auto;
+  background: #000;
+  overflow: hidden;
+}
+.dialog-on-iphone .phone {
+  inset: 50% auto auto 50%;
+  transform: translate(-50%, -50%);
+}
+#dialog-frames .board-frame { background: #000; }
+
 .phone.christmas-dialog {
   border-radius: 24px;
   isolation: isolate;

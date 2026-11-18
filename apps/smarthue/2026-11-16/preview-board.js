@@ -25,6 +25,7 @@ const smartHueDevices = (() => {
   const preview = document.querySelector('main');
   const dimensions = id => (id === foldedDevice ? duoDevice : id).split('x').map(Number);
   const isDuoLandscape = id => id === duoDevice || id === foldedDevice;
+  const iphoneSizes = sizes.filter(([, models]) => models.startsWith('iPhone '));
   function scalePreviewFrame() {
     host.style.setProperty('--duo-scale', Math.min(1, host.clientWidth / dimensions(picker.value)[0]));
   }
@@ -54,8 +55,17 @@ const smartHueDevices = (() => {
     scalePreviewFrame();
   }
 
-  const requested = new URLSearchParams(location.search).get('device');
+  const query = new URLSearchParams(location.search);
+  const requested = query.get('device');
   applySize(sizes.some(([id]) => id === requested) ? requested : defaultDevice);
+  const backdrop = query.get('backdrop');
+  if (document.documentElement.hasAttribute('data-embed') && requested === dialogDevice
+      && iphoneSizes.some(([id]) => id === backdrop)) {
+    const [width, height] = dimensions(backdrop);
+    host.classList.add('dialog-on-iphone');
+    host.style.setProperty('--iphone-width', `${width}px`);
+    host.style.setProperty('--iphone-height', `${height}px`);
+  }
   new ResizeObserver(scalePreviewFrame).observe(host);
   picker.addEventListener('change', () => {
     applySize(picker.value);
@@ -64,7 +74,7 @@ const smartHueDevices = (() => {
     else url.searchParams.set('device', picker.value);
     history.replaceState(history.state, '', url);
   });
-  return { sizes, dimensions, defaultDevice, isDuoLandscape };
+  return { sizes, dimensions, defaultDevice, isDuoLandscape, iphoneSizes, dialogDevice };
 })();
 
 (() => {
@@ -72,8 +82,9 @@ const smartHueDevices = (() => {
 
   const language = document.querySelector('#preview-language');
   const sizesGallery = document.querySelector('#device-frames');
+  const dialogGallery = document.querySelector('#dialog-frames');
   const statesGallery = document.querySelector('#state-frames');
-  const { sizes, dimensions, defaultDevice, isDuoLandscape } = smartHueDevices;
+  const { sizes, dimensions, defaultDevice, isDuoLandscape, iphoneSizes, dialogDevice } = smartHueDevices;
   const activeFrames = new Map();
   const observer = new IntersectionObserver(entries => {
     for (const entry of entries) {
@@ -89,15 +100,16 @@ const smartHueDevices = (() => {
   function loadFrame(host) {
     const url = new URL('index.html', location.href);
     url.search = new URLSearchParams({
-      embed: '1', board: '1', v: 'final1', device: host.dataset.device,
+      embed: '1', board: '1', v: 'dialog2', device: host.dataset.device,
       state: host.dataset.state, lang: language.value,
     });
+    if (host.dataset.backdrop) url.searchParams.set('backdrop', host.dataset.backdrop);
     activeFrames.get(host).src = url.href;
     observer.unobserve(host);
   }
 
-  function makeFrame(device, state, label, subtitle) {
-    const [width, height] = dimensions(device);
+  function makeFrame(device, state, label, subtitle, backdrop) {
+    const [width, height] = dimensions(backdrop ?? device);
     const card = document.createElement('figure');
     const host = document.createElement('div');
     const iframe = document.createElement('iframe');
@@ -105,6 +117,7 @@ const smartHueDevices = (() => {
     if (isDuoLandscape(device)) card.className = 'duo-example';
     host.className = 'board-frame';
     Object.assign(host.dataset, { device, state, width });
+    if (backdrop) host.dataset.backdrop = backdrop;
     host.style.aspectRatio = `${width} / ${height}`;
     iframe.title = label;
     iframe.width = width;
@@ -125,6 +138,9 @@ const smartHueDevices = (() => {
 
   sizesGallery.append(...sizes.map(([id, models]) =>
     makeFrame(id, 'ready', dimensions(id).join(' × '), models)
+  ));
+  dialogGallery.append(...iphoneSizes.map(([id, models]) =>
+    makeFrame(dialogDevice, 'ready', dimensions(id).join(' × '), models, id)
   ));
   for (const group of document.querySelectorAll('#billing-state optgroup')) {
     const heading = document.createElement('h3');
