@@ -90,12 +90,34 @@
   color: var(--accent);
   text-align: end;
 }
-.christmas-dialog[data-trial-offer] .hero { min-height: 312px; }
-.christmas-dialog .terms { margin: 8px 0; min-height: 14px; }
+.christmas-dialog .purchase { margin-top: auto; }
+.phone.christmas-dialog .dialog-offer:not([hidden]) {
+  display: block;
+  padding: 0;
+  min-height: 0;
+  background: transparent;
+  text-align: center;
+}
+.christmas-dialog .dialog-offer > span { display: none; }
+.phone.christmas-dialog .dialog-offer strong {
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 650;
+  line-height: 1.25;
+  text-align: center;
+  color: var(--ink);
+}
+.christmas-dialog .terms {
+  margin: 4px 0 12px;
+  min-height: 14px;
+  color: #c8b8b5;
+  font-size: 13px;
+  line-height: 1.25;
+}
 .christmas-dialog .cta { min-height: 44px; padding: 12px; }
 .christmas-dialog .links { justify-content: space-between; margin-top: 4px; }
 .christmas-dialog .links button { padding: 0; }
-.christmas-dialog[data-billing="loading"] .dialog-offer > * {
+.phone.christmas-dialog[data-billing="loading"] .dialog-offer strong {
   color: transparent;
   border-radius: 4px;
   background: #ffffff1c;

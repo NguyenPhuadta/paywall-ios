@@ -45,8 +45,9 @@
   function render() {
     const current = states[state];
     const selectedPlan = planButtons.find(plan => plan.getAttribute('aria-pressed') === 'true');
-    const singleOffer = trialOffer || screen.classList.contains('christmas-dialog');
-    const price = trialOffer ? 'trialRenewal' : (singleOffer ? 'dialogRenewal' : `${selectedPlan.dataset.plan}Terms`);
+    const isDialog = screen.classList.contains('christmas-dialog');
+    const singleOffer = trialOffer || isDialog;
+    const price = isDialog ? 'dialogRenewal' : (trialOffer ? 'trialRenewal' : `${selectedPlan.dataset.plan}Terms`);
     const label = trialOffer && current.label === 'continue' && current.action === 'buy'
       ? 'startTrial' : current.label;
     screen.toggleAttribute('data-trial-offer', trialOffer);
@@ -56,7 +57,8 @@
     const hideOffer = Boolean(current.access || state === 'load-error');
     plans.hidden = hideOffer || singleOffer;
     dialogOffer.hidden = hideOffer || !singleOffer;
-    offerDetail.textContent = t(trialOffer ? 'trialDuration' : 'dialogAnnualPrice');
+    const offerKey = isDialog ? (trialOffer ? 'dialogTrialBilling' : 'dialogBilling') : 'trialDuration';
+    offerDetail.textContent = t(offerKey);
     planButtons.forEach(plan => {
       plan.disabled = Boolean(current.busy || current.lockPlans);
     });
