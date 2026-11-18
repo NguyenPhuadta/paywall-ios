@@ -1,0 +1,77 @@
+.dialog-offer { display: none; }
+
+.phone.christmas-dialog {
+  border-radius: 24px;
+  isolation: isolate;
+  background: #210d13;
+}
+.christmas-dialog .status,
+.christmas-dialog .home,
+.christmas-dialog .plans { display: none !important; }
+
+.christmas-dialog .content {
+  min-height: 100%;
+  padding: 0 20px 8px;
+}
+.christmas-dialog .top {
+  inset: 8px 8px auto auto;
+  z-index: 2;
+}
+.christmas-dialog .hero {
+  flex: none;
+  min-height: 328px;
+  position: static;
+  isolation: auto;
+}
+.christmas-dialog .hero .visual {
+  inset: 0 0 auto;
+  height: 336px;
+}
+.phone.christmas-dialog .visual::after {
+  background: linear-gradient(180deg, #1b0d111c, transparent 26%, #210d1370 61%, #210d13 100%);
+}
+.christmas-dialog .room-photo { object-position: 69% 22%; }
+.christmas-dialog .intro, .christmas-dialog .purchase {
+  position: relative;
+  z-index: 1;
+  padding: 0;
+}
+.phone.christmas-dialog[data-countdown="lcd"] .intro { --countdown-number-size: 26px; }
+.phone.christmas-dialog[data-countdown="lcd"] .timer {
+  width: max-content;
+  margin: 0 0 8px;
+}
+.phone.christmas-dialog[data-countdown="lcd"] .clock-screen { gap: 2px; }
+.phone.christmas-dialog[data-countdown="lcd"] .colon { font-size: 18px; }
+.phone.christmas-dialog[data-countdown="lcd"] .digits { column-gap: 7px; }
+.phone.christmas-dialog[data-countdown="lcd"] .timer-caption,
+.phone.christmas-dialog[data-countdown="lcd"] .unit small { font-size: 11px; }
+.phone.christmas-dialog[data-countdown="lcd"] .heading {
+  font-size: 24px;
+  line-height: 1.13;
+  margin: 0 0 12px;
+  white-space: normal;
+  text-wrap: balance;
+}
+.phone.christmas-dialog .dialog-offer:not([hidden]) {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  align-items: center;
+  min-height: 48px;
+  padding: 8px 12px;
+  border-radius: 12px;
+  background: #fff1e914;
+  color: var(--ink);
+  font-size: 14px;
+}
+.dialog-offer strong { font-size: 18px; }
+.christmas-dialog .terms { margin: 8px 0; min-height: 14px; }
+.christmas-dialog .cta { min-height: 44px; padding: 12px; }
+.christmas-dialog .links { justify-content: space-between; margin-top: 4px; }
+.christmas-dialog .links button { padding: 0; }
+.christmas-dialog[data-billing="loading"] .dialog-offer > * {
+  color: transparent;
+  border-radius: 4px;
+  background: #ffffff1c;
+}

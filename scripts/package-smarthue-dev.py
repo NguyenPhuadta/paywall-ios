@@ -31,7 +31,7 @@ Start a local HTTP server in this extracted directory:
 Open http://localhost:8080/apps/smarthue/2026-11-16/
 Select Dev for the measured preview and copy export.
 
-Includes simulated App Store and restore states, 12 device layouts,
+Includes simulated App Store and restore states, 13 preview layouts,
 English, German, Danish, Christmas artwork, and Inter with its license.
 Product IDs, production pricing and policy URLs must come from the app.
 ''')

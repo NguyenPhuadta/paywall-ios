@@ -2,6 +2,7 @@ const smartHueDevices = (() => {
   const duoDevice = '951x669';
   const foldedDevice = 'duo-partially-folded';
   const outerDevice = '466x678';
+  const dialogDevice = '329x510';
   const sizes = [
     ['440x956', 'iPhone 16 Pro Max, 17 Pro Max'],
     ['420x912', 'iPhone Air'],
@@ -15,6 +16,7 @@ const smartHueDevices = (() => {
     [duoDevice, 'DUO Inner Display · Landscape'],
     [foldedDevice, 'DUO Inner Display · Partially Folded'],
     [outerDevice, 'DUO Outer Display · Folded'],
+    [dialogDevice, 'Dialog Giáng sinh · 1 gói'],
   ];
   const defaultDevice = '390x844';
   const picker = document.querySelector('#size');
@@ -23,7 +25,7 @@ const smartHueDevices = (() => {
   const preview = document.querySelector('main');
   const dimensions = id => (id === foldedDevice ? duoDevice : id).split('x').map(Number);
   const isDuoLandscape = id => id === duoDevice || id === foldedDevice;
-  function scaleDuoFrame() {
+  function scalePreviewFrame() {
     host.style.setProperty('--duo-scale', Math.min(1, host.clientWidth / dimensions(picker.value)[0]));
   }
   sizes.forEach(([id, models]) => {
@@ -35,24 +37,26 @@ const smartHueDevices = (() => {
     const [width, height] = dimensions(id);
     const landscape = isDuoLandscape(id);
     const outer = id === outerDevice;
+    const dialog = id === dialogDevice;
     picker.value = id;
     phone.dataset.device = id === foldedDevice ? id : id === defaultDevice ? 'default' : dimensions(id).join('×');
     phone.classList.toggle('small', id === '375x667');
     phone.classList.toggle('duo', landscape || outer);
     phone.classList.toggle('duo-outer', outer);
     phone.classList.toggle('duo-folded', id === foldedDevice);
-    host.classList.toggle('duo-frame', landscape || outer);
+    phone.classList.toggle('christmas-dialog', dialog);
+    host.classList.toggle('duo-frame', landscape || outer || dialog);
     preview.classList.toggle('duo-layout', landscape);
     host.style.setProperty('--duo-ratio', `${width} / ${height}`);
     phone.style.setProperty('--screen-width', `${width}px`);
     phone.style.setProperty('--screen-height', `${height}px`);
     preview.style.setProperty('--preview-width', `${width}px`);
-    scaleDuoFrame();
+    scalePreviewFrame();
   }
 
   const requested = new URLSearchParams(location.search).get('device');
   applySize(sizes.some(([id]) => id === requested) ? requested : defaultDevice);
-  new ResizeObserver(scaleDuoFrame).observe(host);
+  new ResizeObserver(scalePreviewFrame).observe(host);
   picker.addEventListener('change', () => {
     applySize(picker.value);
     const url = new URL(location.href);

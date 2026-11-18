@@ -3,6 +3,7 @@
   const content = screen.querySelector('.content');
   const picker = document.querySelector('#billing-state');
   const plans = screen.querySelector('.plans');
+  const dialogOffer = screen.querySelector('.dialog-offer');
   const planButtons = [...plans.querySelectorAll('.plan')];
   const terms = screen.querySelector('.terms');
   const cta = screen.querySelector('.cta');
@@ -41,11 +42,12 @@
   function render() {
     const current = states[state];
     const selectedPlan = planButtons.find(plan => plan.getAttribute('aria-pressed') === 'true');
-    const price = `${selectedPlan.dataset.plan}Terms`;
+    const price = screen.classList.contains('christmas-dialog') ? 'dialogRenewal' : `${selectedPlan.dataset.plan}Terms`;
     screen.dataset.billing = state;
     terms.textContent = t(current.message ?? price);
     terms.setAttribute('aria-hidden', String(state === 'loading'));
     plans.hidden = Boolean(current.access || state === 'load-error');
+    dialogOffer.hidden = plans.hidden;
     planButtons.forEach(plan => {
       plan.disabled = Boolean(current.busy || current.lockPlans);
     });
@@ -109,6 +111,7 @@
       actions.restore();
     }
   });
+  document.querySelector('#size').addEventListener('change', render);
   screen.addEventListener('languagechange', () => {
     render();
     if (sheet.open) translateSheet();
