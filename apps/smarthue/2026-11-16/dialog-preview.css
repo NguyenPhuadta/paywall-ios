@@ -90,7 +90,7 @@
   color: var(--accent);
   text-align: end;
 }
-.christmas-dialog .purchase { margin-top: auto; }
+.christmas-dialog .purchase { margin-top: 4px; }
 .phone.christmas-dialog .dialog-offer:not([hidden]) {
   display: block;
   padding: 0;
