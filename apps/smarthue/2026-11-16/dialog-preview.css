@@ -29,6 +29,7 @@
 .christmas-dialog .plans { display: none !important; }
 
 .christmas-dialog .content {
+  height: 100%;
   min-height: 100%;
   padding: 0 20px 8px;
 }
@@ -37,8 +38,8 @@
   z-index: 2;
 }
 .christmas-dialog .hero {
-  flex: none;
-  min-height: 328px;
+  flex: 1;
+  min-height: 0;
   position: static;
   isolation: auto;
 }
