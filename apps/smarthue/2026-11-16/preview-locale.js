@@ -111,7 +111,7 @@ const smartHueLocale = (() => {
   };
   const screen = document.querySelector('.phone');
   const picker = document.querySelector('#preview-language');
-  const units = ['day', 'hour', 'minute', 'second'];
+  const units = ['hour', 'minute', 'second'];
   let language;
   let unitFormatters;
   let listFormatter;

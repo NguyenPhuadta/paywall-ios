@@ -310,8 +310,7 @@ main {
 }
 .phone[data-countdown="lcd"] .timer::before,
 .phone[data-countdown="lcd"] .timer::after,
-.phone[data-countdown="lcd"] .clock-body,
-.phone[data-countdown="lcd"] .digits > :nth-last-child(-n+2) { display: none; }
+.phone[data-countdown="lcd"] .clock-body { display: none; }
 .phone[data-countdown="lcd"] .clock-screen {
   position: static;
   justify-items: start;
@@ -576,8 +575,6 @@ main {
     <div class="clock-screen">
       <p class="timer-caption">Christmas offer ends in</p>
       <div class="digits">
-        <div class="unit"><span class="lcd-pair" id="days"></span><small data-i18n="days">Days</small></div>
-        <span class="colon">:</span>
         <div class="unit"><span class="lcd-pair" id="hours"></span><small data-i18n="hours">Hours</small></div>
         <span class="colon">:</span>
         <div class="unit"><span class="lcd-pair" id="minutes"></span><small data-i18n="minutes">Minutes</small></div>
@@ -707,7 +704,7 @@ main {
       </figure>
   </div>
 </section>
-</main><script src="christmas-audio.js?v=1" defer></script><script src="../../../assets/review-comments.js?v=11" data-paywall="smarthue-christmas" defer></script><script src="preview-locale.js?v=dialog-price1" defer></script><script src="preview-board.js?v=dialog3" defer></script><script src="billing-preview.js?v=dialog-price1" defer></script><script>
+</main><script src="christmas-audio.js?v=1" defer></script><script src="../../../assets/review-comments.js?v=11" data-paywall="smarthue-christmas" defer></script><script src="preview-locale.js?v=hms1" defer></script><script src="preview-board.js?v=dialog3" defer></script><script src="billing-preview.js?v=dialog-price1" defer></script><script>
 const phone = document.querySelector('.phone');
 const timer = document.querySelector('.timer');
 document.querySelector('#dev-link').addEventListener('click', event => {
@@ -766,7 +763,6 @@ pauseLights.addEventListener('click', () => {
   const paused = phone.classList.toggle('lights-paused');
   pauseLights.setAttribute('aria-pressed', String(paused));
 });
-const dayNumber = document.querySelector('#days');
 const hourNumber = document.querySelector('#hours');
 const minuteNumber = document.querySelector('#minutes');
 const secondNumber = document.querySelector('#seconds');
@@ -792,15 +788,13 @@ function updateCountdown() {
 
   if (totalSeconds !== displayedSeconds) {
     displayedSeconds = totalSeconds;
-    const days = Math.floor(totalSeconds / 86400);
-    const hours = Math.floor(totalSeconds / 3600) % 24;
+    const hours = Math.floor(totalSeconds / 3600);
     const minutes = Math.floor(totalSeconds / 60) % 60;
     const seconds = totalSeconds % 60;
-    drawTimeUnit(dayNumber, days);
     drawTimeUnit(hourNumber, hours);
     drawTimeUnit(minuteNumber, minutes);
     drawTimeUnit(secondNumber, seconds);
-    timer.setAttribute('aria-label', smartHueLocale.countdown([days, hours, minutes, seconds]));
+    timer.setAttribute('aria-label', smartHueLocale.countdown([hours, minutes, seconds]));
   }
   countdownTick = setTimeout(updateCountdown, ((remainingMs - 1) % 1000) + 1);
 }
