@@ -20,7 +20,7 @@ with ZipFile(destination, 'w', ZIP_DEFLATED) as archive:
     dev = dev.replace('../../../downloads/', website + 'downloads/')
     archive.writestr(str(app / 'dev.html'), dev)
     for path in sorted((root / app).rglob('*')):
-        if path.is_file() and path not in [root / app / 'index.html', root / app / 'dev.html']:
+        if path.is_file() and not path.name.startswith('._') and path not in [root / app / 'index.html', root / app / 'dev.html']:
             archive.write(path, path.relative_to(root))
     for path in sorted(shared):
         archive.write(root / path, path)
@@ -33,6 +33,16 @@ Select Dev for the measured preview and copy export.
 
 Includes simulated App Store and restore states, 13 preview layouts,
 English, German, Danish, Christmas artwork, and Inter with its license.
+REQUIRED AUDIO HANDOFF
+Use apps/smarthue/2026-11-16/assets/christmas-music.mp3.
+Christmas music is required for this paywall, including its dialog and DUO layouts.
+Loop continuously while the paywall is open. Default volume is 35%.
+Provide a music on/off control. Stop on dismissal or when the app enters the
+background. Resume on reopening only when music is enabled by the user.
+The web preview starts audio after the first user interaction because browsers
+restrict autoplay with sound.
+The implementation reference is christmas-audio.js.
+
 Product IDs, production pricing and policy URLs must come from the app.
 ''')
 print(destination.name, destination.stat().st_size, 'bytes')
