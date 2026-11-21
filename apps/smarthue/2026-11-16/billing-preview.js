@@ -49,9 +49,9 @@
     const isDialog = screen.classList.contains('christmas-dialog');
     const singleOffer = isDialog;
     const selectedTrial = trialOffer && selectedPlan.dataset.plan === 'yearly';
-    const price = isDialog ? 'dialogRenewal' : (selectedTrial ? 'trialRenewal' : `${selectedPlan.dataset.plan}Terms`);
+    const price = isDialog ? (selectedPlan.dataset.plan === 'weekly' ? 'dialogWeeklyRenewal' : 'dialogRenewal') : (selectedTrial ? 'trialRenewal' : `${selectedPlan.dataset.plan}Terms`);
     const label = current.action === 'buy' && ['continue', 'startTrial'].includes(current.label)
-      ? (selectedTrial ? 'startTrial' : 'continue') : current.label;
+      ? (selectedTrial ? 'startTrial' : isDialog && selectedPlan.dataset.plan === 'weekly' ? 'dialogContinue' : 'continue') : current.label;
     screen.toggleAttribute('data-trial-offer', trialOffer);
     screen.dataset.billing = state;
     terms.textContent = t(current.message ?? price);
