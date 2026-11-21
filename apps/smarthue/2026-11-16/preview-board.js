@@ -157,6 +157,16 @@ const smartHueDevices = (() => {
   dialogGallery.append(...iphoneSizes.map(([id, models]) =>
     makeFrame(dialogDevice, 'ready', dimensions(id).join(' × '), models, id)
   ));
+  const dialogHeading = document.createElement('h3');
+  dialogHeading.textContent = 'Dialog · Gói giá';
+  const dialogStates = document.createElement('div');
+  dialogStates.className = 'board-grid';
+  dialogStates.append(
+    makeFrame(dialogDevice, 'ready', 'Yearly · Không trial', '329 × 510', defaultDevice),
+    makeFrame(dialogDevice, 'trial', 'Yearly · Dùng thử 3 ngày', '329 × 510', defaultDevice),
+    makeFrame(dialogDevice, 'weekly', 'Weekly · Không trial', '329 × 510', defaultDevice)
+  );
+  statesGallery.append(dialogHeading, dialogStates);
   for (const group of document.querySelectorAll('#billing-state optgroup')) {
     const heading = document.createElement('h3');
     const grid = document.createElement('div');
