@@ -20,6 +20,7 @@
   const states = {
     ready: { label: 'continue', action: 'buy' },
     weekly: { label: 'continue', action: 'buy' },
+    'weekly-trial': { label: 'startTrial', action: 'buy' },
     trial: { label: 'startTrial', action: 'buy' },
     loading: { label: 'loadBusy', busy: true, next: 'ready' },
     'load-error': { label: 'retry', message: 'loadError', action: 'load', lockPlans: true },
@@ -40,6 +41,7 @@
 
   let state = 'ready';
   let trialOffer = false;
+  let trialPlan = 'yearly';
   let previousFocus;
   let pendingTransition;
 
@@ -48,8 +50,8 @@
     const selectedPlan = planButtons.find(plan => plan.getAttribute('aria-pressed') === 'true');
     const isDialog = screen.classList.contains('christmas-dialog');
     const singleOffer = isDialog;
-    const selectedTrial = trialOffer && selectedPlan.dataset.plan === 'yearly';
-    const price = isDialog ? (selectedPlan.dataset.plan === 'weekly' ? 'dialogWeeklyRenewal' : 'dialogRenewal') : (selectedTrial ? 'trialRenewal' : `${selectedPlan.dataset.plan}Terms`);
+    const selectedTrial = trialOffer && selectedPlan.dataset.plan === trialPlan;
+    const price = isDialog ? (selectedPlan.dataset.plan === 'weekly' ? 'dialogWeeklyRenewal' : 'dialogRenewal') : (selectedTrial ? (trialPlan === 'weekly' ? 'weeklyFreeTrialRenewal' : 'trialRenewal') : `${selectedPlan.dataset.plan}Terms`);
     const label = current.action === 'buy' && ['continue', 'startTrial'].includes(current.label)
       ? (selectedTrial ? 'startTrial' : isDialog && selectedPlan.dataset.plan === 'weekly' ? 'dialogContinue' : 'continue') : current.label;
     screen.toggleAttribute('data-trial-offer', trialOffer);
@@ -57,13 +59,13 @@
     terms.textContent = t(current.message ?? price);
     terms.hidden = isDialog && trialOffer && !current.message;
     const yearlyDetail = plans.querySelector('[data-i18n="yearlyDetail"]');
-    yearlyDetail.textContent = t(trialOffer ? 'yearlyTrialDetail' : 'yearlyDetail');
-    plans.querySelector('[data-i18n="weeklyDetail"]').textContent = t(trialOffer ? 'weeklyTrialDetail' : 'weeklyDetail');
+    yearlyDetail.textContent = t(trialOffer && trialPlan === 'yearly' ? 'yearlyTrialDetail' : 'yearlyDetail');
+    plans.querySelector('[data-i18n="weeklyDetail"]').textContent = t(trialOffer ? (trialPlan === 'weekly' ? 'weeklyFreeTrialDetail' : 'weeklyTrialDetail') : 'weeklyDetail');
     terms.setAttribute('aria-hidden', String(state === 'loading'));
     const hideOffer = Boolean(current.access || state === 'load-error');
     plans.hidden = hideOffer || singleOffer;
     dialogOffer.hidden = hideOffer || !singleOffer;
-    const offerKey = isDialog ? (selectedTrial ? 'dialogTrialBilling' : selectedPlan.dataset.plan === 'weekly' ? 'dialogWeeklyBilling' : 'dialogBilling') : 'trialDuration';
+    const offerKey = isDialog ? (selectedTrial ? (trialPlan === 'weekly' ? 'dialogWeeklyTrialBilling' : 'dialogTrialBilling') : selectedPlan.dataset.plan === 'weekly' ? 'dialogWeeklyBilling' : 'dialogBilling') : 'trialDuration';
     offerDetail.textContent = t(offerKey);
     planButtons.forEach(plan => {
       plan.disabled = Boolean(current.busy || current.lockPlans);
@@ -157,9 +159,10 @@
     if (policies.includes(next)) {
       showPolicy(next, picker);
     } else {
-      trialOffer = next === 'trial';
-      if (['ready', 'trial', 'weekly'].includes(next)) {
-        planButtons.forEach(plan => plan.setAttribute('aria-pressed', String(plan.dataset.plan === (next === 'weekly' ? 'weekly' : 'yearly'))));
+      trialOffer = ['trial', 'weekly-trial'].includes(next);
+      trialPlan = next === 'weekly-trial' ? 'weekly' : 'yearly';
+      if (['ready', 'trial', 'weekly', 'weekly-trial'].includes(next)) {
+        planButtons.forEach(plan => plan.setAttribute('aria-pressed', String(plan.dataset.plan === (next.startsWith('weekly') ? 'weekly' : 'yearly'))));
       }
       if (!document.documentElement.hasAttribute('data-embed')) {
         const url = new URL(location.href);
@@ -177,14 +180,15 @@
   reopen.addEventListener('click', () => {
     if (sheet.open) sheet.close();
     screen.style.visibility = 'visible';
-    setState(trialOffer ? 'trial' : planButtons.find(plan => plan.getAttribute('aria-pressed') === 'true').dataset.plan === 'weekly' ? 'weekly' : 'ready');
+    setState(trialOffer ? (trialPlan === 'weekly' ? 'weekly-trial' : 'trial') : planButtons.find(plan => plan.getAttribute('aria-pressed') === 'true').dataset.plan === 'weekly' ? 'weekly' : 'ready');
     close.focus({ preventScroll: true });
   });
   setState('ready');
   const previewState = new URLSearchParams(location.search).get('state');
-  if (document.documentElement.hasAttribute('data-board') || ['trial', 'weekly'].includes(previewState)) {
-    trialOffer = previewState === 'trial';
-    if (previewState === 'weekly') {
+  if (document.documentElement.hasAttribute('data-board') || ['trial', 'weekly', 'weekly-trial'].includes(previewState)) {
+    trialOffer = ['trial', 'weekly-trial'].includes(previewState);
+    trialPlan = previewState === 'weekly-trial' ? 'weekly' : 'yearly';
+    if (['weekly', 'weekly-trial'].includes(previewState)) {
       planButtons.forEach(plan => plan.setAttribute('aria-pressed', String(plan.dataset.plan === 'weekly')));
     }
     if (policies.includes(previewState)) {
