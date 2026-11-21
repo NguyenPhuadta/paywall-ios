@@ -46,13 +46,18 @@
     const current = states[state];
     const selectedPlan = planButtons.find(plan => plan.getAttribute('aria-pressed') === 'true');
     const isDialog = screen.classList.contains('christmas-dialog');
-    const singleOffer = trialOffer || isDialog;
-    const price = isDialog ? 'dialogRenewal' : (trialOffer ? 'trialRenewal' : `${selectedPlan.dataset.plan}Terms`);
-    const label = trialOffer && current.label === 'continue' && current.action === 'buy'
-      ? 'startTrial' : current.label;
+    const singleOffer = isDialog;
+    const selectedTrial = trialOffer && (isDialog || selectedPlan.dataset.plan === 'yearly');
+    const price = isDialog ? 'dialogRenewal' : (selectedTrial ? 'trialRenewal' : `${selectedPlan.dataset.plan}Terms`);
+    const label = current.action === 'buy' && ['continue', 'startTrial'].includes(current.label)
+      ? (selectedTrial ? 'startTrial' : 'continue') : current.label;
     screen.toggleAttribute('data-trial-offer', trialOffer);
     screen.dataset.billing = state;
     terms.textContent = t(current.message ?? price);
+    terms.hidden = isDialog && trialOffer && !current.message;
+    const yearlyDetail = plans.querySelector('[data-i18n="yearlyDetail"]');
+    yearlyDetail.textContent = trialOffer
+      ? `${t('trialDuration')} · ${t('yearlyDetail')}` : t('yearlyDetail');
     terms.setAttribute('aria-hidden', String(state === 'loading'));
     const hideOffer = Boolean(current.access || state === 'load-error');
     plans.hidden = hideOffer || singleOffer;

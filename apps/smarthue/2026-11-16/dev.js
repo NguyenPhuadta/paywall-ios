@@ -27,7 +27,7 @@
     measure: '<h3>Đo phần tử</h3><p>Bật “Bấm vào preview để đo” hoặc chọn một layer. Kết quả dùng CSS px ở kích thước gốc.</p>',
     font: '<h3>Typography</h3><p>Preview dùng Inter Variable. Gói dev kèm font và giấy phép OFL. Chọn layer chữ để xem cỡ, weight và line-height theo màn hình và ngôn ngữ hiện tại.</p>',
     strings: '<h3>Chuỗi · English, Deutsch và Dansk</h3><p>Giá trong các chuỗi là giá demo.</p>',
-    changelog: '<h3>Changelog</h3><ul class="changelog"><li>Thêm tab Dev với bản thử, đo layer và gói tải về.</li><li>Giữ phối Giáng sinh xanh thông–burgundy và countdown dạng số trên tiêu đề.</li><li>Thêm ba cách mở DUO: Inner Landscape, Partially Folded và Outer Folded.</li></ul>',
+    changelog: '<h3>Changelog</h3><ul class="changelog"><li>Trial fullscreen giữ hai gói Yearly/Weekly, thẻ cao tối thiểu 72 px. Trial demo áp dụng cho Yearly; chọn Weekly cập nhật CTA và điều khoản theo giá thường.</li><li>Trial dialog dùng một dòng giá 12 px thường, không highlight và không lặp dòng gia hạn.</li><li>Thêm tab Dev với bản thử, đo layer và gói tải về.</li><li>Giữ phối Giáng sinh xanh thông–burgundy và countdown dạng số trên tiêu đề.</li><li>Thêm ba cách mở DUO: Inner Landscape, Partially Folded và Outer Folded.</li></ul>',
   };
 
   function fitPreview() {
