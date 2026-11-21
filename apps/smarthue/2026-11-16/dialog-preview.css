@@ -102,11 +102,11 @@
 .christmas-dialog .dialog-offer > span { display: none; }
 .phone.christmas-dialog .dialog-offer strong {
   display: inline-block;
-  font-size: 14px;
-  font-weight: 650;
+  font-size: 12px;
+  font-weight: 400;
   line-height: 1.25;
   text-align: center;
-  color: var(--ink);
+  color: #c8b8b5;
 }
 .christmas-dialog .terms {
   margin: 4px 0 12px;
