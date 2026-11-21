@@ -58,14 +58,6 @@
     const yearlyDetail = plans.querySelector('[data-i18n="yearlyDetail"]');
     yearlyDetail.textContent = t(trialOffer ? 'yearlyTrialDetail' : 'yearlyDetail');
     plans.querySelector('[data-i18n="weeklyDetail"]').textContent = t(trialOffer ? 'weeklyTrialDetail' : 'weeklyDetail');
-    let trialBadge = plans.querySelector('.plan-trial-badge');
-    if (!trialBadge) {
-      trialBadge = document.createElement('span');
-      trialBadge.className = 'plan-trial-badge';
-      planButtons[0].append(trialBadge);
-    }
-    trialBadge.hidden = !trialOffer;
-    trialBadge.textContent = t('trialDuration');
     terms.setAttribute('aria-hidden', String(state === 'loading'));
     const hideOffer = Boolean(current.access || state === 'load-error');
     plans.hidden = hideOffer || singleOffer;
