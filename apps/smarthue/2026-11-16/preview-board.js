@@ -165,7 +165,8 @@ const smartHueDevices = (() => {
     makeFrame(dialogDevice, 'ready', 'Yearly · Không trial', '329 × 510', defaultDevice),
     makeFrame(dialogDevice, 'trial', 'Yearly · Dùng thử 3 ngày', '329 × 510', defaultDevice),
     makeFrame(dialogDevice, 'weekly', 'Weekly · Không trial', '329 × 510', defaultDevice),
-    makeFrame(dialogDevice, 'weekly-trial', 'Weekly · Dùng thử 3 ngày', '329 × 510', defaultDevice)
+    makeFrame(dialogDevice, 'weekly-trial', 'Weekly · Dùng thử 3 ngày', '329 × 510', defaultDevice),
+    makeFrame(dialogDevice, 'weekly-intro', 'Weekly · Tuần đầu $0.99', 'Sau đó $4.99/tuần · 329 × 510', defaultDevice)
   );
   statesGallery.append(dialogHeading, dialogStates);
   for (const group of document.querySelectorAll('#billing-state optgroup')) {
