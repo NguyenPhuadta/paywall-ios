@@ -598,7 +598,7 @@ main {
   <button class="plan plan--yearly" aria-pressed="true" data-plan="yearly">
     <span class="plan-legacy" data-i18n="planOne">Plan 1</span><strong class="plan-legacy">$—.—</strong><small class="plan-legacy" data-i18n="periodPending">Period pending</small>
     <span class="plan-summary"><b class="plan-title" data-i18n="yearly">Yearly</b><small data-i18n="yearlyDetail">$0.77/week · billed $39.99/year</small></span>
-    <span class="plan-meta"><span class="plan-savings" data-i18n="savings">Save 92%</span><span class="plan-mark" aria-hidden="true"></span></span>
+    <span class="plan-meta"><span class="plan-savings" data-i18n="savings">Best Deal</span><span class="plan-mark" aria-hidden="true"></span></span>
   </button>
   <button class="plan" aria-pressed="false" data-plan="weekly">
     <span class="plan-legacy" data-i18n="planTwo">Plan 2</span><strong class="plan-legacy">$—.—</strong><small class="plan-legacy" data-i18n="periodPending">Period pending</small>
@@ -671,7 +671,7 @@ main {
   <button id="reopen">Mở lại paywall</button>
   <button id="toggle-music" type="button" aria-pressed="false">Bật nhạc Giáng sinh</button>
   <button id="pause-lights" type="button" aria-pressed="false">Tạm dừng đèn và tuyết</button>
-  <p>Giá và giao dịch dùng dữ liệu demo. Countdown 15 phút, tính lại khi mở lại paywall.</p>
+  <p>Giá và giao dịch dùng dữ liệu demo. Countdown 15 phút và tiếp tục theo mốc đã lưu khi mở lại paywall.</p>
   <p><a href="https://nguyenphuadta.github.io/paywall-ios/library/castduo-plus/">Ref bố cục · fullscreen_2</a></p>
 </aside>
 <section id="dialog-iphone" class="preview-board" aria-labelledby="dialog-heading">
@@ -711,7 +711,7 @@ main {
       </figure>
   </div>
 </section>
-</main><script src="christmas-audio.js?v=1" defer></script><script src="../../../assets/review-comments.js?v=handoff1" data-paywall="smarthue-christmas" defer></script><script src="preview-locale.js?v=ipad-timer" defer></script><script src="preview-board.js?v=ipad-board-width" defer></script><script src="billing-preview.js?v=weeklyintro10" defer></script><script>
+</main><script src="christmas-audio.js?v=1" defer></script><script src="../../../assets/review-comments.js?v=handoff1" data-paywall="smarthue-christmas" defer></script><script src="preview-locale.js?v=best-deal" defer></script><script src="preview-board.js?v=ipad-board-width" defer></script><script src="billing-preview.js?v=weeklyintro10" defer></script><script>
 const phone = document.querySelector('.phone');
 const timer = document.querySelector('.timer');
 document.querySelector('#dev-link').addEventListener('click', event => {
@@ -773,7 +773,21 @@ pauseLights.addEventListener('click', () => {
 const minuteNumber = document.querySelector('#minutes');
 const secondNumber = document.querySelector('#seconds');
 const offerDurationMs = 15 * 60 * 1000;
-let deadline = Date.now() + offerDurationMs;
+const offerDeadlineKey = 'smarthue-christmas-offer-deadline-v1';
+function getOfferDeadline() {
+  const initialDeadline = Date.now() + offerDurationMs;
+  try {
+    const storedDeadline = Number(localStorage.getItem(offerDeadlineKey));
+    if (Number.isFinite(storedDeadline) && storedDeadline > 0) return storedDeadline;
+    if (!document.documentElement.hasAttribute('data-embed')) {
+      localStorage.setItem(offerDeadlineKey, String(initialDeadline));
+    }
+  } catch {
+    // Use the current page's deadline when browser storage is unavailable.
+  }
+  return initialDeadline;
+}
+const deadline = getOfferDeadline();
 const timerCaption = timer.querySelector('.timer-caption');
 const digits = timer.querySelector('.digits');
 function drawTimeUnit(element, value) {
@@ -803,11 +817,6 @@ function updateCountdown() {
   }
   countdownTick = setTimeout(updateCountdown, ((remainingMs - 1) % 1000) + 1);
 }
-document.querySelector('#reopen').addEventListener('click', () => {
-  deadline = Date.now() + offerDurationMs;
-  digits.hidden = false;
-  phone.dispatchEvent(new Event('languagechange'));
-});
 phone.addEventListener('languagechange', () => {
   clearTimeout(countdownTick);
   displayedSeconds = undefined;
