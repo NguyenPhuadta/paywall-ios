@@ -761,7 +761,6 @@ function getOfferDeadline() {
 }
 const deadline = getOfferDeadline();
 const timerCaption = timer.querySelector('.timer-caption');
-const digits = timer.querySelector('.digits');
 function drawTimeUnit(element, value) {
   const text = String(value).padStart(2, '0');
   if (element.dataset.number !== text) element.dataset.number = text;
@@ -774,8 +773,9 @@ function updateCountdown() {
   const totalSeconds = Math.max(0, Math.ceil(remainingMs / 1000));
   if (totalSeconds === 0) {
     timerCaption.textContent = smartHueLocale.t('expired');
-    timer.setAttribute('aria-label', timerCaption.textContent);
-    digits.hidden = true;
+    drawTimeUnit(minuteNumber, 0);
+    drawTimeUnit(secondNumber, 0);
+    timer.setAttribute('aria-label', `${timerCaption.textContent} · 00:00:00`);
     return;
   }
 
