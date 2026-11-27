@@ -144,13 +144,28 @@ main.duo-layout {
   .duo-scenes-ready .duo-photo { animation: none; }
 }
 
-.phone.ipad.duo .content {
+.phone.ipad-landscape { isolation: isolate; }
+.phone.ipad-landscape .status { padding-inline: 32px; }
+.phone.ipad-landscape .top { left: 24px; }
+.phone.ipad-landscape .content {
   width: 40%;
-  margin-left: 50%;
-  min-height: var(--screen-height);
+  margin-left: 54%;
+  min-height: calc(var(--screen-height) - 62px);
+  justify-content: center;
+  gap: 24px;
+  padding: 24px 0;
 }
-.phone.ipad:not(.duo) .intro,
-.phone.ipad:not(.duo) .purchase {
+.phone.ipad-landscape .hero { position: static; flex: none; isolation: auto; }
+.phone.ipad-landscape .hero .visual { inset: 0; z-index: 0; }
+.phone.ipad-landscape .room-photo { object-position: center 28%; }
+.phone.ipad-landscape[data-countdown="lcd"] .visual::after {
+  background: linear-gradient(to right, transparent 34%, rgb(0 0 0 / 84%) 78%);
+}
+.phone.ipad-landscape .intro,
+.phone.ipad-landscape .purchase { position: relative; padding: 0; }
+.phone.ipad-landscape .home { display: none; }
+.phone.ipad:not(.ipad-landscape) .intro,
+.phone.ipad:not(.ipad-landscape) .purchase {
   width: min(100%, 544px);
   margin-inline: auto;
 }

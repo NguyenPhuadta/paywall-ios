@@ -51,7 +51,8 @@ const smartHueDevices = (() => {
   function applySize(id) {
     const [width, height] = dimensions(id);
     const ipad = id === ipadPortrait || id === ipadLandscape;
-    const landscape = isDuoLandscape(id) || id === ipadLandscape;
+    const landscape = isDuoLandscape(id);
+    const tabletLandscape = id === ipadLandscape;
     const outer = id === outerDevice;
     const dialog = id === dialogDevice;
     const onIphone = dialog && (!embedded || validBackdrop);
@@ -59,6 +60,7 @@ const smartHueDevices = (() => {
     picker.value = id;
     phone.dataset.device = id === foldedDevice ? id : id === defaultDevice ? 'default' : dimensions(id).join('×');
     phone.classList.toggle('ipad', ipad);
+    phone.classList.toggle('ipad-landscape', tabletLandscape);
     phone.classList.toggle('small', id === '375x667');
     phone.classList.toggle('duo', landscape || outer);
     phone.classList.toggle('duo-outer', outer);
@@ -67,7 +69,7 @@ const smartHueDevices = (() => {
     host.classList.toggle('duo-frame', landscape || outer || dialog || ipad);
     host.classList.toggle('dialog-on-iphone', onIphone);
     backdropPicker.closest('.preview-control').hidden = !onIphone;
-    preview.classList.toggle('duo-layout', landscape);
+    preview.classList.toggle('duo-layout', landscape || tabletLandscape);
     host.style.setProperty('--duo-ratio', `${frameWidth} / ${frameHeight}`);
     host.style.setProperty('--iphone-width', `${frameWidth}px`);
     host.style.setProperty('--frame-content-width', `${width}px`);

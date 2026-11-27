@@ -2,6 +2,10 @@
   "paywall": "smarthue-christmas",
   "changes": [
     {
+      "at": "2026-11-27T15:21:15+07:00",
+      "summary": "iPad ngang 1180 × 820 dùng status bar ngang trên mép trên và nút đóng riêng phía dưới bên trái. Thanh dọc thời gian, kết nối và nút đóng cạnh phải dành riêng cho DUO."
+    },
+    {
       "at": "2026-11-27T15:19:54+07:00",
       "summary": "Countdown trên mọi layout bắt đầu từ 15:00, hiển thị phút:giây và tính lại khi mở lại paywall. Khi hết 15 phút, hiển thị thông báo hết ưu đãi. Thêm iPad dọc 820 × 1180 và iPad ngang 1180 × 820 trong bộ chọn Màn hình và Demo responsive."
     },
