@@ -8,10 +8,13 @@
   const placement = document.querySelector(script.dataset.after);
   if (!placement) return;
 
+  const latestOnly = script.hasAttribute('data-latest-only');
   const panel = document.createElement('section');
   panel.className = 'paywall-handoff';
   panel.setAttribute('aria-label', 'Bàn giao dev');
-  panel.innerHTML = `
+  panel.innerHTML = latestOnly ? `
+    <h2>Bàn giao dev</h2>
+    <ol class="handoff-changes"></ol>` : `
     <h2>Bàn giao dev</h2>
     <details>
       <summary>Comment &amp; nhật ký thay đổi</summary>
@@ -26,7 +29,7 @@
 
   const css = document.createElement('link');
   css.rel = 'stylesheet';
-  css.href = new URL('paywall-handoff.css', script.src).href;
+  css.href = new URL('paywall-handoff.css?v=2', script.src).href;
   document.head.append(css);
   placement.after(panel);
 
@@ -62,8 +65,8 @@
   }
 
   const hasComments = script.dataset.comments !== 'off';
-  status.textContent = hasComments ? 'Đang tải comment chung…' : 'Trang này chưa có hệ thống comment.';
-  if (hasComments) {
+  if (status) status.textContent = hasComments ? 'Đang tải comment chung…' : 'Trang này chưa có hệ thống comment.';
+  if (status && hasComments) {
     document.addEventListener('paywall:comments', event => {
       if (event.detail.paywall === id) showComments(event.detail);
     });
@@ -71,13 +74,14 @@
   }
 
   const logUrl = new URL(`handoff/${encodeURIComponent(id)}.json`, script.src);
-  panel.querySelector('.handoff-log-link').href = logUrl.href;
+  panel.querySelector('.handoff-log-link')?.setAttribute('href', logUrl.href);
   changes.textContent = 'Đang tải nhật ký…';
   fetch(logUrl, { cache: 'no-cache' }).then(response => {
     if (!response.ok) throw new Error('Log unavailable');
     return response.json();
   }).then(log => {
-    changes.replaceChildren(...log.changes.sort((a, b) => Date.parse(b.at) - Date.parse(a.at)).map(change => {
+    const entries = log.changes.sort((a, b) => Date.parse(b.at) - Date.parse(a.at));
+    changes.replaceChildren(...(latestOnly ? entries.slice(0, 1) : entries).map(change => {
       const row = document.createElement('li');
       addTime(row, change.at);
       row.append(change.summary);

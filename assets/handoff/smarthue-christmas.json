@@ -2,6 +2,10 @@
   "paywall": "smarthue-christmas",
   "changes": [
     {
+      "at": "2026-11-27T13:42:19+07:00",
+      "summary": "Dialog SmartHue (329 × 510): căn giữa cụm timer và tiêu đề. Tiêu đề tiếng Đức đổi từ “Licht an. Zeit läuft!” sang “Jetzt strahlen. Zeit wird knapp!”."
+    },
+    {
       "at": "2026-11-27T13:32:14+07:00",
       "summary": "Thêm hộp bàn giao dev và nhật ký theo ngày giờ. Căn giữa countdown và tiêu đề trong dialog. Khôi phục tiêu đề tiếng Đức “Jetzt strahlen. Zeit wird knapp!”."
     },
