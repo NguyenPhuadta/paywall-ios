@@ -155,7 +155,6 @@
 .phone.christmas-dialog[data-countdown="lcd"] .timer-caption,
 .phone.christmas-dialog .purchase { text-align: center; }
 
-.phone.christmas-dialog[data-countdown="lcd"]:lang(de) .heading {
-  font-size: min(20px, 6.8cqi);
-  white-space: nowrap;
-}
+.de-dialog-headline,
+.phone.christmas-dialog:lang(de) .standard-headline { display: none; }
+.phone.christmas-dialog:lang(de) .de-dialog-headline { display: inline; }
