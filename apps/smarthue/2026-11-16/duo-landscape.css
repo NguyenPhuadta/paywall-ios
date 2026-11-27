@@ -143,3 +143,14 @@ main.duo-layout {
 @media (prefers-reduced-motion: reduce) {
   .duo-scenes-ready .duo-photo { animation: none; }
 }
+
+.phone.ipad.duo .content {
+  width: 40%;
+  margin-left: 50%;
+  min-height: var(--screen-height);
+}
+.phone.ipad:not(.duo) .intro,
+.phone.ipad:not(.duo) .purchase {
+  width: min(100%, 544px);
+  margin-inline: auto;
+}

@@ -17,7 +17,7 @@ document.documentElement.toggleAttribute('data-live-motion', embedParams.get('mo
 }
 .digits {
   display: grid;
-  grid-template-columns: 48px auto 48px auto 48px;
+  grid-template-columns: 48px auto 48px;
   column-gap: 4px;
   align-items: start;
 }
@@ -129,7 +129,7 @@ main {
   transform: scaleX(-1);
   filter: saturate(.84);
 }
-.phone:not(.duo, .christmas-dialog) .room-photo {
+.phone:not(.duo, .christmas-dialog, .ipad) .room-photo {
   top: -36px;
   height: calc(100% + 16px);
   object-position: 86% top;
@@ -273,7 +273,7 @@ main {
 .digits {
   display: grid;
   width: min(100%, 152px);
-  grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+  grid-template-columns: 1fr auto 1fr;
   align-items: start;
   gap: 4px;
 }
@@ -331,7 +331,7 @@ main {
 .phone[data-countdown="lcd"] .digits {
   width: max-content;
   max-width: 100%;
-  grid-template-columns: max-content auto max-content auto max-content;
+  grid-template-columns: max-content auto max-content;
   column-gap: 10px;
   color: #fff5e8;
 }
@@ -561,7 +561,7 @@ main {
 [data-embed] .notes { display: none; }
 [data-embed] .phone { box-shadow: none; }
 [data-embed] .close { pointer-events: none; }
-</style><link rel="stylesheet" href="duo-landscape.css?v=lamp-left"><link rel="stylesheet" href="dialog-preview.css?v=lamp-left"><nav class="pvbar smarthue-nav" aria-label="SmartHue"><a href="../../../index.html#smarthue">← Thư viện SmartHue</a><div class="pvtabs"><a href="./" aria-current="page">Xem</a><a id="dev-link" href="dev.html">Dev</a></div></nav><main><header class="preview-title"><h1>Prototype SmartHue</h1><p>Paywall Giáng sinh · Chọn cỡ màn hình để xem bố cục. <a href="#dialog-iphone">Xem dialog trên iPhone</a></p></header><div id="prototype"><section class="phone" data-countdown="lcd" lang="en" data-i18n-aria="paywall" aria-label="SmartHue Christmas paywall"><div class="status"><span>9:41</span><img class="duo-levels" src="assets/duo/levels.svg" alt=""><div class="levels"><img src="assets/status-cellular.svg" alt=""><img src="assets/status-wifi.svg" alt=""><img src="assets/status-battery.svg" alt=""></div></div><div class="content"><header class="top"><button class="close" data-i18n-aria="close" aria-label="Close paywall">×</button></header><div class="hero"><div class="visual">
+</style><link rel="stylesheet" href="duo-landscape.css?v=ipad-timer"><link rel="stylesheet" href="dialog-preview.css?v=lamp-left"><nav class="pvbar smarthue-nav" aria-label="SmartHue"><a href="../../../index.html#smarthue">← Thư viện SmartHue</a><div class="pvtabs"><a href="./" aria-current="page">Xem</a><a id="dev-link" href="dev.html">Dev</a></div></nav><main><header class="preview-title"><h1>Prototype SmartHue</h1><p>Paywall Giáng sinh · Chọn cỡ màn hình để xem bố cục. <a href="#dialog-iphone">Xem dialog trên iPhone</a></p></header><div id="prototype"><section class="phone" data-countdown="lcd" lang="en" data-i18n-aria="paywall" aria-label="SmartHue Christmas paywall"><div class="status"><span>9:41</span><img class="duo-levels" src="assets/duo/levels.svg" alt=""><div class="levels"><img src="assets/status-cellular.svg" alt=""><img src="assets/status-wifi.svg" alt=""><img src="assets/status-battery.svg" alt=""></div></div><div class="content"><header class="top"><button class="close" data-i18n-aria="close" aria-label="Close paywall">×</button></header><div class="hero"><div class="visual">
   <img class="room-photo" src="assets/duo/warm-raised.jpg" data-i18n-alt="roomB" alt="A Christmas tree and a tall color-changing floor lamp beside the gifts">
   <img class="room-photo room-photo--red" src="assets/duo/red-aligned.jpg" alt="">
   <img class="room-photo room-photo--ice" src="assets/duo/ice-aligned.jpg" alt="">
@@ -581,8 +581,6 @@ main {
     <div class="clock-screen">
       <p class="timer-caption">Christmas offer ends in</p>
       <div class="digits">
-        <div class="unit"><span class="lcd-pair" id="hours"></span><small data-i18n="hours">Hours</small></div>
-        <span class="colon">:</span>
         <div class="unit"><span class="lcd-pair" id="minutes"></span><small data-i18n="minutes">Minutes</small></div>
         <span class="colon">:</span>
         <div class="unit"><span class="lcd-pair" id="seconds"></span><small data-i18n="seconds">Seconds</small></div>
@@ -673,7 +671,7 @@ main {
   <button id="reopen">Mở lại paywall</button>
   <button id="toggle-music" type="button" aria-pressed="false">Bật nhạc Giáng sinh</button>
   <button id="pause-lights" type="button" aria-pressed="false">Tạm dừng đèn và tuyết</button>
-  <p>Giá và giao dịch dùng dữ liệu demo. Countdown kết thúc vào cuối ngày 25/12/2026 theo giờ Việt Nam.</p>
+  <p>Giá và giao dịch dùng dữ liệu demo. Countdown 15 phút, tính lại khi mở lại paywall.</p>
   <p><a href="https://nguyenphuadta.github.io/paywall-ios/library/castduo-plus/">Ref bố cục · fullscreen_2</a></p>
 </aside>
 <section id="dialog-iphone" class="preview-board" aria-labelledby="dialog-heading">
@@ -681,7 +679,7 @@ main {
   <div id="dialog-frames" class="board-grid"></div>
 </section>
 <section class="preview-board" aria-labelledby="device-heading">
-  <h2 id="device-heading">Demo responsive · iPhone và DUO</h2>
+  <h2 id="device-heading">Demo responsive · iPhone, iPad và DUO</h2>
   <div id="device-frames" class="board-grid"></div>
 </section>
 <section class="preview-board" aria-labelledby="state-heading">
@@ -713,7 +711,7 @@ main {
       </figure>
   </div>
 </section>
-</main><script src="christmas-audio.js?v=1" defer></script><script src="../../../assets/review-comments.js?v=handoff1" data-paywall="smarthue-christmas" defer></script><script src="preview-locale.js?v=cta-case13" defer></script><script src="preview-board.js?v=weeklyintro10" defer></script><script src="billing-preview.js?v=weeklyintro10" defer></script><script>
+</main><script src="christmas-audio.js?v=1" defer></script><script src="../../../assets/review-comments.js?v=handoff1" data-paywall="smarthue-christmas" defer></script><script src="preview-locale.js?v=ipad-timer" defer></script><script src="preview-board.js?v=ipad-timer" defer></script><script src="billing-preview.js?v=weeklyintro10" defer></script><script>
 const phone = document.querySelector('.phone');
 const timer = document.querySelector('.timer');
 document.querySelector('#dev-link').addEventListener('click', event => {
@@ -772,10 +770,10 @@ pauseLights.addEventListener('click', () => {
   const paused = phone.classList.toggle('lights-paused');
   pauseLights.setAttribute('aria-pressed', String(paused));
 });
-const hourNumber = document.querySelector('#hours');
 const minuteNumber = document.querySelector('#minutes');
 const secondNumber = document.querySelector('#seconds');
-const deadline = Date.parse('2026-12-26T00:00:00+07:00');
+const offerDurationMs = 15 * 60 * 1000;
+let deadline = Date.now() + offerDurationMs;
 const timerCaption = timer.querySelector('.timer-caption');
 const digits = timer.querySelector('.digits');
 function drawTimeUnit(element, value) {
@@ -797,16 +795,19 @@ function updateCountdown() {
 
   if (totalSeconds !== displayedSeconds) {
     displayedSeconds = totalSeconds;
-    const hours = Math.floor(totalSeconds / 3600);
-    const minutes = Math.floor(totalSeconds / 60) % 60;
+    const minutes = Math.floor(totalSeconds / 60);
     const seconds = totalSeconds % 60;
-    drawTimeUnit(hourNumber, hours);
     drawTimeUnit(minuteNumber, minutes);
     drawTimeUnit(secondNumber, seconds);
-    timer.setAttribute('aria-label', smartHueLocale.countdown([hours, minutes, seconds]));
+    timer.setAttribute('aria-label', smartHueLocale.countdown([minutes, seconds]));
   }
   countdownTick = setTimeout(updateCountdown, ((remainingMs - 1) % 1000) + 1);
 }
+document.querySelector('#reopen').addEventListener('click', () => {
+  deadline = Date.now() + offerDurationMs;
+  digits.hidden = false;
+  phone.dispatchEvent(new Event('languagechange'));
+});
 phone.addEventListener('languagechange', () => {
   clearTimeout(countdownTick);
   displayedSeconds = undefined;

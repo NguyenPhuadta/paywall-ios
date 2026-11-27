@@ -2,6 +2,8 @@ const smartHueDevices = (() => {
   const duoDevice = '951x669';
   const foldedDevice = 'duo-partially-folded';
   const outerDevice = '466x678';
+  const ipadPortrait = '820x1180';
+  const ipadLandscape = '1180x820';
   const dialogDevice = '329x510';
   const sizes = [
     ['440x956', 'iPhone 16 Pro Max, 17 Pro Max'],
@@ -13,6 +15,8 @@ const smartHueDevices = (() => {
     ['414x896', 'iPhone 11'],
     ['375x812', 'iPhone 12 mini, 13 mini'],
     ['375x667', 'iPhone SE 2, SE 3'],
+    [ipadPortrait, 'iPad · Dọc'],
+    [ipadLandscape, 'iPad · Ngang'],
     [duoDevice, 'DUO Inner Display · Landscape'],
     [foldedDevice, 'DUO Inner Display · Partially Folded'],
     [outerDevice, 'DUO Outer Display · Folded'],
@@ -46,19 +50,21 @@ const smartHueDevices = (() => {
 
   function applySize(id) {
     const [width, height] = dimensions(id);
-    const landscape = isDuoLandscape(id);
+    const ipad = id === ipadPortrait || id === ipadLandscape;
+    const landscape = isDuoLandscape(id) || id === ipadLandscape;
     const outer = id === outerDevice;
     const dialog = id === dialogDevice;
     const onIphone = dialog && (!embedded || validBackdrop);
     const [frameWidth, frameHeight] = onIphone ? dimensions(backdropPicker.value) : [width, height];
     picker.value = id;
     phone.dataset.device = id === foldedDevice ? id : id === defaultDevice ? 'default' : dimensions(id).join('×');
+    phone.classList.toggle('ipad', ipad);
     phone.classList.toggle('small', id === '375x667');
     phone.classList.toggle('duo', landscape || outer);
     phone.classList.toggle('duo-outer', outer);
     phone.classList.toggle('duo-folded', id === foldedDevice);
     phone.classList.toggle('christmas-dialog', dialog);
-    host.classList.toggle('duo-frame', landscape || outer || dialog);
+    host.classList.toggle('duo-frame', landscape || outer || dialog || ipad);
     host.classList.toggle('dialog-on-iphone', onIphone);
     backdropPicker.closest('.preview-control').hidden = !onIphone;
     preview.classList.toggle('duo-layout', landscape);
@@ -129,7 +135,7 @@ const smartHueDevices = (() => {
     const host = document.createElement('div');
     const iframe = document.createElement('iframe');
     const caption = document.createElement('figcaption');
-    if (isDuoLandscape(device)) card.className = 'duo-example';
+    if (isDuoLandscape(device) || device === '1180x820') card.className = 'duo-example';
     host.className = 'board-frame';
     Object.assign(host.dataset, { device, state, width });
     if (backdrop) host.dataset.backdrop = backdrop;

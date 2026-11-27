@@ -2,6 +2,10 @@
   "paywall": "smarthue-christmas",
   "changes": [
     {
+      "at": "2026-11-27T15:15:32+07:00",
+      "summary": "Countdown 15:00, chỉ hiện phút và giây. Thêm preview iPad dọc 820 × 1180 và ngang 1180 × 820."
+    },
+    {
       "at": "2026-11-27T15:06:19+07:00",
       "summary": "Trên iPhone fullscreen, nâng bố cục đèn và cây thông lên và dịch cây sang phải để thấy rõ hơn phía trên countdown. Giữ đèn bên trái và dùng chung vòng lặp ba ảnh DUO."
     },
