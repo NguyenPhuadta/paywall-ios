@@ -120,7 +120,7 @@ main.duo-layout {
   justify-content: flex-end;
 }
 .duo-outer .hero .visual { bottom: auto; height: 466px; }
-.duo-outer .duo-photo { object-position: right top; transform: none; }
+.duo-outer .duo-photo { object-position: right top; }
 .duo-outer .duo-blur { display: none; }
 .phone.duo-outer .visual::after {
   background: linear-gradient(to bottom, transparent 44%, var(--surface));
