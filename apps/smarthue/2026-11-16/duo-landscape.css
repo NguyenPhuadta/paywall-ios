@@ -63,19 +63,7 @@ main.duo-layout {
 .duo-photo {
   object-fit: cover;
   object-position: center 28%;
-  transform: scaleX(-1);
 }
-.duo-photo--red, .duo-photo--ice {
-  opacity: 0;
-  mix-blend-mode: color;
-  filter: blur(6px);
-  mask-image:
-    linear-gradient(#000, transparent 24%),
-    radial-gradient(ellipse 38% 75% at 70% 51%, #000 36%, transparent 98%);
-}
-:root:is(:not([data-board]), [data-live-motion]) .duo-scenes-ready .duo-photo--red { animation: room-red 8s linear infinite; }
-:root:is(:not([data-board]), [data-live-motion]) .duo-scenes-ready .duo-photo--ice { animation: room-ice 8s linear infinite; }
-.lights-paused .duo-photo { animation-play-state: paused; }
 .duo-blur > div:nth-child(1) {
   backdrop-filter: blur(12px);
   mask-image: linear-gradient(to right, transparent 45.11%, #000 67%);

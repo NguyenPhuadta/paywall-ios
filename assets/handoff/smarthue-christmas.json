@@ -2,6 +2,10 @@
   "paywall": "smarthue-christmas",
   "changes": [
     {
+      "at": "2026-11-27T14:52:43+07:00",
+      "summary": "Fullscreen iPhone, dialog và DUO dùng chung một ảnh nền phòng Giáng sinh ánh vàng champagne. Bỏ chuyển ảnh đỏ và xanh băng, giữ hiệu ứng tuyết."
+    },
+    {
       "at": "2026-11-27T13:42:19+07:00",
       "summary": "Dialog SmartHue (329 × 510): căn giữa cụm timer và tiêu đề. Tiêu đề tiếng Đức đổi từ “Licht an. Zeit läuft!” sang “Jetzt strahlen. Zeit wird knapp!”."
     },
