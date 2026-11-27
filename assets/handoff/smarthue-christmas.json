@@ -1,0 +1,49 @@
+{
+  "paywall": "smarthue-christmas",
+  "changes": [
+    {
+      "at": "2026-11-27T13:32:14+07:00",
+      "summary": "Thêm hộp bàn giao dev và nhật ký theo ngày giờ. Căn giữa countdown và tiêu đề trong dialog. Khôi phục tiêu đề tiếng Đức “Jetzt strahlen. Zeit wird knapp!”."
+    },
+    {
+      "at": "2026-11-25T10:48:49+07:00",
+      "summary": "Shorten both phrases in the German Christmas dialog headline",
+      "commit": "ca17aa2"
+    },
+    {
+      "at": "2026-11-23T11:41:10+07:00",
+      "summary": "Use sentence case for all SmartHue Continue CTAs",
+      "commit": "fea1923"
+    },
+    {
+      "at": "2026-11-23T11:38:47+07:00",
+      "summary": "Resolve remaining SmartHue currency and trial copy comments",
+      "commit": "1164102"
+    },
+    {
+      "at": "2026-11-23T09:05:25+07:00",
+      "summary": "Shorten German and Danish weekly intro copy",
+      "commit": "23c1bba"
+    },
+    {
+      "at": "2026-11-23T09:02:05+07:00",
+      "summary": "Add dedicated first-week discount dialog option",
+      "commit": "852f095"
+    },
+    {
+      "at": "2026-11-23T08:58:41+07:00",
+      "summary": "Unify trial CTA copy and increase CTA typography",
+      "commit": "95d0e6c"
+    },
+    {
+      "at": "2026-11-21T17:31:12+07:00",
+      "summary": "Add three-day weekly trial at USD 4.99 renewal",
+      "commit": "5372f23"
+    },
+    {
+      "at": "2026-11-21T17:00:39+07:00",
+      "summary": "Update weekly dialog with first-week offer copy",
+      "commit": "f94554b"
+    }
+  ]
+}

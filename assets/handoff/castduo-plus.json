@@ -1,0 +1,49 @@
+{
+  "paywall": "castduo-plus",
+  "changes": [
+    {
+      "at": "2026-11-27T13:32:14+07:00",
+      "summary": "Thêm hộp bàn giao dev và nhật ký theo ngày giờ."
+    },
+    {
+      "at": "2026-11-04T08:16:53+07:00",
+      "summary": "Rename paywall display names to fullscreen_1 through fullscreen_5",
+      "commit": "931c0c3"
+    },
+    {
+      "at": "2026-11-02T09:13:08+07:00",
+      "summary": "Apply trial-first offer wording across remaining paywalls",
+      "commit": "a5e3892"
+    },
+    {
+      "at": "2026-11-02T08:55:06+07:00",
+      "summary": "Refresh Moments iframe after headline update",
+      "commit": "2f1a9ac"
+    },
+    {
+      "at": "2026-11-02T08:52:31+07:00",
+      "summary": "Use approved Moments on a bigger screen headline",
+      "commit": "d57780f"
+    },
+    {
+      "at": "2026-10-31T12:00:45+07:00",
+      "summary": "Add comment visibility toggle",
+      "commit": "8d94a2c"
+    },
+    {
+      "at": "2026-10-30T16:35:06+07:00",
+      "summary": "Add comment replies and shared resolution",
+      "commit": "817163b"
+    },
+    {
+      "at": "2026-10-30T15:51:49+07:00",
+      "summary": "Highlight PW01 trial offer from review comments",
+      "commit": "eac93e4"
+    },
+    {
+      "at": "2026-10-30T15:18:26+07:00",
+      "summary": "Apply six CastDuo paywall review comments",
+      "commit": "a03dc3a"
+    }
+  ]
+}

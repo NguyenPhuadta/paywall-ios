@@ -59,9 +59,9 @@
 .phone.christmas-dialog[data-countdown="lcd"] .intro { --countdown-number-size: 26px; }
 .phone.christmas-dialog[data-countdown="lcd"] .timer {
   width: max-content;
-  margin: 0 0 8px;
+  margin: 0 auto 8px;
 }
-.phone.christmas-dialog[data-countdown="lcd"] .clock-screen { gap: 2px; }
+.phone.christmas-dialog[data-countdown="lcd"] .clock-screen { gap: 2px; justify-items: center; }
 .phone.christmas-dialog[data-countdown="lcd"] .colon { font-size: 18px; }
 .phone.christmas-dialog[data-countdown="lcd"] .digits { column-gap: 7px; }
 .phone.christmas-dialog[data-countdown="lcd"] .timer-caption,
@@ -151,6 +151,6 @@
 .phone[data-trial-offer] .cta { line-height: 1.3; }
 .phone.small[data-countdown="lcd"] .hero { min-height: 224px; }
 
-.de-dialog-headline,
-.phone.christmas-dialog:lang(de) .standard-headline { display: none; }
-.phone.christmas-dialog:lang(de) .de-dialog-headline { display: inline; }
+.phone.christmas-dialog[data-countdown="lcd"] .intro,
+.phone.christmas-dialog[data-countdown="lcd"] .timer-caption,
+.phone.christmas-dialog .purchase { text-align: center; }

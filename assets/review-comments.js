@@ -50,7 +50,18 @@ function openExisting(c, point, origin){
 function box(r){selection.style.cssText=`left:${r.x*100}%;top:${r.y*100}%;width:${r.w*100}%;height:${r.h*100}%`;selection.hidden=false}
 function mode(on){active=on;host.classList.toggle('commenting',on);toggle.setAttribute('aria-pressed',on);toggle.innerHTML=icon+(on?' Thoát comment':' Thêm comment');help.textContent=on?'Kéo chọn vùng hoặc bấm để ghim. Esc để thoát.':(backend?'Comment được chia sẻ với mọi người.':'Đang kết nối comment chung…');if(on){layer.tabIndex=0;layer.focus()}else{layer.tabIndex=-1;if(!dialog.open)selection.hidden=true}}
 function saveLocal(){try{localStorage.setItem(key,JSON.stringify(localComments));return true}catch{error.textContent='Chưa lưu được comment trên trình duyệt này.';return false}}
-function render(){layer.querySelectorAll('.comment-pin').forEach(p=>p.remove());list.replaceChildren();list.hidden=!commentsVisible;exportButton.hidden=!commentsVisible||!comments.length;visibility.textContent=commentsVisible?'Ẩn comment':'Hiện comment';visibility.setAttribute('aria-pressed',String(commentsVisible));
+let commentState = 'connecting';
+function publishHandoffComments() {
+ const entries = comments.map(({id,text,context,createdAt,updatedAt,resolved,local}) =>
+  ({id,text,context,createdAt,updatedAt,resolved:Boolean(resolved),local:Boolean(local)}));
+ document.dispatchEvent(new CustomEvent('paywall:comments', {
+  detail: {paywall,comments:entries,state:commentState},
+ }));
+}
+document.addEventListener('paywall:request-comments', event => {
+ if (event.detail === paywall) publishHandoffComments();
+});
+function render(){publishHandoffComments();layer.querySelectorAll('.comment-pin').forEach(p=>p.remove());list.replaceChildren();list.hidden=!commentsVisible;exportButton.hidden=!commentsVisible||!comments.length;visibility.textContent=commentsVisible?'Ẩn comment':'Hiện comment';visibility.setAttribute('aria-pressed',String(commentsVisible));
 comments.forEach((c,i)=>{const item=document.createElement('button');item.type='button';item.className='comment-item';item.textContent=`${i+1}. ${c.local?'[Trên máy] ':''}${c.resolved?'✓ Đã giải quyết · ':''}${c.text}`;item.onclick=()=>openExisting(c,null,item);list.append(item);
 const exact=matches(c);
 const differentLayout=inline&&layoutGroup(context().device)!==layoutGroup(c.context.device);
@@ -98,7 +109,7 @@ render();
  const identity=auth.getAuth(firebase);const user=(await auth.signInAnonymously(identity)).user;uid=user.uid;
  const db=fs.getFirestore(firebase,'comments'),entries=fs.collection(db,'comments',paywall,'entries');
  backend={set:(id,data,edit)=>edit?fs.updateDoc(fs.doc(entries,id),{text:data.text,updatedAt:data.updatedAt}):fs.setDoc(fs.doc(entries,id),data),remove:id=>fs.deleteDoc(fs.doc(entries,id)),resolve:(id,value)=>fs.updateDoc(fs.doc(entries,id),{resolved:value}),reply:(id,data)=>fs.addDoc(fs.collection(entries,id,'replies'),data),removeReply:(id,replyId)=>fs.deleteDoc(fs.doc(entries,id,'replies',replyId)),listenReplies:(id,callback,onError)=>fs.onSnapshot(fs.query(fs.collection(entries,id,'replies'),fs.limit(500)),snap=>callback(snap.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>a.createdAt.localeCompare(b.createdAt))),onError)};
- fs.onSnapshot(fs.query(entries,fs.limit(500)),snapshot=>{comments=[...localComments,...snapshot.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>a.createdAt.localeCompare(b.createdAt))];help.textContent='Comment được chia sẻ với mọi người.';if(selected&&dialog.open&&!draft.local){const current=comments.find(c=>c.id===selected);if(current){draft=current;const b=dialog.querySelector('.comment-resolve');b.textContent=current.resolved?'↩ Mở lại':'✓ Đánh dấu đã giải quyết';b.setAttribute('aria-pressed',String(!!current.resolved))}}render()},()=>{backend=null;help.textContent='Không kết nối được comment chung. Thử tải lại trang.'});
- }catch(e){console.error('Comment connection failed:',e);help.textContent='Không kết nối được comment chung. Thử tải lại trang.'}
+ fs.onSnapshot(fs.query(entries,fs.limit(500)),snapshot=>{commentState='ready';comments=[...localComments,...snapshot.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>a.createdAt.localeCompare(b.createdAt))];help.textContent='Comment được chia sẻ với mọi người.';if(selected&&dialog.open&&!draft.local){const current=comments.find(c=>c.id===selected);if(current){draft=current;const b=dialog.querySelector('.comment-resolve');b.textContent=current.resolved?'↩ Mở lại':'✓ Đánh dấu đã giải quyết';b.setAttribute('aria-pressed',String(!!current.resolved))}}render()},()=>{backend=null;commentState='error';publishHandoffComments();help.textContent='Không kết nối được comment chung. Thử tải lại trang.'});
+ }catch(e){commentState='error';publishHandoffComments();console.error('Comment connection failed:',e);help.textContent='Không kết nối được comment chung. Thử tải lại trang.'}
 })();
 })();

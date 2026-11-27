@@ -1,0 +1,19 @@
+{
+  "paywall": "smarthue-christmas-banner",
+  "changes": [
+    {
+      "at": "2026-11-27T13:32:14+07:00",
+      "summary": "Thêm hộp bàn giao dev và nhật ký theo ngày giờ."
+    },
+    {
+      "at": "2026-11-25T08:38:46+07:00",
+      "summary": "Finalize editable Christmas banners and native-size exports",
+      "commit": "31b2f87"
+    },
+    {
+      "at": "2026-11-25T08:29:45+07:00",
+      "summary": "Add SmartHue Christmas banner concepts and research board",
+      "commit": "d2c8e52"
+    }
+  ]
+}
