@@ -129,6 +129,11 @@ main {
   transform: scaleX(-1);
   filter: saturate(.84);
 }
+.phone:not(.duo, .christmas-dialog) .room-photo {
+  top: -36px;
+  height: calc(100% + 16px);
+  object-position: 86% top;
+}
 .phone[data-countdown="lcd"] {
   --scene-duration: 8s;
   --snow-time-scale: .7;

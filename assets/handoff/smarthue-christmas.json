@@ -2,6 +2,10 @@
   "paywall": "smarthue-christmas",
   "changes": [
     {
+      "at": "2026-11-27T15:06:19+07:00",
+      "summary": "Trên iPhone fullscreen, nâng bố cục đèn và cây thông lên và dịch cây sang phải để thấy rõ hơn phía trên countdown. Giữ đèn bên trái và dùng chung vòng lặp ba ảnh DUO."
+    },
+    {
       "at": "2026-11-27T15:04:11+07:00",
       "summary": "Đèn đứng nằm bên trái trên fullscreen iPhone, dialog và DUO. Dùng chung ba ảnh DUO gốc theo thứ tự champagne → đỏ → xanh băng, lặp 8 giây. Lật ngang lớp ảnh và căn crop theo từng layout để thấy đèn."
     },
