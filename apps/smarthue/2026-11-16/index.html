@@ -17,7 +17,7 @@ document.documentElement.toggleAttribute('data-live-motion', embedParams.get('mo
 }
 .digits {
   display: grid;
-  grid-template-columns: 48px auto 48px;
+  grid-template-columns: 48px auto 48px auto 48px;
   column-gap: 4px;
   align-items: start;
 }
@@ -273,7 +273,7 @@ main {
 .digits {
   display: grid;
   width: min(100%, 152px);
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: 1fr auto 1fr auto 1fr;
   align-items: start;
   gap: 4px;
 }
@@ -331,7 +331,7 @@ main {
 .phone[data-countdown="lcd"] .digits {
   width: max-content;
   max-width: 100%;
-  grid-template-columns: max-content auto max-content;
+  grid-template-columns: max-content auto max-content auto max-content;
   column-gap: 10px;
   color: #fff5e8;
 }
@@ -582,6 +582,8 @@ main {
     <div class="clock-screen">
       <p class="timer-caption">Christmas offer ends in</p>
       <div class="digits">
+        <div class="unit"><span class="lcd-pair" data-number="00"></span><small data-i18n="hours">Hours</small></div>
+        <span class="colon">:</span>
         <div class="unit"><span class="lcd-pair" id="minutes"></span><small data-i18n="minutes">Minutes</small></div>
         <span class="colon">:</span>
         <div class="unit"><span class="lcd-pair" id="seconds"></span><small data-i18n="seconds">Seconds</small></div>
@@ -639,36 +641,7 @@ main {
   <div class="preview-control">
     <label for="billing-state">TRẠNG THÁI PAYWALL</label>
     <select id="billing-state">
-      <optgroup label="Gói giá">
-        <option value="ready">Sẵn sàng · Chọn gói</option>
-        <option value="trial">Gói năm · Dùng thử 3 ngày</option>
-        <option value="weekly">Gói tuần · Giá thường</option>
-        <option value="weekly-intro">Gói tuần · Tuần đầu $0.99, sau đó $4.99/tuần</option>
-        <option value="weekly-trial">Gói tuần · Dùng thử 3 ngày</option>
-        <option value="loading">Đang tải billing</option>
-        <option value="load-error">Không tải được gói</option>
-        <option value="eligibility">Đang kiểm tra ưu đãi</option>
-        <option value="entitled">Đã có gói</option>
-      </optgroup>
-      <optgroup label="Mua gói">
-        <option value="opening">Đang mở App Store</option>
-        <option value="cancelled">Đã hủy giao dịch</option>
-        <option value="pending">Đang chờ xử lý</option>
-        <option value="unverified">Chưa xác minh được</option>
-        <option value="verifying">Đang xác minh giao dịch</option>
-        <option value="purchase-error">Mua thất bại</option>
-        <option value="purchased">Mua thành công</option>
-      </optgroup>
-      <optgroup label="Khôi phục">
-        <option value="restoring">Đang khôi phục</option>
-        <option value="restored">Khôi phục thành công</option>
-        <option value="restore-empty">Không tìm thấy gói</option>
-        <option value="restore-error">Khôi phục thất bại</option>
-      </optgroup>
-      <optgroup label="Điều khoản">
-        <option value="terms">Terms of Use</option>
-        <option value="privacy">Privacy Policy</option>
-      </optgroup>
+      <option value="ready">Sẵn sàng · Chọn gói</option>
     </select>
   </div>
   <button id="reopen">Mở lại paywall</button>
@@ -684,10 +657,6 @@ main {
 <section class="preview-board" aria-labelledby="device-heading">
   <h2 id="device-heading">Demo responsive · iPhone, iPad và DUO</h2>
   <div id="device-frames" class="board-grid"></div>
-</section>
-<section class="preview-board" aria-labelledby="state-heading">
-  <h2 id="state-heading">Các trạng thái paywall</h2>
-  <div id="state-frames"></div>
 </section>
 <section class="preview-assets" aria-labelledby="asset-heading">
   <h2 id="asset-heading">Hình ảnh SmartHue</h2>
@@ -714,7 +683,7 @@ main {
       </figure>
   </div>
 </section>
-</main><script src="christmas-audio.js?v=1" defer></script><script src="../../../assets/review-comments.js?v=handoff1" data-paywall="smarthue-christmas" defer></script><script src="preview-locale.js?v=best-deal" defer></script><script src="preview-board.js?v=ipad-board-width" defer></script><script src="billing-preview.js?v=weeklyintro10" defer></script><script>
+</main><script src="christmas-audio.js?v=1" defer></script><script src="../../../assets/review-comments.js?v=handoff1" data-paywall="smarthue-christmas" defer></script><script src="preview-locale.js?v=ready-hms" defer></script><script src="preview-board.js?v=ready-hms" defer></script><script src="billing-preview.js?v=ready-hms" defer></script><script>
 const phone = document.querySelector('.phone');
 const timer = document.querySelector('.timer');
 document.querySelector('#dev-link').addEventListener('click', event => {
@@ -816,7 +785,7 @@ function updateCountdown() {
     const seconds = totalSeconds % 60;
     drawTimeUnit(minuteNumber, minutes);
     drawTimeUnit(secondNumber, seconds);
-    timer.setAttribute('aria-label', smartHueLocale.countdown([minutes, seconds]));
+    timer.setAttribute('aria-label', smartHueLocale.countdown([0, minutes, seconds]));
   }
   countdownTick = setTimeout(updateCountdown, ((remainingMs - 1) % 1000) + 1);
 }

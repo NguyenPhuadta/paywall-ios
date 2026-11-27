@@ -1,7 +1,6 @@
 (() => {
   const screen = document.querySelector('.phone');
   const content = screen.querySelector('.content');
-  const picker = document.querySelector('#billing-state');
   const plans = screen.querySelector('.plans');
   const dialogOffer = screen.querySelector('.dialog-offer');
   const offerDetail = dialogOffer.querySelector('strong');
@@ -15,7 +14,6 @@
   const sheetClose = sheet.querySelector('button');
   const close = screen.querySelector('.close');
   const reopen = document.querySelector('#reopen');
-  const policies = ['terms', 'privacy'];
   const { t } = smartHueLocale;
   const states = {
     ready: { label: 'continue', action: 'buy' },
@@ -90,9 +88,6 @@
   function setState(next, outcome, delay = 4500) {
     clearTimeout(pendingTransition);
     state = next;
-    if (!sheet.open || !policies.includes(picker.value)) {
-      picker.value = next;
-    }
     render();
     const result = outcome ?? states[next].next;
     if (result && delay !== null) pendingTransition = setTimeout(() => setState(result), delay);
@@ -114,7 +109,6 @@
   }
 
   function showPolicy(policy, trigger, focus = true) {
-    picker.value = policy;
     showSheet(policy, 'policyPending', trigger, focus);
   }
 
@@ -152,30 +146,7 @@
   sheet.addEventListener('close', () => {
     if (sheet.open) return;
     content.inert = false;
-    if (policies.includes(picker.value)) picker.value = state;
     previousFocus?.focus({ preventScroll: true });
-  });
-  picker.addEventListener('change', event => {
-    const next = picker.value;
-    if (sheet.open) sheet.close();
-    screen.style.visibility = 'visible';
-    if (policies.includes(next)) {
-      showPolicy(next, picker);
-    } else {
-      trialOffer = ['trial', 'weekly-trial'].includes(next);
-      weeklyIntroOffer = next === 'weekly-intro';
-      trialPlan = next === 'weekly-trial' ? 'weekly' : 'yearly';
-      if (['ready', 'trial', 'weekly', 'weekly-trial', 'weekly-intro'].includes(next)) {
-        planButtons.forEach(plan => plan.setAttribute('aria-pressed', String(plan.dataset.plan === (next.startsWith('weekly') ? 'weekly' : 'yearly'))));
-      }
-      if (!document.documentElement.hasAttribute('data-embed')) {
-        const url = new URL(location.href);
-        if (trialOffer || next.startsWith('weekly')) url.searchParams.set('state', next);
-        else url.searchParams.delete('state');
-        history.replaceState(history.state, '', url);
-      }
-      setState(next, undefined, event.detail?.hold ? null : undefined);
-    }
   });
   close.addEventListener('click', () => {
     screen.style.visibility = 'hidden';
@@ -184,22 +155,8 @@
   reopen.addEventListener('click', () => {
     if (sheet.open) sheet.close();
     screen.style.visibility = 'visible';
-    setState(trialOffer ? (trialPlan === 'weekly' ? 'weekly-trial' : 'trial') : weeklyIntroOffer ? 'weekly-intro' : planButtons.find(plan => plan.getAttribute('aria-pressed') === 'true').dataset.plan === 'weekly' ? 'weekly' : 'ready');
+    setState('ready');
     close.focus({ preventScroll: true });
   });
   setState('ready');
-  const previewState = new URLSearchParams(location.search).get('state');
-  if (document.documentElement.hasAttribute('data-board') || ['trial', 'weekly', 'weekly-trial', 'weekly-intro'].includes(previewState)) {
-    trialOffer = ['trial', 'weekly-trial'].includes(previewState);
-    weeklyIntroOffer = previewState === 'weekly-intro';
-    trialPlan = previewState === 'weekly-trial' ? 'weekly' : 'yearly';
-    if (['weekly', 'weekly-trial', 'weekly-intro'].includes(previewState)) {
-      planButtons.forEach(plan => plan.setAttribute('aria-pressed', String(plan.dataset.plan === 'weekly')));
-    }
-    if (policies.includes(previewState)) {
-      showPolicy(previewState, null, false);
-    } else if (Object.hasOwn(states, previewState) && previewState !== 'ready') {
-      setState(previewState, undefined, null);
-    }
-  }
 })();

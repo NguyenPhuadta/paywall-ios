@@ -106,8 +106,7 @@ const smartHueDevices = (() => {
   const language = document.querySelector('#preview-language');
   const sizesGallery = document.querySelector('#device-frames');
   const dialogGallery = document.querySelector('#dialog-frames');
-  const statesGallery = document.querySelector('#state-frames');
-  const { sizes, dimensions, defaultDevice, isDuoLandscape, iphoneSizes, dialogDevice } = smartHueDevices;
+  const { sizes, dimensions, isDuoLandscape, iphoneSizes, dialogDevice } = smartHueDevices;
   const activeFrames = new Map();
   const observer = new IntersectionObserver(entries => {
     for (const entry of entries) {
@@ -165,28 +164,6 @@ const smartHueDevices = (() => {
   dialogGallery.append(...iphoneSizes.map(([id, models]) =>
     makeFrame(dialogDevice, 'ready', dimensions(id).join(' × '), models, id)
   ));
-  const dialogHeading = document.createElement('h3');
-  dialogHeading.textContent = 'Dialog · Gói giá';
-  const dialogStates = document.createElement('div');
-  dialogStates.className = 'board-grid';
-  dialogStates.append(
-    makeFrame(dialogDevice, 'ready', 'Yearly · Không trial', '329 × 510', defaultDevice),
-    makeFrame(dialogDevice, 'trial', 'Yearly · Dùng thử 3 ngày', '329 × 510', defaultDevice),
-    makeFrame(dialogDevice, 'weekly', 'Weekly · Không trial', '329 × 510', defaultDevice),
-    makeFrame(dialogDevice, 'weekly-trial', 'Weekly · Dùng thử 3 ngày', '329 × 510', defaultDevice),
-    makeFrame(dialogDevice, 'weekly-intro', 'Weekly · Tuần đầu $0.99', 'Sau đó $4.99/tuần · 329 × 510', defaultDevice)
-  );
-  statesGallery.append(dialogHeading, dialogStates);
-  for (const group of document.querySelectorAll('#billing-state optgroup')) {
-    const heading = document.createElement('h3');
-    const grid = document.createElement('div');
-    heading.textContent = group.label;
-    grid.className = 'board-grid';
-    grid.append(...Array.from(group.children, option =>
-      makeFrame(defaultDevice, option.value, option.textContent)
-    ));
-    statesGallery.append(heading, grid);
-  }
   language.addEventListener('change', () => {
     for (const [host, iframe] of activeFrames) {
       if (iframe.hasAttribute('src')) loadFrame(host);
