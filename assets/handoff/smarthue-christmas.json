@@ -2,6 +2,10 @@
   "paywall": "smarthue-christmas",
   "changes": [
     {
+      "at": "2026-11-27T15:19:54+07:00",
+      "summary": "Countdown trên mọi layout bắt đầu từ 15:00, hiển thị phút:giây và tính lại khi mở lại paywall. Khi hết 15 phút, hiển thị thông báo hết ưu đãi. Thêm iPad dọc 820 × 1180 và iPad ngang 1180 × 820 trong bộ chọn Màn hình và Demo responsive."
+    },
+    {
       "at": "2026-11-27T15:15:32+07:00",
       "summary": "Countdown 15:00, chỉ hiện phút và giây. Thêm preview iPad dọc 820 × 1180 và ngang 1180 × 820."
     },
