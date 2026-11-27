@@ -2,6 +2,36 @@
   "paywall": "smarthue-christmas",
   "changes": [
     {
+      "at": "2026-11-27T15:28:43+07:00",
+      "summary": "Cập nhật SmartHue",
+      "items": [
+        {
+          "title": "iPad ngang",
+          "text": "Căn giữa ba link dưới CTA, cách nhau 24 px. Status bar nằm ngang ở mép trên, nút đóng ở góc trái."
+        },
+        {
+          "title": "iPad dọc",
+          "text": "Căn giữa ba link dưới CTA và đặt khoảng cách 24 px, giống iPad ngang. Trang preview chừa tối thiểu 240 px cho cột điều khiển và xếp cột xuống dưới khi cửa sổ hẹp."
+        },
+        {
+          "title": "Ảnh nền",
+          "text": "iPhone fullscreen, dialog, iPad và DUO dùng chung đúng ba ảnh DUO. Thứ tự champagne → đỏ → xanh băng, vòng lặp 8 giây, đèn ở bên trái."
+        },
+        {
+          "title": "Countdown",
+          "text": "Bắt đầu từ 15:00, chỉ hiện phút và giây. Mở lại preview sẽ tính lại từ đầu."
+        },
+        {
+          "title": "Dialog 329 × 510",
+          "text": "Căn giữa timer và tiêu đề."
+        },
+        {
+          "title": "Tiếng Đức · Dialog",
+          "text": "Tiêu đề đổi từ “Licht an. Zeit läuft!” sang “Jetzt strahlen. Zeit wird knapp!”."
+        }
+      ]
+    },
+    {
       "at": "2026-11-27T15:26:58+07:00",
       "summary": "Cập nhật SmartHue",
       "items": [

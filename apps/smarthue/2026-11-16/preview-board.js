@@ -69,7 +69,7 @@ const smartHueDevices = (() => {
     host.classList.toggle('duo-frame', landscape || outer || dialog || ipad);
     host.classList.toggle('dialog-on-iphone', onIphone);
     backdropPicker.closest('.preview-control').hidden = !onIphone;
-    preview.classList.toggle('duo-layout', landscape || tabletLandscape);
+    preview.classList.toggle('duo-layout', landscape || ipad);
     host.style.setProperty('--duo-ratio', `${frameWidth} / ${frameHeight}`);
     host.style.setProperty('--iphone-width', `${frameWidth}px`);
     host.style.setProperty('--frame-content-width', `${width}px`);

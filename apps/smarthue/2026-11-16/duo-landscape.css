@@ -1,6 +1,6 @@
 main.duo-layout {
   max-width: 1440px;
-  grid-template-columns: minmax(0, 951px) minmax(240px, 1fr);
+  grid-template-columns: minmax(0, min(951px, var(--preview-width, 951px))) minmax(240px, 1fr);
 }
 #prototype.duo-frame { aspect-ratio: var(--duo-ratio); }
 .duo-frame .phone {
@@ -138,7 +138,7 @@ main.duo-layout {
 .board-grid .duo-example { grid-column: 1 / -1; }
 [data-embed] main.duo-layout { display: block; }
 @media (max-width: 1240px) {
-  main.duo-layout { grid-template-columns: minmax(0, 951px); }
+  main.duo-layout { grid-template-columns: minmax(0, min(951px, var(--preview-width, 951px))); }
 }
 @media (prefers-reduced-motion: reduce) {
   .duo-scenes-ready .duo-photo { animation: none; }
