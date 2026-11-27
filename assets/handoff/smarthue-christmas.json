@@ -2,6 +2,24 @@
   "paywall": "smarthue-christmas",
   "changes": [
     {
+      "at": "2026-11-27T15:23:35+07:00",
+      "summary": "Cập nhật SmartHue",
+      "items": [
+        {
+          "title": "iPad ngang",
+          "text": "Căn giữa ba link dưới CTA, cách nhau 24 px. Status bar nằm ngang ở mép trên, nút đóng ở góc trái."
+        },
+        {
+          "title": "Ảnh nền",
+          "text": "iPhone fullscreen, dialog, iPad và DUO dùng chung đúng ba ảnh DUO. Thứ tự champagne → đỏ → xanh băng, vòng lặp 8 giây, đèn ở bên trái."
+        },
+        {
+          "title": "Countdown",
+          "text": "Bắt đầu từ 15:00, chỉ hiện phút và giây. Mở lại preview sẽ tính lại từ đầu."
+        }
+      ]
+    },
+    {
       "at": "2026-11-27T15:21:15+07:00",
       "summary": "iPad ngang 1180 × 820 dùng status bar ngang trên mép trên và nút đóng riêng phía dưới bên trái. Thanh dọc thời gian, kết nối và nút đóng cạnh phải dành riêng cho DUO."
     },

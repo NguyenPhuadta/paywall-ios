@@ -163,6 +163,12 @@ main.duo-layout {
 }
 .phone.ipad-landscape .intro,
 .phone.ipad-landscape .purchase { position: relative; padding: 0; }
+.phone.ipad-landscape .links {
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0 24px;
+}
+.phone.ipad-landscape .links button { padding-inline: 0; }
 .phone.ipad-landscape .home { display: none; }
 .phone.ipad:not(.ipad-landscape) .intro,
 .phone.ipad:not(.ipad-landscape) .purchase {

@@ -85,6 +85,17 @@
       const row = document.createElement('li');
       addTime(row, change.at);
       row.append(change.summary);
+      if (Array.isArray(change.items)) {
+        const topics = document.createElement('ul');
+        for (const item of change.items) {
+          const entry = document.createElement('li');
+          const title = document.createElement('strong');
+          title.textContent = item.title;
+          entry.append(title, ' · ', item.text);
+          topics.append(entry);
+        }
+        row.append(topics);
+      }
       return row;
     }));
   }).catch(() => { changes.textContent = 'Chưa tải được nhật ký.'; });
