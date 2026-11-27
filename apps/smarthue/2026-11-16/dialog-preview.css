@@ -50,7 +50,7 @@
 .phone.christmas-dialog .visual::after {
   background: linear-gradient(180deg, #1b0d111c, transparent 26%, #210d1370 61%, #210d13 100%);
 }
-.christmas-dialog .room-photo { object-position: 69% 22%; }
+.christmas-dialog .room-photo { object-position: right 22%; }
 .christmas-dialog .intro, .christmas-dialog .purchase {
   position: relative;
   z-index: 1;

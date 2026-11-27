@@ -2,6 +2,10 @@
   "paywall": "smarthue-christmas",
   "changes": [
     {
+      "at": "2026-11-27T14:58:30+07:00",
+      "summary": "Lấy bộ ba ảnh gốc DUO có đèn đứng làm ảnh nền dùng chung. Căn khung fullscreen và dialog về phía đèn."
+    },
+    {
       "at": "2026-11-27T14:54:00+07:00",
       "summary": "Fullscreen iPhone, dialog và DUO dùng chung bộ ba ảnh nền Giáng sinh (champagne, đỏ và xanh băng), chuyển ảnh theo vòng lặp 8 giây."
     },
