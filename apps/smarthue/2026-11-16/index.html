@@ -369,7 +369,7 @@ main {
 .plan > .plan-summary, .plan > .plan-meta { display: none; }
 .phone[data-countdown="lcd"] .plan {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-columns: auto minmax(0, 1fr) fit-content(32%);
   align-items: center;
   align-content: center;
   gap: 4px 12px;
@@ -377,7 +377,9 @@ main {
   padding: 8px 16px;
   border-radius: 22px;
 }
-.phone[data-countdown="lcd"] .plan--yearly { position: relative; }
+.phone[data-countdown="lcd"] .plan { position: relative; }
+.plan-renewal { min-width: 0; font-size: 12px; line-height: 1.3; text-align: end; }
+.plan-renewal:empty { display: none; }
 @supports (corner-shape: squircle) {
   .phone[data-countdown="lcd"] .plan {
     border-radius: 32px;
@@ -389,10 +391,11 @@ main {
 .plan-summary .plan-title {
   display: block;
   margin-bottom: 2px;
-  color: var(--ink);
-  font-size: 16px;
-  font-weight: 700;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 650;
 }
+.plan-summary small { display: block; font-size: 14px; }
 .phone[data-countdown="lcd"] .plan-meta {
   display: flex;
   align-items: center;
@@ -401,9 +404,9 @@ main {
 .plan-meta .plan-savings {
   position: absolute;
   top: 0;
-  right: 65px;
+  right: 16px;
   z-index: 1;
-  transform: translate(50%, -50%);
+  transform: translateY(-50%);
   padding: 4px 8px;
   border-radius: 999px;
   background: var(--accent);
@@ -426,12 +429,10 @@ main {
 }
 .plan[aria-pressed="true"] .plan-mark::before {
   content: "";
-  width: 7px;
-  height: 4px;
-  margin-top: -2px;
-  border: solid var(--cta-ink);
-  border-width: 0 0 2px 2px;
-  transform: rotate(-45deg);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--cta-ink);
 }
 .terms { margin: 16px 0 8px; color: var(--muted); }
 .cta {
@@ -561,7 +562,7 @@ main {
 [data-embed] .notes { display: none; }
 [data-embed] .phone { box-shadow: none; }
 [data-embed] .close { pointer-events: none; }
-</style><link rel="stylesheet" href="duo-landscape.css?v=ipad-board-width"><link rel="stylesheet" href="dialog-preview.css?v=lamp-left"><nav class="pvbar smarthue-nav" aria-label="SmartHue"><a href="../../../index.html#smarthue">← Thư viện SmartHue</a><div class="pvtabs"><a href="./" aria-current="page">Xem</a><a id="dev-link" href="dev.html">Dev</a></div></nav><main><header class="preview-title"><h1>Prototype SmartHue</h1><p>Paywall Giáng sinh · Chọn cỡ màn hình để xem bố cục. <a href="#dialog-iphone">Xem dialog trên iPhone</a></p></header><div id="prototype"><section class="phone" data-countdown="lcd" lang="en" data-i18n-aria="paywall" aria-label="SmartHue Christmas paywall"><div class="status"><span>9:41</span><img class="duo-levels" src="assets/duo/levels.svg" alt=""><div class="levels"><img src="assets/status-cellular.svg" alt=""><img src="assets/status-wifi.svg" alt=""><img src="assets/status-battery.svg" alt=""></div></div><div class="content"><header class="top"><button class="close" data-i18n-aria="close" aria-label="Close paywall">×</button></header><div class="hero"><div class="visual">
+</style><link rel="stylesheet" href="duo-landscape.css?v=ipad-board-width"><link rel="stylesheet" href="dialog-preview.css?v=pricing-structure"><nav class="pvbar smarthue-nav" aria-label="SmartHue"><a href="../../../index.html#smarthue">← Thư viện SmartHue</a><div class="pvtabs"><a href="./" aria-current="page">Xem</a><a id="dev-link" href="dev.html">Dev</a></div></nav><main><header class="preview-title"><h1>Prototype SmartHue</h1><p>Paywall Giáng sinh · Chọn cỡ màn hình để xem bố cục. <a href="#dialog-iphone">Xem dialog trên iPhone</a></p></header><div id="prototype"><section class="phone" data-countdown="lcd" lang="en" data-i18n-aria="paywall" aria-label="SmartHue Christmas paywall"><div class="status"><span>9:41</span><img class="duo-levels" src="assets/duo/levels.svg" alt=""><div class="levels"><img src="assets/status-cellular.svg" alt=""><img src="assets/status-wifi.svg" alt=""><img src="assets/status-battery.svg" alt=""></div></div><div class="content"><header class="top"><button class="close" data-i18n-aria="close" aria-label="Close paywall">×</button></header><div class="hero"><div class="visual">
   <img class="room-photo" src="assets/duo/warm-raised.jpg" data-i18n-alt="roomB" alt="A Christmas tree and a tall color-changing floor lamp beside the gifts">
   <img class="room-photo room-photo--red" src="assets/duo/red-aligned.jpg" alt="">
   <img class="room-photo room-photo--ice" src="assets/duo/ice-aligned.jpg" alt="">
@@ -597,13 +598,15 @@ main {
 </div><div class="plans">
   <button class="plan plan--yearly" aria-pressed="true" data-plan="yearly">
     <span class="plan-legacy" data-i18n="planOne">Plan 1</span><strong class="plan-legacy">$—.—</strong><small class="plan-legacy" data-i18n="periodPending">Period pending</small>
-    <span class="plan-summary"><b class="plan-title" data-i18n="yearly">Yearly</b><small data-i18n="yearlyDetail">$0.77/week · billed $39.99/year</small></span>
     <span class="plan-meta"><span class="plan-savings" data-i18n="savings">Best Deal</span><span class="plan-mark" aria-hidden="true"></span></span>
+    <span class="plan-summary"><b class="plan-title" data-i18n="yearly">Yearly</b><small data-i18n="yearlyDetail">$0.77/week · billed $39.99/year</small></span>
+    <span class="plan-renewal" data-dev-slot="renewal"></span>
   </button>
   <button class="plan" aria-pressed="false" data-plan="weekly">
     <span class="plan-legacy" data-i18n="planTwo">Plan 2</span><strong class="plan-legacy">$—.—</strong><small class="plan-legacy" data-i18n="periodPending">Period pending</small>
-    <span class="plan-summary"><b class="plan-title" data-i18n="weekly">Weekly</b><small data-i18n="weeklyDetail">$9.99/week</small></span>
     <span class="plan-meta"><span class="plan-mark" aria-hidden="true"></span></span>
+    <span class="plan-summary"><b class="plan-title" data-i18n="weekly">Weekly</b><small data-i18n="weeklyDetail">$9.99/week</small></span>
+    <span class="plan-renewal" data-dev-slot="renewal"></span>
   </button>
 </div>
 <p class="terms" role="status">Price and renewal terms to be confirmed.</p>

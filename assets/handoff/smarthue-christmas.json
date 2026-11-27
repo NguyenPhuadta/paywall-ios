@@ -2,6 +2,48 @@
   "paywall": "smarthue-christmas",
   "changes": [
     {
+      "at": "2026-11-27T16:33:29+07:00",
+      "summary": "Cập nhật SmartHue",
+      "items": [
+        {
+          "title": "iPad ngang",
+          "text": "Căn giữa ba link dưới CTA, cách nhau 24 px. Status bar nằm ngang ở mép trên, nút đóng ở góc trái."
+        },
+        {
+          "title": "iPad dọc",
+          "text": "Căn giữa ba link dưới CTA và đặt khoảng cách 24 px, giống iPad ngang. Trang preview chừa tối thiểu 240 px cho cột điều khiển và xếp cột xuống dưới khi cửa sổ hẹp."
+        },
+        {
+          "title": "Ảnh nền",
+          "text": "iPhone fullscreen, dialog, iPad và DUO dùng chung đúng ba ảnh DUO. Thứ tự champagne → đỏ → xanh băng, vòng lặp 8 giây, đèn ở bên trái."
+        },
+        {
+          "title": "Countdown",
+          "text": "Bắt đầu từ 15:00 và chỉ hiện phút, giây. Lưu mốc hết hạn để đếm tiếp khi thoát rồi mở lại app. Nếu đã hết hạn thì giữ trạng thái hết ưu đãi."
+        },
+        {
+          "title": "Dialog 329 × 510",
+          "text": "Căn giữa timer và tiêu đề."
+        },
+        {
+          "title": "Tiếng Đức · Dialog",
+          "text": "Tiêu đề đổi từ “Licht an. Zeit läuft!” sang “Jetzt strahlen. Zeit wird knapp!”."
+        },
+        {
+          "title": "Badge gói năm",
+          "text": "Đổi “Save 92%” thành “Best Deal”. Tiếng Đức dùng “Bestes Angebot” và tiếng Đan Mạch dùng “Bedste tilbud”."
+        },
+        {
+          "title": "Cấu trúc giá",
+          "text": "Hai thẻ xếp dọc, radio bên trái, tên gói trên giá, slot renewal bên phải để dev điền. Badge gói năm ở góc trên phải. Điều khoản ở trên CTA. Giữ các nội dung và giá đang có trong preview."
+        },
+        {
+          "title": "Tiêu đề dialog tiếng Đức",
+          "text": "Giữ nguyên “Jetzt strahlen. Zeit wird knapp!” và căn typography cho vừa một dòng ở 329 × 510."
+        }
+      ]
+    },
+    {
       "at": "2026-11-27T16:19:05+07:00",
       "summary": "Cập nhật SmartHue",
       "items": [
